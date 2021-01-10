@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import AppBarComponent from './AppBarComponent';
 // import MainComponent from './Main';
-// import DrawerComponent from './Drawer';
+import DrawerComponent from './DrawerComponent';
 // import Spinner from './UI/Spinner';
 // import { AxiosResponse } from 'axios';
 // import { Redirect } from 'react-router-dom';
@@ -45,9 +45,10 @@ const Dashboard: React.FC = (): JSX.Element => {
     const classes = useStyles();
     // const [isLoggedIn, setIsLoggedIn] = useState(true);
     const [open, setOpen] = useState(true);
-    // const [loadingTasks, setLoadingTasks] = useState(true);
+    const [loadingTasks, setLoadingTasks] = useState(true);
     // const { state, dispatch } = useContext(GlobalContext);
     // const { showCompleted } = state.tasks;
+    console.log(loadingTasks);
 
     // useEffect((): void => {
     //     (async (): Promise<void> => {
@@ -80,13 +81,14 @@ const Dashboard: React.FC = (): JSX.Element => {
             <div className={classes.mainBackground}></div>
             <div className={classes.root}>
                 <AppBarComponent setOpen={setOpen} open={open} />
-                {/* <DrawerComponent
+                <DrawerComponent
+                    // showCompleted={showCompleted}
                     setLoadingTasks={setLoadingTasks}
-                    showCompleted={showCompleted}
+                    showCompleted={false}
                     open={open}
                     setOpen={setOpen}
                 />
-                <main className={classes.content}>
+                {/* <main className={classes.content}>
                     <div className={classes.appBarSpacer} />
                     {loadingTasks ? (
                         <Box className={classes.spinner}>
