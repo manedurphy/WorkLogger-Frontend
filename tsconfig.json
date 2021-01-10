@@ -22,7 +22,10 @@
     "noUnusedLocals": true, 
     "noUnusedParameters": true,
     "incremental": true,
-    "noFallthroughCasesInSwitch": true 
+    "noFallthroughCasesInSwitch": true,
+    "rootDir": "./src/",
+    "outDir": "./dist/",
+    "declarationDir": "./typings"
   },
   "include": [
     "src/**/*" 

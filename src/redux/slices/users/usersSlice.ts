@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { postLoginForm } from './helpers';
+import { initialUserState } from './initialState';
 import {
     IUserState,
     LoginFormData,
@@ -11,13 +12,7 @@ import {
 
 const usersSlice = createSlice({
     name: 'user',
-    initialState: {
-        id: 0,
-        firstName: '',
-        lastName: '',
-        email: '',
-        loading: false,
-    },
+    initialState: initialUserState,
     reducers: {
         setUser: (state: IUserState, action: SetUserAction) => {
             return {

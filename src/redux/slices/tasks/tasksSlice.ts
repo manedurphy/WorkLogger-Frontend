@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { initialTaskState, ITaskState, SetLoadingTasksAction, SetTasksAction } from './types';
+import { initialTaskState } from './initialState';
+import { ITaskState, SetLoadingTasksAction, SetTasksAction } from './types';
 
 const taskSlice = createSlice({
     name: 'tasks',

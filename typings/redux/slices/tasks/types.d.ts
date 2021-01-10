@@ -16,7 +16,6 @@ export interface ITask {
     createdAt: string;
     updatedAt: string;
 }
-
 export interface ITaskState {
     currentTask: ITask;
     incompletedTasks: ITask[];
@@ -25,6 +24,10 @@ export interface ITaskState {
     edit: boolean;
     showCompleted: boolean;
 }
-
-export type SetTasksAction = { payload: ITask[] };
-export type SetLoadingTasksAction = { payload: boolean };
+export declare const initialTaskState: ITaskState;
+export declare type SetTasksAction = {
+    payload: ITask[];
+};
+export declare type SetLoadingTasksAction = {
+    payload: boolean;
+};
