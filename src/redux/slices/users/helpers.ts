@@ -1,6 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
-import { setLoginTokens } from '../../../components/Authentication/helpers';
-import { IAlert } from '../alerts/types';
+import { getTokens, setLoginTokens } from '../auth/helpers';
+import { AlertConstants } from '../alerts/AlertConstants';
+import { IAlert, IAlertResponse } from '../alerts/types';
 
 interface LoginResponse {
     id: number;
@@ -21,7 +22,17 @@ export async function postLoginForm(data: any): Promise<any> {
     return { id, firstName, lastName, email };
 }
 
-export async function postRegisterForm(data: any): Promise<any> {
-    const res: AxiosResponse<IAlert> = await axios.post('http://localhost:5000/api/users/register', data);
+export async function postRegisterForm(data: any): Promise<IAlert> {
+    const res: AxiosResponse<IAlertResponse> = await axios.post('http://localhost:5000/api/users/register', data);
+    return { ...res.data, type: AlertConstants.Success };
+}
+
+export async function getUserInfo(): Promise<any> {
+    const tokens = getTokens();
+
+    const res: AxiosResponse<any> = await axios.get('http://localhost:5000/api/users/verify-token', {
+        headers: { Authorization: `Bearer ${tokens.token}` },
+    });
+
     return res.data;
 }

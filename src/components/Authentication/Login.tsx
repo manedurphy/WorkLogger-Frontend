@@ -1,18 +1,11 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
-// import { setLoginTokens } from './helpers';
+import SnackBarComponent from '../UI/SnackBar';
+import Copyright from './Copyright';
 import { IGlobalState } from '../../redux/types';
 import { handleLogin } from '../../redux/slices/users/usersSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import SnackBarComponent from '../UI/SnackBar';
-import Copyright from './Copyright';
-// import axios, { AxiosResponse } from 'axios';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-// import { verifyUser } from '../../global/functions/axios';
-// import { Alerts, Tasks, Users } from '../../enums';
-// import { GlobalContext } from '../../context/GlobalState';
-// import { getToken } from '../../global/functions/helpers';
-// import { LoginType, ITask, VerifyType } from '../../global/types/type';
 import {
     Avatar,
     Button,
@@ -27,15 +20,6 @@ import {
     Container,
     makeStyles,
 } from '@material-ui/core';
-
-// interface LoginResponse {
-//     id: number;
-//     firstName: string;
-//     lastName: string;
-//     email: string;
-//     jwt: string;
-//     refreshToken: string;
-// }
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -61,20 +45,10 @@ const Login = (): JSX.Element => {
     const classes = useStyles();
     const dispatch = useDispatch();
     const { alerts, auth } = useSelector((state: IGlobalState) => state);
-    // const { state, dispatch } = useContext(GlobalContext);
-    // const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [formData, setFormData] = useState({
         email: '',
         password: '',
     });
-
-    // useEffect(() => {
-    //     (async () => {
-    //         const res: AxiosResponse<any> = await verifyUser();
-    //         if (res.data.user) setIsLoggedIn(true);
-    //     })();
-    // }, []);
-
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };

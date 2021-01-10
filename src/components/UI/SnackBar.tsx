@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
-import { Snackbar, SnackbarOrigin } from '@material-ui/core';
+import { Snackbar } from '@material-ui/core';
 import { makeStyles, Theme } from '@material-ui/core/styles';
+import { SnackBarProps } from './types';
 
 function Alert(props: AlertProps) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -16,11 +17,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
 }));
 
-const SnackBar: React.FC<{
-    message: string;
-    type: 'error' | 'success' | 'info' | 'warning' | undefined;
-    anchor: SnackbarOrigin;
-}> = (props) => {
+const SnackBar: React.FC<SnackBarProps> = (props): JSX.Element => {
     const classes = useStyles();
     const [open, setOpen] = useState(true);
 

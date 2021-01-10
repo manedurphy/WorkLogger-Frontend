@@ -1,5 +1,8 @@
-export interface IAlert {
+export interface IAlertResponse {
     message: string;
+}
+
+export interface IAlert extends IAlertResponse {
     type: 'error' | 'success' | 'info' | 'warning' | undefined;
 }
 

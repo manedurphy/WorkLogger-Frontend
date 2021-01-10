@@ -1,4 +1,4 @@
 export const initialAuthState = {
     registerSuccess: false,
-    loginSuccess: false,
+    loginSuccess: true,
 };

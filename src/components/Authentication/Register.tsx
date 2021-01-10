@@ -1,16 +1,12 @@
 import React, { ChangeEvent, useState, FormEvent } from 'react';
+import SnackBarComponent from '../UI/SnackBar';
+import Copyright from './Copyright';
 import { useDispatch, useSelector } from 'react-redux';
 import { handleRegister } from '../../redux/slices/users/usersSlice';
 import { IGlobalState } from '../../redux/types';
 import { IAlert } from '../../redux/slices/alerts/types';
-import SnackBarComponent from '../UI/SnackBar';
-import Copyright from './Copyright';
 import { Redirect } from 'react-router-dom';
-// import axios from 'axios';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-// import { RegisterType } from '../../global/types/type';
-// import { GlobalContext } from '../../context/GlobalState';
-// import { Alerts } from '../../enums';
 import {
     Avatar,
     Button,
@@ -23,12 +19,6 @@ import {
     Typography,
     Container,
 } from '@material-ui/core';
-
-// import { handleAlert } from '../../redux/slices/alerts/alertsSlice';
-
-// interface Alert {
-//     message: string;
-// }
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -54,8 +44,6 @@ const SignUp = (): JSX.Element => {
     const classes = useStyles();
     const dispatch = useDispatch();
     const { alerts, auth } = useSelector((state: IGlobalState) => state);
-    // const [signUpSuccess, setSignUpSuccess] = useState(false);
-    // const { state, dispatch } = useContext(GlobalContext);
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
@@ -70,21 +58,7 @@ const SignUp = (): JSX.Element => {
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        // try {
-        // /*const res: AxiosResponse<Alert> =*/ await axios.post(
-        //     'http://localhost:5000/api/users/register',
-        //     formData,
-        // );
-
-        // dispatch(handleAlert(res.data))
-
         dispatch(handleRegister(formData));
-        // setSignUpSuccess(true);
-
-        // } catch (error) {
-        // console.log(error.response);
-        // dispatch({ type: Alerts.setAlerts, payload: err.response.data });
-        // }
     };
 
     return (

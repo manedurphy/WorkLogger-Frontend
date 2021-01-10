@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { AlertConstants } from '../alerts/AlertConstants';
-import { handleAlert } from '../alerts/alertsSlice';
+import { addAlert } from '../alerts/alertsSlice';
 import { IAlert } from '../alerts/types';
 import { setRegister, setLogin } from '../auth/authSlice';
-import { postLoginForm, postRegisterForm } from './helpers';
+import { getUserInfo, postLoginForm, postRegisterForm } from './helpers';
 import { initialUserState } from './initialState';
 import {
     IUserState,
@@ -44,17 +44,28 @@ export const handleLogin = (data: LoginFormData): ThunkActionType => async (disp
         dispatch(setLogin(true));
     } catch (error) {
         dispatch(setLoadingUser(false));
-        dispatch(handleAlert({ ...error.response.data, type: AlertConstants.Error }));
+        dispatch(addAlert({ ...error.response.data, type: AlertConstants.Error }));
     }
 };
 
 export const handleRegister = (data: LoginFormData): ThunkActionType => async (dispatch: ThunkDispatchType) => {
     try {
         const success: IAlert = await postRegisterForm(data);
-        dispatch(handleAlert(success));
+        dispatch(addAlert(success));
         dispatch(setRegister(true));
     } catch (error) {
-        dispatch(handleAlert({ ...error.response.data, type: AlertConstants.Warning }));
+        dispatch(addAlert({ ...error.response.data, type: AlertConstants.Error }));
+    }
+};
+
+export const verifyUser = (): ThunkActionType => async (dispatch: ThunkDispatchType) => {
+    try {
+        const user = await getUserInfo();
+        dispatch(setUser(user));
+        dispatch(setLogin(true));
+    } catch (error) {
+        dispatch(setLogin(false));
+        dispatch(setLoadingUser(false));
     }
 };
 

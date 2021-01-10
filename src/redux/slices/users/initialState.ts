@@ -5,5 +5,5 @@ export const initialUserState: IUserState = {
     firstName: '',
     lastName: '',
     email: '',
-    loading: false,
+    loading: true,
 };
