@@ -1,6 +1,6 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 // import { setLoginTokens } from './helpers';
-import { handleLogin } from '../../redux/slices/users/usersSlice';
+import { handleLogin, setLoadingUser } from '../../redux/slices/users/usersSlice';
 import { useDispatch } from 'react-redux';
 // import SnackBarComponent from '../UI/SnackBar';
 import Copyright from './Copyright';
@@ -94,6 +94,7 @@ const Login = (): JSX.Element => {
             // dispatch({ type: Tasks.updateTasks, payload: tasks.data });
             // dispatch(setUser(res.data));
             // setIsLoggedIn(true);
+            dispatch(setLoadingUser(true));
             dispatch(handleLogin(formData));
         } catch (error) {
             console.log(error.response);

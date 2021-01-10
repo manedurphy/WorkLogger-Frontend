@@ -10,8 +10,8 @@ export interface ITask {
     reviewHours: number;
     hoursRequiredByBim: number;
     complete: boolean;
-    dateAssigned: Date;
-    dueDate: Date;
+    dateAssigned: string;
+    dueDate: string;
     UserId: number;
     createdAt: string;
     updatedAt: string;
@@ -39,8 +39,8 @@ export const initialTaskState: ITaskState = {
         reviewHours: 0,
         hoursRequiredByBim: 0,
         complete: false,
-        dateAssigned: new Date(),
-        dueDate: new Date(),
+        dateAssigned: new Date().toString(),
+        dueDate: new Date().toString(),
         UserId: -1,
         createdAt: '',
         updatedAt: '',

@@ -1,16 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { postLoginForm } from './helpers';
-
-export interface IUserState {
-    id: number;
-    firstName: string;
-    lastName: string;
-    email: string;
-}
-
-type SetUserAction = {
-    payload: IUserState;
-};
+import {
+    IUserState,
+    LoginFormData,
+    SetLoadingUserAction,
+    SetUserAction,
+    ThunkActionType,
+    ThunkDispatchType,
+} from './types';
 
 const usersSlice = createSlice({
     name: 'user',
@@ -19,23 +16,29 @@ const usersSlice = createSlice({
         firstName: '',
         lastName: '',
         email: '',
+        loading: false,
     },
     reducers: {
         setUser: (state: IUserState, action: SetUserAction) => {
             return {
                 ...state,
                 ...action.payload,
+                loading: false,
+            };
+        },
+        setLoadingUser: (state: IUserState, action: SetLoadingUserAction) => {
+            return {
+                ...state,
+                loading: action.payload,
             };
         },
     },
 });
 
-export const handleLogin = (data: any) => async (dispatch: any) => {
+export const handleLogin = (data: LoginFormData): ThunkActionType => async (dispatch: ThunkDispatchType) => {
     const user = await postLoginForm(data);
-
     dispatch(setUser(user));
 };
 
-export const { setUser } = usersSlice.actions;
-
+export const { setUser, setLoadingUser } = usersSlice.actions;
 export default usersSlice.reducer;

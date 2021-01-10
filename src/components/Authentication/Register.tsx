@@ -86,11 +86,6 @@ const SignUp = (): JSX.Element => {
                     Sign up
                 </Typography>
                 <form className={classes.form} noValidate onSubmit={handleSubmit}>
-                    {alert && (
-                        <div className="alert alert-danger text-center" role="alert">
-                            {alert}
-                        </div>
-                    )}
                     <Grid container spacing={2}>
                         <Grid item xs={12} sm={6}>
                             <TextField

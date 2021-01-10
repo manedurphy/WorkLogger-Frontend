@@ -6,7 +6,7 @@ const Copyright = (): JSX.Element => {
         <Typography variant="body2" color="textSecondary" align="center">
             {'Copyright © '}
             <Link color="inherit" href="https://material-ui.com/">
-                ACCO Work Log
+                Work Logger
             </Link>{' '}
             {new Date().getFullYear()}
             {'.'}
