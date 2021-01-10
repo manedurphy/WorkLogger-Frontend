@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import clsx from 'clsx';
-// import SearchBar from './SearchBar';
-// import LogoutMenu from './UI/LogoutMenu';
-// import UseWindow from './UseWindow';
+import SearchBar from './SearchBar';
+import LogoutMenu from './LogoutMenu';
+import UseWindow from './UseWindow';
 import { Menu as MenuIcon } from '@material-ui/icons';
 import { AppBar, IconButton, makeStyles, Toolbar, Typography } from '@material-ui/core';
 
@@ -43,7 +43,7 @@ const AppBarComponent: React.FC<{
     open: boolean;
 }> = (props): JSX.Element => {
     const classes = useStyles();
-    // const size = UseWindow();
+    const size = UseWindow();
 
     const handleDrawerOpen = () => {
         props.setOpen(true);
@@ -61,13 +61,13 @@ const AppBarComponent: React.FC<{
                 >
                     <MenuIcon />
                 </IconButton>
-                {/* {size.width >= 600 && ( */}
-                <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-                    Dashboard
-                </Typography>
-                {/* )} */}
-                {/* <SearchBar />
-                <LogoutMenu /> */}
+                {size.width >= 600 && (
+                    <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
+                        Dashboard
+                    </Typography>
+                )}
+                <SearchBar />
+                <LogoutMenu />
             </Toolbar>
         </AppBar>
     );
