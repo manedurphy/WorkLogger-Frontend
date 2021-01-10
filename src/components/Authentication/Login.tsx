@@ -1,13 +1,14 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 // import { setLoginTokens } from './helpers';
-import { handleLogin, setLoadingUser } from '../../redux/slices/users/usersSlice';
-import { useDispatch } from 'react-redux';
-// import SnackBarComponent from '../UI/SnackBar';
+import { IGlobalState } from '../../redux/types';
+import { handleLogin } from '../../redux/slices/users/usersSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import SnackBarComponent from '../UI/SnackBar';
 import Copyright from './Copyright';
 // import axios, { AxiosResponse } from 'axios';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 // import { verifyUser } from '../../global/functions/axios';
-// import { Redirect } from 'react-router-dom';
 // import { Alerts, Tasks, Users } from '../../enums';
 // import { GlobalContext } from '../../context/GlobalState';
 // import { getToken } from '../../global/functions/helpers';
@@ -59,6 +60,7 @@ const useStyles = makeStyles((theme) => ({
 const Login = (): JSX.Element => {
     const classes = useStyles();
     const dispatch = useDispatch();
+    const { alerts, auth } = useSelector((state: IGlobalState) => state);
     // const { state, dispatch } = useContext(GlobalContext);
     // const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [formData, setFormData] = useState({
@@ -79,27 +81,7 @@ const Login = (): JSX.Element => {
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        try {
-            // const res: AxiosResponse<LoginResponse> = await axios.post(
-            //     'http://localhost:5000/api/users/login',
-            //     formData,
-            // );
-            // const { jwt, refreshToken } = res.data;
-            // setLoginTokens(jwt, refreshToken);
-            // dispatch({ type: Users.setUser, payload: res.data.user });
-            // const token = getToken();
-            // const tasks: AxiosResponse<ITask[]> = await axios.get('/api/task', {
-            //     headers: { Authorization: `Bearer ${token}` },
-            // });
-            // dispatch({ type: Tasks.updateTasks, payload: tasks.data });
-            // dispatch(setUser(res.data));
-            // setIsLoggedIn(true);
-            dispatch(setLoadingUser(true));
-            dispatch(handleLogin(formData));
-        } catch (error) {
-            console.log(error.response);
-            // dispatch({ type: Alerts.setAlerts, payload: err.response.data });
-        }
+        dispatch(handleLogin(formData));
     };
 
     return (
@@ -160,15 +142,15 @@ const Login = (): JSX.Element => {
             <Box mt={8}>
                 <Copyright />
             </Box>
-            {/* {isLoggedIn && <Redirect to="/" />} */}
-            {/* {state.alerts.map((alert, i) => (
+            {auth.loginSuccess && <Redirect to="/" />}
+            {alerts.map((alert, i) => (
                 <SnackBarComponent
                     key={i}
                     message={alert.message}
                     type={alert.type}
-                    anchor={{ vertical: 'top', horizontal: 'center' }}
+                    anchor={{ vertical: 'bottom', horizontal: 'center' }}
                 />
-            ))} */}
+            ))}
         </Container>
     );
 };

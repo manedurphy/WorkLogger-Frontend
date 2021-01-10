@@ -1,8 +1,12 @@
 import React, { ChangeEvent, useState, FormEvent } from 'react';
-// import SnackBarComponent from '../UI/SnackBar';
+import { useDispatch, useSelector } from 'react-redux';
+import { handleRegister } from '../../redux/slices/users/usersSlice';
+import { IGlobalState } from '../../redux/types';
+import { IAlert } from '../../redux/slices/alerts/types';
+import SnackBarComponent from '../UI/SnackBar';
 import Copyright from './Copyright';
 import { Redirect } from 'react-router-dom';
-import axios from 'axios';
+// import axios from 'axios';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 // import { RegisterType } from '../../global/types/type';
 // import { GlobalContext } from '../../context/GlobalState';
@@ -19,6 +23,8 @@ import {
     Typography,
     Container,
 } from '@material-ui/core';
+
+// import { handleAlert } from '../../redux/slices/alerts/alertsSlice';
 
 // interface Alert {
 //     message: string;
@@ -46,7 +52,9 @@ const useStyles = makeStyles((theme) => ({
 
 const SignUp = (): JSX.Element => {
     const classes = useStyles();
-    const [signUpSuccess, setSignUpSuccess] = useState(false);
+    const dispatch = useDispatch();
+    const { alerts, auth } = useSelector((state: IGlobalState) => state);
+    // const [signUpSuccess, setSignUpSuccess] = useState(false);
     // const { state, dispatch } = useContext(GlobalContext);
     const [formData, setFormData] = useState({
         firstName: '',
@@ -60,19 +68,23 @@ const SignUp = (): JSX.Element => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        try {
-            /*const res: AxiosResponse<Alert> =*/ await axios.post(
-                'http://localhost:5000/api/users/register',
-                formData,
-            );
+        // try {
+        // /*const res: AxiosResponse<Alert> =*/ await axios.post(
+        //     'http://localhost:5000/api/users/register',
+        //     formData,
+        // );
 
-            setSignUpSuccess(true);
-        } catch (error) {
-            console.log(error.response);
-            // dispatch({ type: Alerts.setAlerts, payload: err.response.data });
-        }
+        // dispatch(handleAlert(res.data))
+
+        dispatch(handleRegister(formData));
+        // setSignUpSuccess(true);
+
+        // } catch (error) {
+        // console.log(error.response);
+        // dispatch({ type: Alerts.setAlerts, payload: err.response.data });
+        // }
     };
 
     return (
@@ -171,15 +183,15 @@ const SignUp = (): JSX.Element => {
             <Box mt={5}>
                 <Copyright />
             </Box>
-            {signUpSuccess && <Redirect to="/login" />}
-            {/* {state.alerts.map((alert, i) => (
+            {auth.registerSuccess && <Redirect to="/login" />}
+            {alerts.map((alert: IAlert, i: number) => (
                 <SnackBarComponent
                     key={i}
                     message={alert.message}
                     type={alert.type}
-                    anchor={{ vertical: 'top', horizontal: 'center' }}
+                    anchor={{ vertical: 'bottom', horizontal: 'center' }}
                 />
-            ))} */}
+            ))}
         </Container>
     );
 };

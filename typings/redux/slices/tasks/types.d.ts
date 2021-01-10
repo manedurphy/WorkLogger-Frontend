@@ -24,7 +24,6 @@ export interface ITaskState {
     edit: boolean;
     showCompleted: boolean;
 }
-export declare const initialTaskState: ITaskState;
 export declare type SetTasksAction = {
     payload: ITask[];
 };

@@ -1,6 +1,6 @@
 export interface IAlert {
     message: string;
-    statusCode: number;
+    type: 'error' | 'success' | 'info' | 'warning' | undefined;
 }
 
 export type AlertStateType = IAlert[];

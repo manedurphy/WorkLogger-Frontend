@@ -2231,9 +2231,14 @@
         "signature": "5e6924ee2301ed7557f2e6662e63204b7972a3a468c35c3e6401737e2d813995",
         "affectsGlobalScope": false
       },
+      "./src/redux/slices/users/initialstate.ts": {
+        "version": "3af759ffc685a090e4375db6fa0b08e70ed431fdbb53cadc841d7c7fb083c4b5",
+        "signature": "077f0980117d2ac521f8f6fa67171f412fbc9937bfd6c08890fb5b600f701ff5",
+        "affectsGlobalScope": false
+      },
       "./src/redux/slices/users/usersslice.ts": {
-        "version": "72df868894e38d7175ba3d35da8e1d338fc3ad122384c947ab8566874ac3d04c",
-        "signature": "b9940bb757237dfa72b7f3b3df5ed74e327cb527b57c1c5d4cd3d4c1e1590003",
+        "version": "01aa7fc91aed92542e8b888c363f6483893698c77fe19c214c58153900deacc1",
+        "signature": "433bc1004829fc2f294803c93f2c194d120219a35fc4a79cb6e5381405d14bb4",
         "affectsGlobalScope": false
       },
       "./src/components/authentication/login.tsx": {
@@ -2257,12 +2262,17 @@
         "affectsGlobalScope": false
       },
       "./src/redux/slices/tasks/types.ts": {
-        "version": "9a91fe612f9f26a86a4e19c74bd5c9d1fe9c9bf832822d41e401b43dce7d0070",
-        "signature": "05a3fcec252c3cf6d3d01b0dd146dadd5c2869e9b91379d2b4dee5338e572c94",
+        "version": "d53d4ff88ec79165cdef50223c0a5d70a573992b413e95140a3fa84420bfb4d2",
+        "signature": "6667fc9cb6a08252ed5adfcf8e98492e57c7203e7c1f082a2ca2f6a4a67a679f",
+        "affectsGlobalScope": false
+      },
+      "./src/redux/slices/tasks/initialstate.ts": {
+        "version": "aa24032e71e6923217ffa12051c99901ff2a67c9d8d241dbf377f2c2fad79ebf",
+        "signature": "c4a811a8fa933467e888b65aa5a7f4dd98a6859b16bd912db54a6d194434a8dc",
         "affectsGlobalScope": false
       },
       "./src/redux/slices/tasks/tasksslice.ts": {
-        "version": "df450dc1c1220050693f648c1fb524cfdf741d490b8ee8fa3084f76516585ea0",
+        "version": "8b00f276dc6199de6368b817f8cf847237a6100dc7aea5b177b4af26e67ba931",
         "signature": "6c953ea09b2d83e3a2ad3a29431e8c329d3a5b3015631938b71d56b6f4c5d6c5",
         "affectsGlobalScope": false
       },
@@ -2278,12 +2288,12 @@
       },
       "./src/redux/slices/index.ts": {
         "version": "2a94927c335fb1492aac5fd633b824af852fa1a86afdeb08f89e493eb4c85c95",
-        "signature": "11e8eb19bd9b801457f1813feb534d21e1f1ba97e5618a65dbb567ef4acb1644",
+        "signature": "c02281dfa7f3cda0f58c26d9df8ded6560c900c69881f632e113bbecffe51cfb",
         "affectsGlobalScope": false
       },
       "./src/redux/store.ts": {
         "version": "575412c61ae3b63e907aac8ed284d5250be4c5fa7b844c8445c61f37e44afafa",
-        "signature": "bf834a0f78dd13c4d80dff050d1bb061ef40b0b35bb3b65cc344bf6837c5d3b1",
+        "signature": "3443bb090779accede5ed74dfd010ae2780c32f76fae01ad6afb49fe41f130f4",
         "affectsGlobalScope": false
       },
       "./src/index.tsx": {
@@ -5179,13 +5189,20 @@
         "./src/redux/slices/tasks/tasksslice.ts",
         "./src/redux/slices/users/usersslice.ts"
       ],
+      "./src/redux/slices/tasks/initialstate.ts": [
+        "./src/redux/slices/tasks/types.ts"
+      ],
       "./src/redux/slices/tasks/tasksslice.ts": [
         "./node_modules/@reduxjs/toolkit/dist/typings.d.ts",
+        "./src/redux/slices/tasks/initialstate.ts",
         "./src/redux/slices/tasks/types.ts"
       ],
       "./src/redux/slices/users/helpers.ts": [
         "../../../../node_modules/axios/index.d.ts",
         "./src/components/authentication/helpers.ts"
+      ],
+      "./src/redux/slices/users/initialstate.ts": [
+        "./src/redux/slices/users/types.ts"
       ],
       "./src/redux/slices/users/types.ts": [
         "./node_modules/@reduxjs/toolkit/dist/typings.d.ts",
@@ -5194,6 +5211,7 @@
       "./src/redux/slices/users/usersslice.ts": [
         "./node_modules/@reduxjs/toolkit/dist/typings.d.ts",
         "./src/redux/slices/users/helpers.ts",
+        "./src/redux/slices/users/initialstate.ts",
         "./src/redux/slices/users/types.ts"
       ],
       "./src/redux/store.ts": [
@@ -7352,12 +7370,19 @@
       ],
       "./src/redux/slices/index.ts": [
         "./node_modules/redux/index.d.ts",
+        "./src/redux/slices/tasks/types.ts",
+        "./src/redux/slices/users/types.ts"
+      ],
+      "./src/redux/slices/tasks/initialstate.ts": [
         "./src/redux/slices/tasks/types.ts"
       ],
       "./src/redux/slices/tasks/tasksslice.ts": [
         "./node_modules/@reduxjs/toolkit/dist/typings.d.ts",
         "./node_modules/redux/index.d.ts",
         "./src/redux/slices/tasks/types.ts"
+      ],
+      "./src/redux/slices/users/initialstate.ts": [
+        "./src/redux/slices/users/types.ts"
       ],
       "./src/redux/slices/users/types.ts": [
         "./node_modules/@reduxjs/toolkit/dist/typings.d.ts",
@@ -7372,7 +7397,8 @@
         "./node_modules/@reduxjs/toolkit/dist/typings.d.ts",
         "./node_modules/redux-thunk/index.d.ts",
         "./node_modules/redux/index.d.ts",
-        "./src/redux/slices/tasks/types.ts"
+        "./src/redux/slices/tasks/types.ts",
+        "./src/redux/slices/users/types.ts"
       ],
       "../../../../node_modules/@types/react-native/devtools.d.ts": [
         "../../../../node_modules/@types/react-native/devtools.d.ts"
@@ -7927,9 +7953,11 @@
       "./src/redux/slices/alerts/types.ts",
       "./src/redux/slices/counter.ts",
       "./src/redux/slices/index.ts",
+      "./src/redux/slices/tasks/initialstate.ts",
       "./src/redux/slices/tasks/tasksslice.ts",
       "./src/redux/slices/tasks/types.ts",
       "./src/redux/slices/users/helpers.ts",
+      "./src/redux/slices/users/initialstate.ts",
       "./src/redux/slices/users/types.ts",
       "./src/redux/slices/users/usersslice.ts",
       "./src/redux/store.ts",

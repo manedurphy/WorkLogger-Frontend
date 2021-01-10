@@ -4,12 +4,6 @@ declare const _default: import("redux").Reducer<import("redux").CombinedState<{
     };
     alerts: never[];
     tasks: import("./tasks/types").ITaskState;
-    user: {
-        id: number;
-        firstName: string;
-        lastName: string;
-        email: string;
-        loading: boolean;
-    };
+    user: import("./users/types").IUserState;
 }>, import("redux").AnyAction>;
 export default _default;
