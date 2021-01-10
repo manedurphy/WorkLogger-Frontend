@@ -6,6 +6,7 @@ import webpack from 'webpack';
 const config: webpack.Configuration = {
     entry: resolve(__dirname, 'src', 'index.tsx'),
     mode: 'development',
+    devtool: 'source-map',
     module: {
         rules: [
             {
