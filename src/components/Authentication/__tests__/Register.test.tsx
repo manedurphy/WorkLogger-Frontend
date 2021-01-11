@@ -1,12 +1,11 @@
 import React from 'react';
-import RegisterForm from '../Register/RegisterForm';
-import Register from '../Register/Register';
+import RegisterForm from '../register/RegisterForm';
+import Register from '../register/Register';
 import { render, fireEvent } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { setupServer } from 'msw/node';
 import { postRegisterForm } from '../../../redux/slices/users/helpers';
-import { configureStore } from '@reduxjs/toolkit';
-import rootReducer from '../../../redux/slices/index';
+import { store } from '../../../redux/store';
 import { addAlert } from '../../../redux/slices/alerts/alertsSlice';
 import { handlers } from '../../../mocks/handlers';
 
@@ -15,10 +14,6 @@ const server = setupServer(...handlers);
 beforeAll(() => server.listen());
 afterAll(() => server.close());
 afterEach(() => server.resetHandlers());
-
-const store = configureStore({
-    reducer: rootReducer,
-});
 
 it('should update the alerts in the store', () => {
     const { getByTestId } = render(

@@ -1,4 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { IGlobalState } from '../../types';
+import { AlertConstants } from '../alerts/AlertConstants';
+import { addAlert } from '../alerts/alertsSlice';
+import { ThunkActionType, ThunkDispatchType } from '../users/types';
+import { getIncompleteTasks } from './helpers';
 import { initialTaskState } from './initialState';
 import { ITaskState, SetLoadingTasksAction, SetTasksAction } from './types';
 
@@ -9,7 +14,7 @@ const taskSlice = createSlice({
         setIncompleteTasks: (state: ITaskState, action: SetTasksAction) => {
             return {
                 ...state,
-                currentTasks: action.payload,
+                incompletedTasks: action.payload,
                 loading: false,
             };
         },
@@ -22,6 +27,18 @@ const taskSlice = createSlice({
     },
 });
 
-export const { setIncompleteTasks } = taskSlice.actions;
+export const { setIncompleteTasks, setLoadingTasks } = taskSlice.actions;
+
+export const getTasksState = (state: IGlobalState): ITaskState => state.tasks;
+
+export const handleGetIncompleteTasks = (): ThunkActionType => async (dispatch: ThunkDispatchType) => {
+    try {
+        dispatch(setLoadingTasks(true));
+        const tasks = await getIncompleteTasks();
+        dispatch(setIncompleteTasks(tasks));
+    } catch (error) {
+        dispatch(addAlert({ ...error.response.data, type: AlertConstants.Error }));
+    }
+};
 
 export default taskSlice.reducer;

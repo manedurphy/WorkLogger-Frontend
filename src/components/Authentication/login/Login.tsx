@@ -1,14 +1,13 @@
-import React, { ChangeEvent, useState, FormEvent } from 'react';
-import SnackBarComponent from '../../ui/SnackBar';
-import RegisterForm from './RegisterForm';
+import React, { ChangeEvent, FormEvent, useState } from 'react';
+import LoginForm from './LoginForm';
 import Copyright from '../Copyright';
-import { useDispatch, useSelector } from 'react-redux';
-import { handleRegister } from '../../../redux/slices/users/usersSlice';
-import { IGlobalState } from '../../../redux/types';
-import { IAlert } from '../../../redux/slices/alerts/types';
-import { Redirect } from 'react-router-dom';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import { Avatar, CssBaseline, Box, makeStyles, Typography, Container } from '@material-ui/core';
+import SnackBarComponent from '../../ui/SnackBar';
+import { IGlobalState } from '../../../redux/types';
+import { handleLogin } from '../../../redux/slices/users/usersSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import { Avatar, CssBaseline, Box, Typography, Container, makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -21,27 +20,30 @@ const useStyles = makeStyles((theme) => ({
         margin: theme.spacing(1),
         backgroundColor: theme.palette.secondary.main,
     },
+    form: {
+        width: '100%',
+        marginTop: theme.spacing(1),
+    },
+    submit: {
+        margin: theme.spacing(3, 0, 2),
+    },
 }));
 
-const Register = (): JSX.Element => {
+const Login = (): JSX.Element => {
     const classes = useStyles();
     const dispatch = useDispatch();
     const { alerts, auth } = useSelector((state: IGlobalState) => state);
     const [formData, setFormData] = useState({
-        firstName: '',
-        lastName: '',
         email: '',
         password: '',
-        password2: '',
     });
-
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        dispatch(handleRegister(formData));
+        dispatch(handleLogin(formData));
     };
 
     return (
@@ -52,15 +54,15 @@ const Register = (): JSX.Element => {
                     <LockOutlinedIcon />
                 </Avatar>
                 <Typography component="h1" variant="h5">
-                    Register
+                    Sign in
                 </Typography>
-                <RegisterForm formData={formData} handleChange={handleChange} handleSubmit={handleSubmit} />
+                <LoginForm formData={formData} handleChange={handleChange} handleSubmit={handleSubmit} />
             </div>
-            <Box mt={5}>
+            <Box mt={8}>
                 <Copyright />
             </Box>
-            {auth.registerSuccess && <Redirect to="/login" />}
-            {alerts.map((alert: IAlert, i: number) => (
+            {auth.loginSuccess && <Redirect to="/" />}
+            {alerts.map((alert, i) => (
                 <SnackBarComponent
                     key={i}
                     message={alert.message}
@@ -72,4 +74,4 @@ const Register = (): JSX.Element => {
     );
 };
 
-export default Register;
+export default Login;

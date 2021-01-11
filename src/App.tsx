@@ -1,16 +1,15 @@
 import React, { useEffect } from 'react';
-import Spinner from './components/UI/Spinner';
+import Spinner from './components/ui/Spinner';
+import Dashboard from './components/Dashboard';
+import Register from './components/authentication/register/Register';
+import Login from './components/authentication/login/Login';
+import { getUserState, verifyUser } from './redux/slices/users/usersSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
-import Dashboard from './components/Dashboard';
-import Register from './components/Authentication/Register/Register';
-import Login from './components/Authentication/Login';
-import { verifyUser } from './redux/slices/users/usersSlice';
-import { IGlobalState } from './redux/types';
 
 const App = (): JSX.Element => {
     const dispatch = useDispatch();
-    const { user } = useSelector((state: IGlobalState) => state);
+    const user = useSelector(getUserState);
     useEffect(() => {
         dispatch(verifyUser());
     }, []);

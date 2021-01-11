@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { IGlobalState } from '../../types';
 import { AlertConstants } from '../alerts/AlertConstants';
 import { addAlert } from '../alerts/alertsSlice';
 import { IAlert } from '../alerts/types';
@@ -35,11 +36,12 @@ const usersSlice = createSlice({
     },
 });
 
-const { setUser, setLoadingUser } = usersSlice.actions;
+export const { setUser, setLoadingUser } = usersSlice.actions;
+
+export const getUserState = (state: IGlobalState): IUserState => state.user;
 
 export const handleLogin = (data: LoginFormData): ThunkActionType => async (dispatch: ThunkDispatchType) => {
     try {
-        dispatch(setLoadingUser(true));
         const user: IUser = await postLoginForm(data);
         dispatch(setUser({ ...user, loading: false }));
         dispatch(setLogin(true));

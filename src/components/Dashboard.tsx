@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AppBarComponent from './AppBarComponent';
 // import MainComponent from './Main';
 import DrawerComponent from './DrawerComponent';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 // import Spinner from './UI/Spinner';
 // import { AxiosResponse } from 'axios';
 // import { Redirect } from 'react-router-dom';
@@ -12,6 +12,7 @@ import { useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core';
 import { Redirect } from 'react-router-dom';
 import { getAuthState } from '../redux/slices/auth/authSlice';
+import { handleGetIncompleteTasks } from '../redux/slices/tasks/tasksSlice';
 // import { getHoursWorked, getProductivityData, getTasks, verifyUser } from '../global/functions/axios';
 
 const useStyles = makeStyles((theme) => ({
@@ -46,6 +47,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Dashboard: React.FC = (): JSX.Element => {
     const classes = useStyles();
+    const dispatch = useDispatch();
     // const [isLoggedIn, setIsLoggedIn] = useState(true);
     const { loginSuccess } = useSelector(getAuthState);
     const [open, setOpen] = useState(true);
@@ -53,6 +55,10 @@ const Dashboard: React.FC = (): JSX.Element => {
     // const { state, dispatch } = useContext(GlobalContext);
     // const { showCompleted } = state.tasks;
     console.log(loadingTasks);
+
+    useEffect(() => {
+        dispatch(handleGetIncompleteTasks());
+    }, []);
 
     // useEffect((): void => {
     //     (async (): Promise<void> => {
