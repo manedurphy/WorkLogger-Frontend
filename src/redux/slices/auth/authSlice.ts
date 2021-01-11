@@ -24,6 +24,6 @@ const authSlice = createSlice({
 });
 
 export const { setRegister, setLogin } = authSlice.actions;
-export const getAuthState = (state: IGlobalState) => state.auth;
+export const getAuthState = (state: IGlobalState): IAuthState => state.auth;
 
 export default authSlice.reducer;

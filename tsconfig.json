@@ -34,5 +34,7 @@
     "node_modules",
     "dist",
     "**types.ts",
+    "**/*.test.ts",
+    "**/*.test.tsx"
   ],
 }

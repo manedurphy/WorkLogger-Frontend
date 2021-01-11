@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
 import { Snackbar } from '@material-ui/core';
@@ -27,7 +28,7 @@ const SnackBar: React.FC<SnackBarProps> = (props): JSX.Element => {
     };
 
     return (
-        <div className={classes.root}>
+        <div className={classes.root} data-testid={'alert'}>
             <Snackbar open={open} autoHideDuration={3000} onClose={handleClose} anchorOrigin={props.anchor}>
                 <Alert onClose={handleClose} severity={props.type}>
                     {props.message}
