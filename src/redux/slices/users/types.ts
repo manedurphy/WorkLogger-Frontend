@@ -6,11 +6,23 @@ export interface LoginFormData {
     password: string;
 }
 
-export interface IUserState {
+export interface LoginResponse {
     id: number;
     firstName: string;
     lastName: string;
     email: string;
+    jwt: string;
+    refreshToken: string;
+}
+
+export interface IUser {
+    id: number;
+    firstName: string;
+    lastName: string;
+    email: string;
+}
+
+export interface IUserState extends IUser {
     loading: boolean;
 }
 

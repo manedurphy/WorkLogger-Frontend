@@ -3,9 +3,10 @@ import { AlertConstants } from '../alerts/AlertConstants';
 import { addAlert } from '../alerts/alertsSlice';
 import { IAlert } from '../alerts/types';
 import { setRegister, setLogin } from '../auth/authSlice';
-import { getUserInfo, postLoginForm, postRegisterForm } from './helpers';
+import { getRefreshTokens, getUserInfo, postLoginForm, postRegisterForm } from './helpers';
 import { initialUserState } from './initialState';
 import {
+    IUser,
     IUserState,
     LoginFormData,
     SetLoadingUserAction,
@@ -39,8 +40,8 @@ const { setUser, setLoadingUser } = usersSlice.actions;
 export const handleLogin = (data: LoginFormData): ThunkActionType => async (dispatch: ThunkDispatchType) => {
     try {
         dispatch(setLoadingUser(true));
-        const user: IUserState = await postLoginForm(data);
-        dispatch(setUser(user));
+        const user: IUser = await postLoginForm(data);
+        dispatch(setUser({ ...user, loading: false }));
         dispatch(setLogin(true));
     } catch (error) {
         dispatch(setLoadingUser(false));
@@ -61,7 +62,17 @@ export const handleRegister = (data: LoginFormData): ThunkActionType => async (d
 export const verifyUser = (): ThunkActionType => async (dispatch: ThunkDispatchType) => {
     try {
         const user = await getUserInfo();
-        dispatch(setUser(user));
+        dispatch(setUser({ ...user, loading: false }));
+        dispatch(setLogin(true));
+    } catch (error) {
+        dispatch(refreshUser());
+    }
+};
+
+export const refreshUser = (): ThunkActionType => async (dispatch: ThunkDispatchType) => {
+    try {
+        const user = await getRefreshTokens();
+        dispatch(setUser({ ...user, loading: false }));
         dispatch(setLogin(true));
     } catch (error) {
         dispatch(setLogin(false));

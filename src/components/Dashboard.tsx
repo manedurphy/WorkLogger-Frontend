@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import AppBarComponent from './AppBarComponent';
 // import MainComponent from './Main';
 import DrawerComponent from './DrawerComponent';
-import Spinner from './UI/Spinner';
 import { useSelector } from 'react-redux';
 // import Spinner from './UI/Spinner';
 // import { AxiosResponse } from 'axios';
@@ -12,7 +11,7 @@ import { useSelector } from 'react-redux';
 // import { VerifyType } from '../global/types/type';
 import { makeStyles } from '@material-ui/core';
 import { Redirect } from 'react-router-dom';
-import { IGlobalState } from '../redux/types';
+import { getAuthState } from '../redux/slices/auth/authSlice';
 // import { getHoursWorked, getProductivityData, getTasks, verifyUser } from '../global/functions/axios';
 
 const useStyles = makeStyles((theme) => ({
@@ -48,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
 const Dashboard: React.FC = (): JSX.Element => {
     const classes = useStyles();
     // const [isLoggedIn, setIsLoggedIn] = useState(true);
-    const { auth, user } = useSelector((state: IGlobalState) => state);
+    const { loginSuccess } = useSelector(getAuthState);
     const [open, setOpen] = useState(true);
     const [loadingTasks, setLoadingTasks] = useState(true);
     // const { state, dispatch } = useContext(GlobalContext);
@@ -81,9 +80,7 @@ const Dashboard: React.FC = (): JSX.Element => {
     //     })();
     // }, [showCompleted]);
 
-    return user.loading ? (
-        <Spinner />
-    ) : (
+    return (
         <React.Fragment>
             <div className={classes.mainBackground}></div>
             <div className={classes.root}>
@@ -108,7 +105,7 @@ const Dashboard: React.FC = (): JSX.Element => {
                     )}
                 </main> */}
             </div>
-            {!auth.loginSuccess && <Redirect to={'/login'} />}
+            {!loginSuccess && <Redirect to={'/login'} />}
         </React.Fragment>
     );
 };
