@@ -27,7 +27,7 @@ export interface IUserState extends IUser {
 }
 
 export type SetUserAction = {
-    payload: IUserState;
+    payload: IUser;
 };
 
 export type SetLoadingUserAction = {

@@ -1,13 +1,15 @@
 import React from 'react';
 import clsx from 'clsx';
+// import { useSelector } from 'react-redux';
 // import Chart from './Chart';
 // import Breadcrumbs from './Breadcrumbs';
 // import CurrentWeek from './CurrentWeek';
-// import TasksComponent from './Tasks';
+import TasksComponent from './TasksComponent';
 // import SnackBarComponent from './UI/SnackBar';
 // import LogForm from './Forms/LogForm';
 // import JobForm from './Forms/JobForm';
 import { Container, Grid, makeStyles, Paper } from '@material-ui/core';
+// import { getTasksState } from '../redux/slices/tasks/tasksSlice';
 // import { GlobalContext } from '../context/GlobalState';
 
 const useStyles = makeStyles((theme) => ({
@@ -49,7 +51,7 @@ const Main: React.FC = (): JSX.Element => {
                 </Grid>
                 <Grid item xs={12}>
                     <Paper className={classes.paper}>
-                        {/* <TasksComponent showCompleted={state.tasks.showCompleted} /> */}
+                        <TasksComponent />
                     </Paper>
                 </Grid>
             </Grid>

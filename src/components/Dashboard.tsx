@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import AppBarComponent from './AppBarComponent';
-// import MainComponent from './Main';
+import MainComponent from './MainComponent';
 import DrawerComponent from './DrawerComponent';
 import { useDispatch, useSelector } from 'react-redux';
 // import Spinner from './UI/Spinner';
@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 // import { GlobalContext } from '../context/GlobalState';
 // import { Users, Tasks, Logs, Alerts, Productivities, Hours } from '../enums';
 // import { VerifyType } from '../global/types/type';
-import { makeStyles } from '@material-ui/core';
+import { Box, makeStyles } from '@material-ui/core';
 import { Redirect } from 'react-router-dom';
 import { getAuthState } from '../redux/slices/auth/authSlice';
 import { handleGetIncompleteTasks } from '../redux/slices/tasks/tasksSlice';
@@ -110,6 +110,9 @@ const Dashboard: React.FC = (): JSX.Element => {
                         </Box>
                     )}
                 </main> */}
+                <Box className={classes.test}>
+                    <MainComponent />
+                </Box>
             </div>
             {!loginSuccess && <Redirect to={'/login'} />}
         </React.Fragment>
