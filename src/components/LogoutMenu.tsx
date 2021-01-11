@@ -16,6 +16,7 @@ const NotificationsMenu: React.FC = (): JSX.Element => {
 
     const handleLogOut = () => {
         localStorage.removeItem('token');
+        localStorage.removeItem('refreshToken');
         window.location.reload();
     };
 
