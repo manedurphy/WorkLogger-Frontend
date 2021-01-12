@@ -1,4 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
+import { AlertConstants } from '../alerts/AlertConstants';
+import { IAlert } from '../alerts/types';
 import { getTokens } from '../auth/helpers';
 import { ITask } from './types';
 
@@ -11,6 +13,16 @@ export async function getIncompleteTasks(): Promise<ITask[]> {
         },
     });
 
-    console.log(res);
     return res.data;
+}
+
+export async function completeTask(id: number): Promise<IAlert> {
+    const { token } = getTokens();
+    const res: AxiosResponse<IAlert> = await axios.put(`http://localhost:5000/api/tasks/incomplete/${id}`, null, {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    });
+
+    return { ...res.data, type: AlertConstants.Success };
 }

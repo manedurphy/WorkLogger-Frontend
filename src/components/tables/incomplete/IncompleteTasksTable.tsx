@@ -1,11 +1,11 @@
 import React from 'react';
-import TaskRow from './CurrentTaskRow';
+import IncompleteTaskRow from './IncompleteTaskRow';
 import { useSelector } from 'react-redux';
 // import { GlobalContext } from '../../context/GlobalState';
 import { Table, TableRow, TableCell, TableBody, TableHead } from '@material-ui/core';
-import { getTasksState } from '../../redux/slices/tasks/tasksSlice';
+import { getTasksState } from '../../../redux/slices/tasks/tasksSlice';
 
-const CurrentTasks = (): JSX.Element => {
+const IncompleteTasksTable = (): JSX.Element => {
     // const [showTaskBody, setShowTaskBody] = useState(false);
     // const tasks = useContext(GlobalContext).state.tasks.displayTasks;
     const { incompletedTasks } = useSelector(getTasksState);
@@ -29,7 +29,7 @@ const CurrentTasks = (): JSX.Element => {
             </TableHead>
             <TableBody className="action-cell">
                 {incompletedTasks.map((row) => (
-                    <TaskRow
+                    <IncompleteTaskRow
                         key={row.id}
                         row={row}
                         // setLoading={props.setLoading}
@@ -41,4 +41,4 @@ const CurrentTasks = (): JSX.Element => {
     );
 };
 
-export default CurrentTasks;
+export default IncompleteTasksTable;

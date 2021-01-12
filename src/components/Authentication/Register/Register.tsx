@@ -1,13 +1,11 @@
 import React, { ChangeEvent, useState, FormEvent } from 'react';
-import SnackBarComponent from '../../ui/SnackBar';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import RegisterForm from './RegisterForm';
 import Copyright from '../Copyright';
-import { useDispatch, useSelector } from 'react-redux';
 import { handleRegister } from '../../../redux/slices/users/usersSlice';
-import { IGlobalState } from '../../../redux/types';
-import { IAlert } from '../../../redux/slices/alerts/types';
 import { Redirect } from 'react-router-dom';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import { getAuthState } from '../../../redux/slices/auth/authSlice';
+import { useDispatch, useSelector } from 'react-redux';
 import { Avatar, CssBaseline, Box, makeStyles, Typography, Container } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
@@ -26,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
 const Register = (): JSX.Element => {
     const classes = useStyles();
     const dispatch = useDispatch();
-    const { alerts, auth } = useSelector((state: IGlobalState) => state);
+    const auth = useSelector(getAuthState);
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
@@ -60,14 +58,6 @@ const Register = (): JSX.Element => {
                 <Copyright />
             </Box>
             {auth.registerSuccess && <Redirect to="/login" />}
-            {alerts.map((alert: IAlert, i: number) => (
-                <SnackBarComponent
-                    key={i}
-                    message={alert.message}
-                    type={alert.type}
-                    anchor={{ vertical: 'bottom', horizontal: 'center' }}
-                />
-            ))}
         </Container>
     );
 };

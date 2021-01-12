@@ -2,10 +2,18 @@ import { createSlice } from '@reduxjs/toolkit';
 import { IGlobalState } from '../../types';
 import { AlertConstants } from '../alerts/AlertConstants';
 import { addAlert } from '../alerts/alertsSlice';
+import { IAlert } from '../alerts/types';
 import { ThunkActionType, ThunkDispatchType } from '../users/types';
-import { getIncompleteTasks } from './helpers';
+import { completeTask, getIncompleteTasks } from './helpers';
 import { initialTaskState } from './initialState';
-import { ITaskState, SetLoadingTasksAction, SetTasksAction } from './types';
+import {
+    ITask,
+    ITaskState,
+    SetCurrentTaskAction,
+    SetEditTaskAction,
+    SetLoadingTasksAction,
+    SetTasksAction,
+} from './types';
 
 const taskSlice = createSlice({
     name: 'tasks',
@@ -24,10 +32,23 @@ const taskSlice = createSlice({
                 loading: action.payload,
             };
         },
+        setCurrentTask: (state: ITaskState, action: SetCurrentTaskAction) => {
+            return {
+                ...state,
+                edit: true,
+                currentTask: action.payload,
+            };
+        },
+        setEditTask: (state: ITaskState, action: SetEditTaskAction) => {
+            return {
+                ...state,
+                edit: action.payload,
+            };
+        },
     },
 });
 
-export const { setIncompleteTasks, setLoadingTasks } = taskSlice.actions;
+export const { setIncompleteTasks, setLoadingTasks, setCurrentTask } = taskSlice.actions;
 
 export const getTasksState = (state: IGlobalState): ITaskState => state.tasks;
 
@@ -36,6 +57,31 @@ export const handleGetIncompleteTasks = (): ThunkActionType => async (dispatch: 
         dispatch(setLoadingTasks(true));
         const tasks = await getIncompleteTasks();
         dispatch(setIncompleteTasks(tasks));
+    } catch (error) {
+        dispatch(addAlert({ ...error.response.data, type: AlertConstants.Error }));
+    }
+};
+
+export const findAndSetCurrentTask = (id: number, tasks: ITask[]): ThunkActionType => (dispatch: ThunkDispatchType) => {
+    try {
+        const task = tasks.find((task) => task.id === id);
+        if (task) {
+            dispatch(setCurrentTask(task));
+        } else {
+            throw new Error('Task not found.');
+        }
+    } catch (error) {
+        dispatch(addAlert({ message: error.message, type: AlertConstants.Error }));
+    }
+};
+
+export const handleCompleteTask = (id: number): ThunkActionType => async (dispatch: ThunkDispatchType) => {
+    try {
+        const success: IAlert = await completeTask(id);
+        const tasks = await getIncompleteTasks();
+
+        dispatch(setIncompleteTasks(tasks));
+        dispatch(addAlert(success));
     } catch (error) {
         dispatch(addAlert({ ...error.response.data, type: AlertConstants.Error }));
     }

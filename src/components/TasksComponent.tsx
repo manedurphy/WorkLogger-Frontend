@@ -1,7 +1,7 @@
 import React from 'react';
 import Title from './Title';
 // import { useSelector } from 'react-redux';
-import CurrentTasks from './tables/CurrentTasks';
+import IncompleteTasksTable from './tables/incomplete/IncompleteTasksTable';
 // import TaskLog from './Tables/TaskLog';
 // import Spinner from './UI/Spinner';
 // import { Logs, Tasks } from '../enums';
@@ -46,7 +46,7 @@ const TasksComponent = (): JSX.Element => {
                             : !props.showCompleted && showLog
                             ? 'Task Log'
                             : 'Current Tasks'} */}
-                        Tasks
+                        Incomplete Tasks
                     </Title>
                 </Box>
                 {/* <Box>{loadingEditTask && <SmallSpinner />}</Box> */}
@@ -86,7 +86,7 @@ const TasksComponent = (): JSX.Element => {
                     )}
                 </>
             )} */}
-            <CurrentTasks />
+            <IncompleteTasksTable />
         </React.Fragment>
     );
 };

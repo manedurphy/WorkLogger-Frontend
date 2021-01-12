@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
-// import TaskDropDown from './TaskDropDown';
+import IncompleteTaskDropDown from './IncompleteTaskDropDown';
+import { ITask } from '../../../redux/slices/tasks/types';
 import { TableRow, TableCell, IconButton, makeStyles } from '@material-ui/core';
 import { KeyboardArrowUp as KeyboardArrowUpIcon, KeyboardArrowDown as KeyboardArrowDownIcon } from '@material-ui/icons';
-import { ITask } from '../../redux/slices/tasks/types';
 
 const useRowStyles = makeStyles({
     root: {
@@ -13,14 +13,14 @@ const useRowStyles = makeStyles({
     },
 });
 
-const CurrentTaskRow: React.FC<{
+const IncompleteTaskRow: React.FC<{
     row: ITask;
 }> = (props): JSX.Element => {
     const [open, setOpen] = useState(false);
     const classes = useRowStyles();
 
     return (
-        <>
+        <React.Fragment>
             <TableRow className={classes.root}>
                 <TableCell>
                     <IconButton aria-label="expand row" size="small" onClick={() => setOpen(!open)}>
@@ -34,14 +34,9 @@ const CurrentTaskRow: React.FC<{
                 <TableCell>{props.row.hoursWorked}</TableCell>
                 <TableCell>{props.row.numberOfReviews}</TableCell>
             </TableRow>
-            {/* <TaskDropDown
-                row={props.row}
-                open={open}
-                setLoading={props.setLoading}
-                setLoadingEditTask={props.setLoadingEditTask}
-            /> */}
-        </>
+            <IncompleteTaskDropDown row={props.row} open={open} />
+        </React.Fragment>
     );
 };
 
-export default CurrentTaskRow;
+export default IncompleteTaskRow;

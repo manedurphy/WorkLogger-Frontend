@@ -43,7 +43,6 @@ export const getUserState = (state: IGlobalState): IUserState => state.user;
 export const handleLogin = (data: LoginFormData): ThunkActionType => async (dispatch: ThunkDispatchType) => {
     try {
         const user: IUser = await postLoginForm(data);
-        // dispatch(setUser({ ...user, loading: false }));
         dispatch(setUser(user));
         dispatch(setLogin(true));
     } catch (error) {
@@ -65,7 +64,6 @@ export const handleRegister = (data: LoginFormData): ThunkActionType => async (d
 export const verifyUser = (): ThunkActionType => async (dispatch: ThunkDispatchType) => {
     try {
         const user = await getUserInfo();
-        // dispatch(setUser({ ...user, loading: false }));
         dispatch(setUser(user));
         dispatch(setLogin(true));
     } catch (error) {
@@ -76,7 +74,6 @@ export const verifyUser = (): ThunkActionType => async (dispatch: ThunkDispatchT
 export const refreshUser = (): ThunkActionType => async (dispatch: ThunkDispatchType) => {
     try {
         const user = await getRefreshTokens();
-        // dispatch(setUser({ ...user, loading: false }));
         dispatch(setUser(user));
         dispatch(setLogin(true));
     } catch (error) {
