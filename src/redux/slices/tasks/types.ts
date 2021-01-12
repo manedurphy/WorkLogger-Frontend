@@ -29,4 +29,5 @@ export interface ITaskState {
 export type SetTasksAction = { payload: ITask[] };
 export type SetLoadingTasksAction = { payload: boolean };
 export type SetEditTaskAction = { payload: boolean };
+export type SetShowModalAction = { payload: boolean };
 export type SetCurrentTaskAction = { payload: ITask };

@@ -6,7 +6,6 @@ import { ITask } from './types';
 
 export async function getIncompleteTasks(): Promise<ITask[]> {
     const { token } = getTokens();
-
     const res: AxiosResponse<ITask[]> = await axios.get('http://localhost:5000/api/tasks/incomplete', {
         headers: {
             Authorization: `Bearer ${token}`,
@@ -25,4 +24,15 @@ export async function completeTask(id: number): Promise<IAlert> {
     });
 
     return { ...res.data, type: AlertConstants.Success };
+}
+
+export async function deleteTask(id: number): Promise<IAlert> {
+    const { token } = getTokens();
+    const res: AxiosResponse<IAlert> = await axios.delete(`http://localhost:5000/api/tasks/${id}`, {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    });
+
+    return { ...res.data, type: AlertConstants.Warning };
 }

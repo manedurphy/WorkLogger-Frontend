@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import AppBarComponent from './AppBarComponent';
 import MainComponent from './MainComponent';
 import DrawerComponent from './DrawerComponent';
+import Modal from './ui/Modal';
 import { useDispatch, useSelector } from 'react-redux';
 // import Spinner from './UI/Spinner';
 // import { AxiosResponse } from 'axios';
@@ -90,6 +91,7 @@ const Dashboard: React.FC = (): JSX.Element => {
         <React.Fragment>
             <div className={classes.mainBackground}></div>
             <div className={classes.root}>
+                <Modal />
                 <AppBarComponent setOpen={setOpen} open={open} />
                 <DrawerComponent
                     // showCompleted={showCompleted}

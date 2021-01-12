@@ -29,12 +29,7 @@ const IncompleteTasksTable = (): JSX.Element => {
             </TableHead>
             <TableBody className="action-cell">
                 {incompletedTasks.map((row) => (
-                    <IncompleteTaskRow
-                        key={row.id}
-                        row={row}
-                        // setLoading={props.setLoading}
-                        // setLoadingEditTask={props.setLoadingEditTask}
-                    />
+                    <IncompleteTaskRow key={row.id} row={row} />
                 ))}
             </TableBody>
         </Table>

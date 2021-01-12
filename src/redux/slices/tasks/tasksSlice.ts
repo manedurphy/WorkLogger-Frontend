@@ -3,8 +3,9 @@ import { IGlobalState } from '../../types';
 import { AlertConstants } from '../alerts/AlertConstants';
 import { addAlert } from '../alerts/alertsSlice';
 import { IAlert } from '../alerts/types';
+import { setShowModal } from '../modals/modalsSlice';
 import { ThunkActionType, ThunkDispatchType } from '../users/types';
-import { completeTask, getIncompleteTasks } from './helpers';
+import { completeTask, deleteTask, getIncompleteTasks } from './helpers';
 import { initialTaskState } from './initialState';
 import {
     ITask,
@@ -82,6 +83,20 @@ export const handleCompleteTask = (id: number): ThunkActionType => async (dispat
 
         dispatch(setIncompleteTasks(tasks));
         dispatch(addAlert(success));
+        dispatch(setShowModal(false));
+    } catch (error) {
+        dispatch(addAlert({ ...error.response.data, type: AlertConstants.Error }));
+    }
+};
+
+export const handleDeleteTask = (id: number): ThunkActionType => async (dispatch: ThunkDispatchType) => {
+    try {
+        const success: IAlert = await deleteTask(id);
+        const tasks = await getIncompleteTasks();
+
+        dispatch(setIncompleteTasks(tasks));
+        dispatch(addAlert(success));
+        dispatch(setShowModal(false));
     } catch (error) {
         dispatch(addAlert({ ...error.response.data, type: AlertConstants.Error }));
     }
