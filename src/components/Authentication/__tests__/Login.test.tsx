@@ -40,7 +40,7 @@ it('should set login status to false and loading to false on load', () => {
 });
 
 it('should dispatch user information to the store', () => {
-    store.dispatch(setUser({ ...loginUser, loading: false }));
+    store.dispatch(setUser(loginUser));
     const { user } = store.getState();
 
     expect(user.loading).toBeFalsy();
