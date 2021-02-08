@@ -14,6 +14,7 @@ import { Box, makeStyles } from '@material-ui/core';
 import { Redirect } from 'react-router-dom';
 import { getAuthState } from '../redux/slices/auth/authSlice';
 import { handleGetIncompleteTasks } from '../redux/slices/tasks/tasksSlice';
+
 // import { getHoursWorked, getProductivityData, getTasks, verifyUser } from '../global/functions/axios';
 
 const useStyles = makeStyles((theme) => ({
@@ -41,8 +42,10 @@ const useStyles = makeStyles((theme) => ({
         position: 'absolute',
         zIndex: theme.zIndex.drawer + 1,
     },
-    test: {
+    main: {
         backgroundColor: '#F7F5FA',
+        width: '100vw',
+        height: '100vh',
     },
 }));
 
@@ -88,8 +91,8 @@ const Dashboard: React.FC = (): JSX.Element => {
     // }, [showCompleted]);
 
     return (
-        <React.Fragment>
-            <div className={classes.mainBackground}></div>
+        <main className={classes.main}>
+            {/* <div className={classes.mainBackground}></div> */}
             <div className={classes.root}>
                 <Modal />
                 <AppBarComponent setOpen={setOpen} open={open} />
@@ -112,12 +115,14 @@ const Dashboard: React.FC = (): JSX.Element => {
                         </Box>
                     )}
                 </main> */}
-                <Box className={classes.test}>
-                    <MainComponent />
-                </Box>
+                <div className={classes.content}>
+                    <Box>
+                        <MainComponent />
+                    </Box>
+                </div>
             </div>
             {!loginSuccess && <Redirect to={'/login'} />}
-        </React.Fragment>
+        </main>
     );
 };
 

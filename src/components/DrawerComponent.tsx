@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
         position: 'relative',
         whiteSpace: 'nowrap',
         width: 240,
+        height: '100vh',
         border: 'none',
         transition: theme.transitions.create('width', {
             easing: theme.transitions.easing.sharp,
@@ -45,14 +46,15 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const DrawerComponent: React.FC<{
+interface IDrawerProps {
     setLoadingTasks: (value: React.SetStateAction<boolean>) => void;
     showCompleted: boolean;
     open: boolean;
     setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}> = (props): JSX.Element => {
+}
+
+const DrawerComponent: React.FC<IDrawerProps> = (props): JSX.Element => {
     const classes = useStyles();
-    // const size = UseWindow();
     // const { dispatch } = useContext(GlobalContext);
 
     useEffect(() => {
@@ -65,15 +67,14 @@ const DrawerComponent: React.FC<{
 
     return (
         <Drawer
-            variant="permanent"
+            variant={'permanent'}
             elevation={5}
             classes={{
                 paper: clsx(classes.drawerPaper, !props.open && classes.drawerPaperClose),
             }}
-            open={window.innerWidth > 960 ? true : false}
+            open={window.innerWidth < 960 ? true : false}
         >
             <div
-                className=""
                 style={{
                     display: 'flex',
                     justifyContent: 'center',
@@ -117,7 +118,7 @@ const DrawerComponent: React.FC<{
                     <ListItemIcon>
                         <DataUsageIcon />
                     </ListItemIcon>
-                    <ListItemText primary="Archive" />
+                    <ListItemText primary={'Archive'} />
                 </ListItem>
             </List>
         </Drawer>

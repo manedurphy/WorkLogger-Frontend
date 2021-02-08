@@ -3,9 +3,9 @@ import React from 'react';
 import clsx from 'clsx';
 import SearchBar from './SearchBar';
 import LogoutMenu from './LogoutMenu';
-import UseWindow from './UseWindow';
+// import UseWindow from './UseWindow';
 import { Menu as MenuIcon } from '@material-ui/icons';
-import { AppBar, IconButton, makeStyles, Toolbar, Typography } from '@material-ui/core';
+import { AppBar, IconButton, makeStyles, Toolbar, Typography, useMediaQuery } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     appBar: {
@@ -43,7 +43,7 @@ const AppBarComponent: React.FC<{
     open: boolean;
 }> = (props): JSX.Element => {
     const classes = useStyles();
-    const size = UseWindow();
+    const matches = useMediaQuery('(min-width: 768px');
 
     const handleDrawerOpen = () => {
         props.setOpen(true);
@@ -61,11 +61,13 @@ const AppBarComponent: React.FC<{
                 >
                     <MenuIcon />
                 </IconButton>
-                {size.width >= 600 && (
+
+                {matches && (
                     <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
                         Dashboard
                     </Typography>
                 )}
+
                 <SearchBar />
                 <LogoutMenu />
             </Toolbar>

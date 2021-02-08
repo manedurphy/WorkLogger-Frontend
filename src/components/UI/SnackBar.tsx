@@ -28,7 +28,7 @@ const SnackBar: React.FC<SnackBarProps> = (props): JSX.Element => {
     };
 
     return (
-        <div className={classes.root} data-testid={'alert'}>
+        <div className={classes.root}>
             <Snackbar open={open} autoHideDuration={3000} onClose={handleClose} anchorOrigin={props.anchor}>
                 <Alert onClose={handleClose} severity={props.type}>
                     {props.message}
