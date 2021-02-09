@@ -13,6 +13,8 @@ const drawerSlice = createSlice({
     },
 });
 
+export const { setDrawer } = drawerSlice.actions;
+
 export const getDrawerState = (state: IGlobalState) => state.drawer;
 
 export default drawerSlice.reducer;

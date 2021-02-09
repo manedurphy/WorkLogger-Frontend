@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-// import AppBarComponent from './AppBarComponent';
+import AppBarComponent from './AppBarComponent';
 import MainComponent from './MainComponent';
 import DrawerComponent from './DrawerComponent';
 import Modal from './ui/Modal';
@@ -95,7 +95,7 @@ const Dashboard: React.FC = (): JSX.Element => {
             {/* <div className={classes.mainBackground}></div> */}
             <div className={classes.root}>
                 <Modal />
-                {/* <AppBarComponent setOpen={setOpen} open={open} /> */}
+                <AppBarComponent />
                 <DrawerComponent
                     // showCompleted={showCompleted}
                     setLoadingTasks={setLoadingTasks}

@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import clsx from 'clsx';
 import SearchBar from './SearchBar';
 import LogoutMenu from './LogoutMenu';
-// import UseWindow from './UseWindow';
 import { Menu as MenuIcon } from '@material-ui/icons';
 import { AppBar, IconButton, makeStyles, Toolbar, Typography, useMediaQuery } from '@material-ui/core';
+import { useDispatch } from 'react-redux';
+import { setDrawer } from '../redux/slices/drawer/drawerSlice';
 
 const useStyles = makeStyles((theme) => ({
     appBar: {
@@ -38,26 +38,24 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const AppBarComponent: React.FC<{
-    setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-    open: boolean;
-}> = (props): JSX.Element => {
+const AppBarComponent: React.FC = (): JSX.Element => {
     const classes = useStyles();
     const matches = useMediaQuery('(min-width: 768px');
+    const dispatch = useDispatch();
 
     const handleDrawerOpen = () => {
-        props.setOpen(true);
+        dispatch(setDrawer(true));
     };
 
     return (
-        <AppBar position="absolute" elevation={0} className={clsx(classes.appBar, props.open && classes.appBarShift)}>
+        <AppBar position="absolute" elevation={0} className={classes.appBar}>
             <Toolbar className={classes.toolbar}>
                 <IconButton
                     edge="start"
                     color="inherit"
                     aria-label="open drawer"
                     onClick={handleDrawerOpen}
-                    className={clsx(classes.menuButton, props.open && classes.menuButtonHidden)}
+                    className={classes.menuButton}
                 >
                     <MenuIcon />
                 </IconButton>
