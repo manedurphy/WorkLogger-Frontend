@@ -1,78 +1,32 @@
 /* eslint-disable react/prop-types */
-import React, { useEffect } from 'react';
-import clsx from 'clsx';
-// import logo from '../assets/acco.jpeg';
-// import { GlobalContext } from '../context/GlobalState';
-// import { Tasks } from '../enums';
-// import UseWindow from './UseWindow';
+import React from 'react';
 import { Assignment as AssignmentIcon, DataUsage as DataUsageIcon } from '@material-ui/icons';
 import { Divider, Drawer, List, ListItem, ListItemIcon, ListItemText, makeStyles } from '@material-ui/core';
+import { useSelector } from 'react-redux';
+import { getDrawerState } from '../redux/slices/drawer/drawerSlice';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((_theme) => ({
     drawerPaper: {
-        position: 'relative',
-        whiteSpace: 'nowrap',
         width: 240,
-        height: '100vh',
-        border: 'none',
-        transition: theme.transitions.create('width', {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.enteringScreen,
-        }),
-    },
-    drawerPaperClose: {
-        overflowX: 'hidden',
-        transition: theme.transitions.create('width', {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.leavingScreen,
-        }),
-        width: theme.spacing(7),
-        [theme.breakpoints.up('sm')]: {
-            width: theme.spacing(9),
-        },
-    },
-    toolbar: {
-        paddingRight: 24,
-    },
-    toolbarIcon: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'flex-end',
-        padding: '0 8px',
-        ...theme.mixins.toolbar,
-        [theme.breakpoints.up('md')]: {
-            display: 'none',
-        },
     },
 }));
 
 interface IDrawerProps {
     setLoadingTasks: (value: React.SetStateAction<boolean>) => void;
     showCompleted: boolean;
-    open: boolean;
-    setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const DrawerComponent: React.FC<IDrawerProps> = (props): JSX.Element => {
     const classes = useStyles();
-    // const { dispatch } = useContext(GlobalContext);
-
-    useEffect(() => {
-        if (window.innerWidth <= 960) {
-            props.setOpen(false);
-        } else if (window.innerWidth > 960) {
-            props.setOpen(true);
-        }
-    }, [window.innerWidth]);
+    const { open } = useSelector(getDrawerState);
 
     return (
         <Drawer
-            variant={'permanent'}
             elevation={5}
             classes={{
-                paper: clsx(classes.drawerPaper, !props.open && classes.drawerPaperClose),
+                paper: classes.drawerPaper,
             }}
-            open={window.innerWidth < 960 ? true : false}
+            open={open}
         >
             <div
                 style={{
@@ -82,12 +36,7 @@ const DrawerComponent: React.FC<IDrawerProps> = (props): JSX.Element => {
                     fontFamily: 'Fjalla One, sans-serif',
                 }}
             >
-                {props.open && (
-                    <React.Fragment>
-                        {/* <img src={logo} style={{ width: '25px', height: '25px' }} /> */}
-                        <h2 style={{ marginLeft: '3px' }}>Work Logger</h2>
-                    </React.Fragment>
-                )}
+                <h2 style={{ marginLeft: '3px' }}>Work Logger</h2>
             </div>
             <Divider />
             <List>

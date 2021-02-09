@@ -5,6 +5,7 @@ import userReducer from './users/usersSlice';
 import alertsReducer from './alerts/alertsSlice';
 import authReducer from './auth/authSlice';
 import modalReducer from './modals/modalsSlice';
+import drawerReducer from './drawer/drawerSlice';
 
 export default combineReducers({
     counter: CounterReducer,
@@ -13,4 +14,5 @@ export default combineReducers({
     tasks: taskReducer,
     user: userReducer,
     modal: modalReducer,
+    drawer: drawerReducer,
 });

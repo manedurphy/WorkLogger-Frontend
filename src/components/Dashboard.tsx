@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import AppBarComponent from './AppBarComponent';
+// import AppBarComponent from './AppBarComponent';
 import MainComponent from './MainComponent';
 import DrawerComponent from './DrawerComponent';
 import Modal from './ui/Modal';
@@ -54,7 +54,7 @@ const Dashboard: React.FC = (): JSX.Element => {
     const dispatch = useDispatch();
     // const [isLoggedIn, setIsLoggedIn] = useState(true);
     const { loginSuccess } = useSelector(getAuthState);
-    const [open, setOpen] = useState(true);
+    // const [open, setOpen] = useState(true);
     const [loadingTasks, setLoadingTasks] = useState(true);
     // const { state, dispatch } = useContext(GlobalContext);
     // const { showCompleted } = state.tasks;
@@ -95,13 +95,13 @@ const Dashboard: React.FC = (): JSX.Element => {
             {/* <div className={classes.mainBackground}></div> */}
             <div className={classes.root}>
                 <Modal />
-                <AppBarComponent setOpen={setOpen} open={open} />
+                {/* <AppBarComponent setOpen={setOpen} open={open} /> */}
                 <DrawerComponent
                     // showCompleted={showCompleted}
                     setLoadingTasks={setLoadingTasks}
                     showCompleted={false}
-                    open={open}
-                    setOpen={setOpen}
+                    // open={open}
+                    // setOpen={setOpen}
                 />
                 {/* <main className={classes.content}>
                     <div className={classes.appBarSpacer} />
