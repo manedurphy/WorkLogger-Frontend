@@ -1,7 +1,7 @@
 import React from 'react';
 import Title from './Title';
 // import { useSelector } from 'react-redux';
-import IncompleteTasksTable from './tables/incomplete/IncompleteTasksTable';
+import IncompleteTasksTable from '../../tables/incomplete/IncompleteTasksTable';
 // import TaskLog from './Tables/TaskLog';
 // import Spinner from './UI/Spinner';
 // import { Logs, Tasks } from '../enums';
@@ -23,7 +23,7 @@ import { Box /*Fab, Fade, Link,  makeStyles */ } from '@material-ui/core';
 //     },
 // }));
 
-const TasksComponent = (): JSX.Element => {
+const TasksComponent: React.FC = (): JSX.Element => {
     // const classes = useStyles();
     // const { loading } = useSelector(getTasksState);
     // const { state, dispatch } = useContext(GlobalContext);

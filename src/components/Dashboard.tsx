@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import AppBarComponent from './AppBarComponent';
-import MainComponent from './MainComponent';
-import DrawerComponent from './DrawerComponent';
+import React, { useEffect } from 'react';
+import AppBarComponent from './appbar/AppBarComponent';
+import MainComponent from './main/MainComponent';
+import DrawerComponent from './drawer/DrawerComponent';
 import Modal from './ui/Modal';
 import { useDispatch, useSelector } from 'react-redux';
 // import Spinner from './UI/Spinner';
@@ -55,10 +55,10 @@ const Dashboard: React.FC = (): JSX.Element => {
     // const [isLoggedIn, setIsLoggedIn] = useState(true);
     const { loginSuccess } = useSelector(getAuthState);
     // const [open, setOpen] = useState(true);
-    const [loadingTasks, setLoadingTasks] = useState(true);
+    // const [loadingTasks, setLoadingTasks] = useState(true);
     // const { state, dispatch } = useContext(GlobalContext);
     // const { showCompleted } = state.tasks;
-    console.log(loadingTasks);
+    // console.log(loadingTasks);
 
     useEffect(() => {
         dispatch(handleGetIncompleteTasks());
@@ -93,17 +93,11 @@ const Dashboard: React.FC = (): JSX.Element => {
     return (
         <main className={classes.main}>
             {/* <div className={classes.mainBackground}></div> */}
-            <div className={classes.root}>
-                <Modal />
-                <AppBarComponent />
-                <DrawerComponent
-                    // showCompleted={showCompleted}
-                    setLoadingTasks={setLoadingTasks}
-                    showCompleted={false}
-                    // open={open}
-                    // setOpen={setOpen}
-                />
-                {/* <main className={classes.content}>
+            {/* <div className={classes.root}> */}
+            <Modal />
+            <AppBarComponent />
+            <DrawerComponent />
+            {/* <main className={classes.content}>
                     <div className={classes.appBarSpacer} />
                     {loadingTasks ? (
                         <Box className={classes.spinner}>
@@ -115,12 +109,12 @@ const Dashboard: React.FC = (): JSX.Element => {
                         </Box>
                     )}
                 </main> */}
-                <div className={classes.content}>
-                    <Box>
-                        <MainComponent />
-                    </Box>
-                </div>
+            <div className={classes.content}>
+                <Box>
+                    <MainComponent />
+                </Box>
             </div>
+            {/* </div> */}
             {!loginSuccess && <Redirect to={'/login'} />}
         </main>
     );
