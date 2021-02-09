@@ -52,6 +52,7 @@ const taskSlice = createSlice({
 export const { setIncompleteTasks, setLoadingTasks, setCurrentTask } = taskSlice.actions;
 
 export const getTasksState = (state: IGlobalState): ITaskState => state.tasks;
+export const getIncompleteTasksState = (state: IGlobalState): ITask[] => state.tasks.incompletedTasks;
 
 export const handleGetIncompleteTasks = (): ThunkActionType => async (dispatch: ThunkDispatchType) => {
     try {
