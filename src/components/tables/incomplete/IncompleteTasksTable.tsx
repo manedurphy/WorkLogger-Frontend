@@ -1,19 +1,11 @@
 import React from 'react';
 import IncompleteTaskRow from './IncompleteTaskRow';
 import { useSelector } from 'react-redux';
-// import { GlobalContext } from '../../context/GlobalState';
 import { Table, TableRow, TableCell, TableBody, TableHead } from '@material-ui/core';
 import { getTasksState } from '../../../redux/slices/tasks/tasksSlice';
 
 const IncompleteTasksTable = (): JSX.Element => {
-    // const [showTaskBody, setShowTaskBody] = useState(false);
-    // const tasks = useContext(GlobalContext).state.tasks.displayTasks;
     const { incompletedTasks } = useSelector(getTasksState);
-
-    // useEffect(() => {
-    //     tasks.length ? setShowTaskBody(true) : setShowTaskBody(false);
-    // }, [tasks]);
-
     return (
         <Table size={'small'}>
             <TableHead>
