@@ -1,9 +1,7 @@
 import React from 'react';
-import ChartGridItem from './components/grid/ChartGridItem';
-import CurrentWeekGridItem from './components/grid/CurrentWeekGridItem';
 import TasksGridItem from './components/grid/TasksGridItem';
 import useMainStyles from './mainStyles';
-import clsx from 'clsx';
+// import clsx from 'clsx';
 // import { useSelector } from 'react-redux';
 // import Chart from './Chart';
 // import Breadcrumbs from './Breadcrumbs';
@@ -17,14 +15,12 @@ import { Container, Grid } from '@material-ui/core';
 
 const Main: React.FC = (): JSX.Element => {
     const classes = useMainStyles();
-    const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight, classes.overlap);
+    // const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight, classes.overlap);
     // const { state } = useContext(GlobalContext);
     return (
         <Container maxWidth={'lg'} className={classes.container}>
             {/* <Breadcrumbs /> */}
             <Grid container spacing={3}>
-                <ChartGridItem fixedHeightPaper={fixedHeightPaper} />
-                <CurrentWeekGridItem fixedHeightPaper={fixedHeightPaper} />
                 <TasksGridItem />
             </Grid>
             {/* {state.log.showLog && <LogForm />}
