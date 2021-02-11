@@ -3,7 +3,7 @@ import TasksComponent from '../TasksComponent';
 import useMainStyles from '../../mainStyles';
 import { Grid, Paper } from '@material-ui/core';
 
-const TasksGridItems = () => {
+const TasksGridItem = () => {
     const { paper } = useMainStyles();
     return (
         <Grid item xs={12}>
@@ -14,4 +14,4 @@ const TasksGridItems = () => {
     );
 };
 
-export default TasksGridItems;
+export default TasksGridItem;

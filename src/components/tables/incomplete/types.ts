@@ -1,20 +1,15 @@
 import { ITask } from '../../../redux/slices/tasks/types';
 
-export interface IncompleteTaskActionsProps {
+export interface ITaskIdProps {
     taskId: number;
-}
-
-export interface IncompleteTaskDropDownProps {
-    row: ITask;
-    open: boolean;
-}
-
-export interface IDropDownProps {
-    row: ITask;
 }
 
 export interface IRowProps {
     row: ITask;
+}
+
+export interface IRowOpenProps extends IRowProps {
+    open: boolean;
 }
 
 export interface ITableProps {

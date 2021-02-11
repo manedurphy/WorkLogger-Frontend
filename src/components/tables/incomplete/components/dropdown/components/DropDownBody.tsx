@@ -1,8 +1,8 @@
 import React from 'react';
 import { TableBody, TableCell, TableRow } from '@material-ui/core';
-import { IBodyProps } from '../types';
+import { IRowProps } from '../../../types';
 
-const DropDownBody: React.FC<IBodyProps> = ({ row }): JSX.Element => (
+const DropDownBody: React.FC<IRowProps> = ({ row }): JSX.Element => (
     <TableBody>
         <TableRow>
             <TableCell>{row.hoursRequiredByBim}</TableCell>

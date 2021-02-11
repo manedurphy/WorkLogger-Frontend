@@ -14,25 +14,15 @@ import { Container, Grid } from '@material-ui/core';
 // import { GlobalContext } from '../context/GlobalState';
 
 const Main: React.FC = (): JSX.Element => {
-    const classes = useMainStyles();
+    const { container } = useMainStyles();
     // const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight, classes.overlap);
     // const { state } = useContext(GlobalContext);
     return (
-        <Container maxWidth={'lg'} className={classes.container}>
+        <Container maxWidth={'lg'} className={container}>
             {/* <Breadcrumbs /> */}
             <Grid container spacing={3}>
                 <TasksGridItem />
             </Grid>
-            {/* {state.log.showLog && <LogForm />}
-            {!state.log.showLog && !state.tasks.showCompleted && <JobForm />}
-            {state.alerts.map((alert, i) => (
-                <SnackBarComponent
-                    key={i}
-                    message={alert.message}
-                    type={alert.type}
-                    anchor={{ vertical: 'bottom', horizontal: 'center' }}
-                />
-            ))} */}
         </Container>
     );
 };
