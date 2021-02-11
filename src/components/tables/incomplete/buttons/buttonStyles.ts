@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core';
 
-export default makeStyles((_theme) => ({
+export default makeStyles({
     button: {
         color: 'white',
         display: 'flex',
@@ -26,4 +26,4 @@ export default makeStyles((_theme) => ({
     dlt: {
         backgroundColor: '#b60000',
     },
-}));
+});

@@ -9,12 +9,11 @@ import { Delete as DeleteIcon } from '@material-ui/icons';
 const Delete: React.FC<IButtonProps> = ({ taskId }): JSX.Element => {
     const dispatch = useDispatch();
     const { dlt, button } = useButtonStyles();
+    const header = 'Are you sure you want to delete?';
     return (
         <div
             className={clsx(dlt, button)}
-            onClick={() =>
-                dispatch(setModal({ id: taskId, header: 'Are you sure you want to delete?', command: 'delete' }))
-            }
+            onClick={() => dispatch(setModal({ id: taskId, header, command: 'delete' }))}
         >
             <span>Delete</span>
             <DeleteIcon />

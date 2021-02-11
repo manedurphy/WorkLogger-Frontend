@@ -9,12 +9,12 @@ import { setModal } from '../../../../redux/slices/modals/modalsSlice';
 const Complete: React.FC<IButtonProps> = ({ taskId }): JSX.Element => {
     const dispatch = useDispatch();
     const { complete, button } = useButtonStyles();
+    const header = 'Ready to complete this task?';
+
     return (
         <div
             className={clsx(complete, button)}
-            onClick={() =>
-                dispatch(setModal({ id: taskId, header: 'Ready to complete this task?', command: 'complete' }))
-            }
+            onClick={() => dispatch(setModal({ id: taskId, header, command: 'complete' }))}
         >
             <span>Complete</span>
             <CheckCircleOutlineIcon />
