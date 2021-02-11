@@ -15,7 +15,7 @@ const IncompleteTasksTable = (): JSX.Element => {
     // }, [tasks]);
 
     return (
-        <Table size="small">
+        <Table size={'small'}>
             <TableHead>
                 <TableRow>
                     <TableCell />
@@ -27,7 +27,7 @@ const IncompleteTasksTable = (): JSX.Element => {
                     <TableCell>No. Reviews</TableCell>
                 </TableRow>
             </TableHead>
-            <TableBody className="action-cell">
+            <TableBody className={'action-cell'}>
                 {incompletedTasks.map((row) => (
                     <IncompleteTaskRow key={row.id} row={row} />
                 ))}

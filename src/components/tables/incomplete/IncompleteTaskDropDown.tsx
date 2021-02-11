@@ -34,9 +34,7 @@ const IncompleteTaskDropDown: React.FC<{
                             </TableBody>
                         </Table>
                     </Box>
-                    <Box display="flex" justifyContent="flex-end">
-                        <IncompleteTaskActions taskId={props.row.id} />
-                    </Box>
+                    <IncompleteTaskActions taskId={props.row.id} />
                 </Collapse>
             </TableCell>
         </TableRow>
