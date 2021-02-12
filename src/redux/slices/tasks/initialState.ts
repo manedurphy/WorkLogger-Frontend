@@ -18,10 +18,12 @@ export const initialTaskState: ITaskState = {
         UserId: -1,
         createdAt: '',
         updatedAt: '',
+        Logs: [],
     },
     incompletedTasks: [],
     completeTasks: [],
     loading: false,
     edit: false,
+    showLog: false,
     showCompleted: false,
 };

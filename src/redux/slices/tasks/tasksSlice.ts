@@ -13,6 +13,7 @@ import {
     SetCurrentTaskAction,
     SetEditTaskAction,
     SetLoadingTasksAction,
+    SetShowLogAction,
     SetTasksAction,
 } from './types';
 
@@ -36,7 +37,6 @@ const taskSlice = createSlice({
         setCurrentTask: (state: ITaskState, action: SetCurrentTaskAction) => {
             return {
                 ...state,
-                edit: true,
                 currentTask: action.payload,
             };
         },
@@ -46,10 +46,16 @@ const taskSlice = createSlice({
                 edit: action.payload,
             };
         },
+        setShowLog: (state: ITaskState, action: SetShowLogAction) => {
+            return {
+                ...state,
+                showLog: action.payload,
+            };
+        },
     },
 });
 
-export const { setIncompleteTasks, setLoadingTasks, setCurrentTask } = taskSlice.actions;
+export const { setIncompleteTasks, setLoadingTasks, setCurrentTask, setShowLog, setEditTask } = taskSlice.actions;
 
 export const getTasksState = (state: IGlobalState): ITaskState => state.tasks;
 export const getIncompleteTasksState = (state: IGlobalState): ITask[] => state.tasks.incompletedTasks;
@@ -64,11 +70,26 @@ export const handleGetIncompleteTasks = (): ThunkActionType => async (dispatch: 
     }
 };
 
-export const findAndSetCurrentTask = (id: number, tasks: ITask[]): ThunkActionType => (dispatch: ThunkDispatchType) => {
+export const setCurrentAndShowLog = (id: number, tasks: ITask[]): ThunkActionType => (dispatch: ThunkDispatchType) => {
     try {
         const task = tasks.find((task) => task.id === id);
         if (task) {
             dispatch(setCurrentTask(task));
+            dispatch(setShowLog(true));
+        } else {
+            throw new Error('Task not found.');
+        }
+    } catch (error) {
+        dispatch(addAlert({ message: error.message, type: AlertConstants.Error }));
+    }
+};
+
+export const setCurrentAndEdit = (id: number, tasks: ITask[]): ThunkActionType => (dispatch: ThunkDispatchType) => {
+    try {
+        const task = tasks.find((task) => task.id === id);
+        if (task) {
+            dispatch(setCurrentTask(task));
+            dispatch(setEditTask(true));
         } else {
             throw new Error('Task not found.');
         }

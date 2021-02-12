@@ -2,7 +2,7 @@ import React from 'react';
 import clsx from 'clsx';
 import useButtonStyles from './buttonStyles';
 import { useDispatch } from 'react-redux';
-import { setModal } from '../../../../redux/slices/modals/modalsSlice';
+import { setModal } from '../../../redux/slices/modals/modalsSlice';
 import { IButtonProps } from './types';
 import { Delete as DeleteIcon } from '@material-ui/icons';
 

@@ -4,7 +4,7 @@ import useButtonStyles from './buttonStyles';
 import { IButtonProps } from './types';
 import { CheckCircleOutline as CheckCircleOutlineIcon } from '@material-ui/icons';
 import { useDispatch } from 'react-redux';
-import { setModal } from '../../../../redux/slices/modals/modalsSlice';
+import { setModal } from '../../../redux/slices/modals/modalsSlice';
 
 const Complete: React.FC<IButtonProps> = ({ taskId }): JSX.Element => {
     const dispatch = useDispatch();
