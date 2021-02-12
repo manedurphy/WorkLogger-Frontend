@@ -1,7 +1,7 @@
 import React from 'react';
 import { TableCell, TableHead, TableRow } from '@material-ui/core';
 
-const IncompleteTasksTableHead = () => (
+const Head = (): JSX.Element => (
     <TableHead>
         <TableRow>
             <TableCell />
@@ -15,4 +15,4 @@ const IncompleteTasksTableHead = () => (
     </TableHead>
 );
 
-export default IncompleteTasksTableHead;
+export default Head;

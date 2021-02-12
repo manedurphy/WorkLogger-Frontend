@@ -1,29 +1,16 @@
-import React, { useState } from 'react';
-import Dropdown from './Dropdown';
-import useLogTableStyles from '../styles';
-import { IconButton, TableBody, TableCell, TableRow } from '@material-ui/core';
-import { KeyboardArrowUp as KeyboardArrowUpIcon, KeyboardArrowDown as KeyboardArrowDownIcon } from '@material-ui/icons';
-import { LogItemProps } from '../types';
+import React from 'react';
+import Row from './Row';
+import { TableBody } from '@material-ui/core';
+import { useSelector } from 'react-redux';
+import { getTasksState } from '../../../../redux/slices/tasks/tasksSlice';
 
-const Body: React.FC<LogItemProps> = ({ logItem }): JSX.Element => {
-    const [open, setOpen] = useState(false);
-    const { root } = useLogTableStyles();
+const Body = (): JSX.Element => {
+    const { currentTask } = useSelector(getTasksState);
     return (
         <TableBody className={'action-cell'}>
-            <TableRow className={root}>
-                <TableCell>
-                    <IconButton aria-label={'expand row'} size={'small'} onClick={() => setOpen(!open)}>
-                        {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-                    </IconButton>
-                </TableCell>
-                <TableCell>{logItem.loggedAt.toString().slice(0, 10)}</TableCell>
-                <TableCell>{logItem.name}</TableCell>
-                <TableCell>{logItem.projectNumber}</TableCell>
-                <TableCell>{logItem.hoursAvailableToWork}</TableCell>
-                <TableCell>{logItem.hoursWorked}</TableCell>
-                <TableCell>{logItem.numberOfReviews}</TableCell>
-            </TableRow>
-            <Dropdown logItem={logItem} open={open} />
+            {currentTask.Logs.map((logItem) => (
+                <Row key={logItem.id} logItem={logItem} />
+            ))}
         </TableBody>
     );
 };
