@@ -14,9 +14,14 @@ const useStyles = makeStyles((theme: Theme) =>
         },
         paper: {
             backgroundColor: theme.palette.background.paper,
-            border: '2px solid #000',
+            border: '1px solid #000',
+            borderRadius: '1rem',
             boxShadow: theme.shadows[5],
             padding: theme.spacing(2, 4, 3),
+            outline: 'none',
+        },
+        header: {
+            marginBottom: '8px',
         },
     }),
 );
@@ -28,7 +33,7 @@ const ConfirmModal = (): JSX.Element => {
         <Modal open={show} className={classes.modal}>
             <Fade in={show}>
                 <div className={classes.paper}>
-                    <h2>{header}</h2>
+                    <h2 className={classes.header}>{header}</h2>
                     <Box display={'flex'}>
                         <Box flexGrow={1}>
                             <Button

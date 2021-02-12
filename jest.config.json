@@ -1,0 +1,10 @@
+{
+    "verbose": true,
+    "roots": ["<rootDir>/src"],
+    "setupFilesAfterEnv": ["./src/setupTests.ts"],
+    "preset": "ts-jest",
+    "transform": {
+        "^.+\\.ts?$": "ts-jest"
+    },
+    "coveragePathIgnorePatterns": ["./node_modules"]
+}

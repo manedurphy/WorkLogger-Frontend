@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import AppBarComponent from './AppBarComponent';
-import MainComponent from './MainComponent';
-import DrawerComponent from './DrawerComponent';
+import React, { useEffect } from 'react';
+import AppBarComponent from './appbar/AppBarComponent';
+import MainComponent from './main/MainComponent';
+import DrawerComponent from './drawer/DrawerComponent';
 import Modal from './ui/Modal';
 import { useDispatch, useSelector } from 'react-redux';
 // import Spinner from './UI/Spinner';
@@ -14,6 +14,7 @@ import { Box, makeStyles } from '@material-ui/core';
 import { Redirect } from 'react-router-dom';
 import { getAuthState } from '../redux/slices/auth/authSlice';
 import { handleGetIncompleteTasks } from '../redux/slices/tasks/tasksSlice';
+
 // import { getHoursWorked, getProductivityData, getTasks, verifyUser } from '../global/functions/axios';
 
 const useStyles = makeStyles((theme) => ({
@@ -41,8 +42,10 @@ const useStyles = makeStyles((theme) => ({
         position: 'absolute',
         zIndex: theme.zIndex.drawer + 1,
     },
-    test: {
+    main: {
         backgroundColor: '#F7F5FA',
+        width: '100vw',
+        height: '100vh',
     },
 }));
 
@@ -51,11 +54,11 @@ const Dashboard: React.FC = (): JSX.Element => {
     const dispatch = useDispatch();
     // const [isLoggedIn, setIsLoggedIn] = useState(true);
     const { loginSuccess } = useSelector(getAuthState);
-    const [open, setOpen] = useState(true);
-    const [loadingTasks, setLoadingTasks] = useState(true);
+    // const [open, setOpen] = useState(true);
+    // const [loadingTasks, setLoadingTasks] = useState(true);
     // const { state, dispatch } = useContext(GlobalContext);
     // const { showCompleted } = state.tasks;
-    console.log(loadingTasks);
+    // console.log(loadingTasks);
 
     useEffect(() => {
         dispatch(handleGetIncompleteTasks());
@@ -88,19 +91,13 @@ const Dashboard: React.FC = (): JSX.Element => {
     // }, [showCompleted]);
 
     return (
-        <React.Fragment>
-            <div className={classes.mainBackground}></div>
-            <div className={classes.root}>
-                <Modal />
-                <AppBarComponent setOpen={setOpen} open={open} />
-                <DrawerComponent
-                    // showCompleted={showCompleted}
-                    setLoadingTasks={setLoadingTasks}
-                    showCompleted={false}
-                    open={open}
-                    setOpen={setOpen}
-                />
-                {/* <main className={classes.content}>
+        <main className={classes.main}>
+            {/* <div className={classes.mainBackground}></div> */}
+            {/* <div className={classes.root}> */}
+            <Modal />
+            <AppBarComponent />
+            <DrawerComponent />
+            {/* <main className={classes.content}>
                     <div className={classes.appBarSpacer} />
                     {loadingTasks ? (
                         <Box className={classes.spinner}>
@@ -112,12 +109,14 @@ const Dashboard: React.FC = (): JSX.Element => {
                         </Box>
                     )}
                 </main> */}
-                <Box className={classes.test}>
+            <div className={classes.content}>
+                <Box>
                     <MainComponent />
                 </Box>
             </div>
+            {/* </div> */}
             {!loginSuccess && <Redirect to={'/login'} />}
-        </React.Fragment>
+        </main>
     );
 };
 
