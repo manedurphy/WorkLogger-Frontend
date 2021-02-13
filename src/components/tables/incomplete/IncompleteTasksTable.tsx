@@ -1,22 +1,13 @@
 import React from 'react';
-import IncompleteTaskRow from './components/IncompleteTaskRow';
+import Body from './components/TaskRowBody';
 import Head from './components/Head';
-import { useSelector } from 'react-redux';
-import { Table, TableBody } from '@material-ui/core';
-import { getTasksState } from '../../../redux/slices/tasks/tasksSlice';
+import { Table } from '@material-ui/core';
 
-const IncompleteTasksTable = (): JSX.Element => {
-    const { incompletedTasks } = useSelector(getTasksState);
-    return (
-        <Table size={'small'}>
-            <Head />
-            <TableBody className={'action-cell'}>
-                {incompletedTasks.map((row) => (
-                    <IncompleteTaskRow key={row.id} row={row} />
-                ))}
-            </TableBody>
-        </Table>
-    );
-};
+const IncompleteTasksTable = (): JSX.Element => (
+    <Table size={'small'}>
+        <Head />
+        <Body />
+    </Table>
+);
 
 export default IncompleteTasksTable;

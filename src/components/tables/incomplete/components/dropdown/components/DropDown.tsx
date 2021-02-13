@@ -5,15 +5,15 @@ import IncompleteTaskActions from './IncompleteTaskActions';
 import { Box, Table } from '@material-ui/core';
 import { IRowProps } from '../../../types';
 
-const DropDown: React.FC<IRowProps> = ({ row }) => (
+const DropDown: React.FC<IRowProps> = ({ task }) => (
     <Fragment>
         <Box margin={1}>
             <Table size={'small'} aria-label={'more-information'}>
                 <DropDownHead />
-                <DropDownBody row={row} />
+                <DropDownBody task={task} />
             </Table>
         </Box>
-        <IncompleteTaskActions taskId={row.id} />
+        <IncompleteTaskActions taskId={task.id} />
     </Fragment>
 );
 

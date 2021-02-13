@@ -4,11 +4,11 @@ import DropDown from './components/DropDown';
 import { TableRow, TableCell, Collapse } from '@material-ui/core';
 import { IRowOpenProps } from '../../types';
 
-const IncompleteTaskDropDown: React.FC<IRowOpenProps> = ({ row, open }): JSX.Element => (
+const IncompleteTaskDropDown: React.FC<IRowOpenProps> = ({ task, open }): JSX.Element => (
     <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={12}>
             <Collapse in={open} timeout={'auto'} unmountOnExit>
-                <DropDown row={row} />
+                <DropDown task={task} />
             </Collapse>
         </TableCell>
     </TableRow>

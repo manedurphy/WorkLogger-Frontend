@@ -2,14 +2,14 @@ import React from 'react';
 import { TableBody, TableCell, TableRow } from '@material-ui/core';
 import { IRowProps } from '../../../types';
 
-const DropDownBody: React.FC<IRowProps> = ({ row }): JSX.Element => (
+const DropDownBody: React.FC<IRowProps> = ({ task }): JSX.Element => (
     <TableBody>
         <TableRow>
-            <TableCell>{row.hoursRequiredByBim}</TableCell>
-            <TableCell>{row.reviewHours}</TableCell>
-            <TableCell>{row.hoursRemaining}</TableCell>
-            <TableCell>{row.dueDate.toString().slice(0, 10)}</TableCell>
-            <TableCell>{row.notes}</TableCell>
+            <TableCell>{task.hoursRequiredByBim}</TableCell>
+            <TableCell>{task.reviewHours}</TableCell>
+            <TableCell>{task.hoursRemaining}</TableCell>
+            <TableCell>{task.dueDate.toString().slice(0, 10)}</TableCell>
+            <TableCell>{task.notes}</TableCell>
         </TableRow>
     </TableBody>
 );

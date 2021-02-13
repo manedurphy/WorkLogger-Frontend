@@ -5,7 +5,7 @@ export interface ITaskIdProps {
 }
 
 export interface IRowProps {
-    row: ITask;
+    task: ITask;
 }
 
 export interface IRowOpenProps extends IRowProps {
