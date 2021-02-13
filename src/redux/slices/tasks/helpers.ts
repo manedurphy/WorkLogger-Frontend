@@ -36,3 +36,15 @@ export async function deleteTask(id: number): Promise<IAlert> {
 
     return { ...res.data, type: AlertConstants.Warning };
 }
+
+export async function createTask(formData: any): Promise<IAlert> {
+    const { token } = getTokens();
+    const res: AxiosResponse<IAlert> = await axios.post('http://localhost:5000/api/tasks', formData, {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    });
+
+    console.log(res);
+    return { ...res.data, type: AlertConstants.Success };
+}

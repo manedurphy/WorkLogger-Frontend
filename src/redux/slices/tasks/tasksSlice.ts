@@ -5,7 +5,7 @@ import { addAlert } from '../alerts/alertsSlice';
 import { IAlert } from '../alerts/types';
 import { setShowModal } from '../modals/modalsSlice';
 import { ThunkActionType, ThunkDispatchType } from '../users/types';
-import { completeTask, deleteTask, getIncompleteTasks } from './helpers';
+import { completeTask, createTask, deleteTask, getIncompleteTasks } from './helpers';
 import { initialTaskState } from './initialState';
 import {
     ITask,
@@ -98,6 +98,19 @@ export const setCurrentAndEdit = (id: number, tasks: ITask[]): ThunkActionType =
     }
 };
 
+export const handleSubmitNewTask = (formData: any): ThunkActionType => async (dispatch: ThunkDispatchType) => {
+    try {
+        const success: IAlert = await createTask(formData);
+        const tasks: ITask[] = await getIncompleteTasks();
+
+        dispatch(setIncompleteTasks(tasks));
+        dispatch(addAlert(success));
+    } catch (error) {
+        console.log(error.response);
+        dispatch(addAlert({ message: error.response.data, type: AlertConstants.Error }));
+    }
+};
+
 export const handleCompleteTask = (id: number): ThunkActionType => async (dispatch: ThunkDispatchType) => {
     try {
         const success: IAlert = await completeTask(id);
@@ -107,7 +120,7 @@ export const handleCompleteTask = (id: number): ThunkActionType => async (dispat
         dispatch(addAlert(success));
         dispatch(setShowModal(false));
     } catch (error) {
-        dispatch(addAlert({ ...error.response.data, type: AlertConstants.Error }));
+        dispatch(addAlert({ message: error.message, type: AlertConstants.Error }));
     }
 };
 

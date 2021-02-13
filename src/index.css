@@ -16,17 +16,6 @@ code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
-.job-form {
-    margin: 10px auto;
-    padding: 10px;
-    position: relative;
-}
-
-.submit {
-    display: flex;
-    justify-content: center;
-}
-
 /* Actions Drop Down */
 .action-cell {
     position: relative;

@@ -13,7 +13,7 @@ const useStyles = makeStyles(() => ({
 const Title: React.FC = (props: any): JSX.Element => {
     const classes = useStyles();
     return (
-        <Typography component={'h2'} variant={'h6'} className={classes.root} gutterBottom>
+        <Typography component={'h2'} variant={'h6'} className={classes.root}>
             {props.children}
         </Typography>
     );
