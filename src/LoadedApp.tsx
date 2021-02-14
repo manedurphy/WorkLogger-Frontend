@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import Dashboard from './components/Dashboard';
+import Archive from './components/Archive';
 import Register from './components/authentication/register/Register';
 import Login from './components/authentication/login/Login';
 import SnackBarComponent from './components/ui/SnackBar';
@@ -15,6 +16,7 @@ const LoadedApp: React.FC<ILoadedAppProps> = (props): JSX.Element => {
         <Fragment>
             <Switch>
                 <Route exact path={'/'} component={Dashboard} />
+                <Route exact path={'/archive'} component={Archive} />
                 <Route exact path={'/register'} component={Register} />
                 <Route exact path={'/login'} component={Login} />
             </Switch>

@@ -3,7 +3,7 @@ import IncompleteTasks from '../components/IncompleteTasks';
 import useMainStyles from '../mainStyles';
 import { Grid, Paper } from '@material-ui/core';
 
-const TasksGridItem = () => {
+const IncompleteTasksGridItem = (): JSX.Element => {
     const { paper } = useMainStyles();
     return (
         <Grid item xs={12}>
@@ -14,4 +14,4 @@ const TasksGridItem = () => {
     );
 };
 
-export default TasksGridItem;
+export default IncompleteTasksGridItem;

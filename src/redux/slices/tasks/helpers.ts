@@ -45,6 +45,16 @@ export async function createTask(formData: any): Promise<IAlert> {
         },
     });
 
-    console.log(res);
     return { ...res.data, type: AlertConstants.Success };
+}
+
+export async function getCompleteTasks(): Promise<ITask[]> {
+    const { token } = getTokens();
+    const res: AxiosResponse<ITask[]> = await axios.get('http://localhost:5000/api/tasks/complete', {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    });
+
+    return res.data;
 }

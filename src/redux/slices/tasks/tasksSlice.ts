@@ -5,7 +5,7 @@ import { addAlert } from '../alerts/alertsSlice';
 import { IAlert } from '../alerts/types';
 import { setShowModal } from '../modals/modalsSlice';
 import { ThunkActionType, ThunkDispatchType } from '../users/types';
-import { completeTask, createTask, deleteTask, getIncompleteTasks } from './helpers';
+import { completeTask, createTask, deleteTask, getCompleteTasks, getIncompleteTasks } from './helpers';
 import { initialTaskState } from './initialState';
 import {
     ITask,
@@ -27,6 +27,15 @@ const taskSlice = createSlice({
                 ...state,
                 incompletedTasks: action.payload,
                 loading: false,
+                showCreateTaskForm: false,
+            };
+        },
+        setCompleteTasks: (state: ITaskState, action: SetTasksAction) => {
+            return {
+                ...state,
+                completeTasks: action.payload,
+                loading: false,
+                showCreateTaskForm: false,
             };
         },
         setLoadingTasks: (state: ITaskState, action: SetLoadingTasksAction) => {
@@ -64,6 +73,7 @@ const taskSlice = createSlice({
 
 export const {
     setIncompleteTasks,
+    setCompleteTasks,
     setLoadingTasks,
     setCurrentTask,
     setShowLog,
@@ -79,6 +89,16 @@ export const handleGetIncompleteTasks = (): ThunkActionType => async (dispatch: 
         dispatch(setLoadingTasks(true));
         const tasks = await getIncompleteTasks();
         dispatch(setIncompleteTasks(tasks));
+    } catch (error) {
+        dispatch(addAlert({ ...error.response.data, type: AlertConstants.Error }));
+    }
+};
+
+export const handleGetCompleteTasks = (): ThunkActionType => async (dispatch: ThunkDispatchType) => {
+    try {
+        dispatch(setLoadingTasks(true));
+        const tasks = await getCompleteTasks();
+        dispatch(setCompleteTasks(tasks));
     } catch (error) {
         dispatch(addAlert({ ...error.response.data, type: AlertConstants.Error }));
     }

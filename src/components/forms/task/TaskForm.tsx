@@ -2,6 +2,7 @@ import React, { FormEvent, ChangeEvent, useState } from 'react';
 import Title from '../../main/components/Title';
 import CloseIcon from '@material-ui/icons/Close';
 import useFormStyles from '../styles';
+import { getNewForm } from '../helpers';
 import { useDispatch } from 'react-redux';
 import { Box, Button, Container, Fade, Grid, Paper, TextField } from '@material-ui/core';
 import { handleSubmitNewTask, setShowCreateNewTaskForm } from '../../../redux/slices/tasks/tasksSlice';
@@ -9,18 +10,7 @@ import { handleSubmitNewTask, setShowCreateNewTaskForm } from '../../../redux/sl
 const TaskForm = () => {
     const dispatch = useDispatch();
     const { paper, form, title, submit, close } = useFormStyles();
-    const [formData, setFormData] = useState({
-        name: '',
-        projectNumber: 0,
-        hoursAvailableToWork: 0,
-        hoursWorked: 0,
-        reviewHours: 0,
-        hoursRequiredByBim: 0,
-        numberOfReviews: 0,
-        notes: '',
-        dateAssigned: '',
-        dueDate: '',
-    });
+    const [formData, setFormData] = useState(getNewForm());
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -29,7 +19,7 @@ const TaskForm = () => {
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         dispatch(handleSubmitNewTask(formData));
-        dispatch(setShowCreateNewTaskForm(false));
+        setFormData(getNewForm());
     };
 
     return (
@@ -160,6 +150,7 @@ const TaskForm = () => {
                                 type={'date'}
                                 label={'Date assgined'}
                                 name={'dateAssigned'}
+                                required
                                 onChange={handleChange}
                                 value={formData.dateAssigned}
                                 InputLabelProps={{
@@ -172,6 +163,7 @@ const TaskForm = () => {
                                 type={'date'}
                                 label={'Due date'}
                                 name={'dueDate'}
+                                required
                                 onChange={handleChange}
                                 value={formData.dueDate}
                                 InputLabelProps={{
