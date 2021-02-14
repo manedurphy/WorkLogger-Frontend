@@ -1,7 +1,7 @@
 import React from 'react';
 import useDrawerStyles from './drawerStyles';
 
-const DrawerHeader = () => {
+const DrawerHeader = (): JSX.Element => {
     const classes = useDrawerStyles();
     return (
         <div className={classes.header}>

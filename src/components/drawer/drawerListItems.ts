@@ -5,10 +5,12 @@ const drawerListItems: IDrawerListItem[] = [
     {
         title: 'Current tasks',
         Icon: AssignmentIcon,
+        redirectPath: '/',
     },
     {
         title: 'Archive',
         Icon: DataUsageIcon,
+        redirectPath: '/archive',
     },
 ];
 

@@ -6,13 +6,15 @@ import drawerListItems from './drawerListItems';
 import { List } from '@material-ui/core';
 import { IDrawerListItem } from './types';
 
-const DrawerList: React.FC = (): JSX.Element => {
+const DrawerList = (): JSX.Element => {
     const classes = useDrawerStyles();
 
     return (
         <List className={classes.list}>
             {drawerListItems.map((item: IDrawerListItem) => (
-                <DrawerListItem key={item.title} Icon={item.Icon} title={item.title} />
+                <li key={item.title}>
+                    <DrawerListItem Icon={item.Icon} title={item.title} redirectPath={item.redirectPath} />
+                </li>
             ))}
         </List>
     );

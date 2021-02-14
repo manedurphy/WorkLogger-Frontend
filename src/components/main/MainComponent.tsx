@@ -1,9 +1,9 @@
 import React from 'react';
-import IncompleteGridItem from './grid/IncompleteGridItem';
+import IncompleteTasks from './components/IncompleteTasks';
 import LogsGridItem from './grid/LogGridItem';
 import TaskForm from '../forms/task/TaskForm';
 import useMainStyles from './mainStyles';
-import { Container, Grid } from '@material-ui/core';
+import { Container } from '@material-ui/core';
 import { useSelector } from 'react-redux';
 import { getTasksState } from '../../redux/slices/tasks/tasksSlice';
 
@@ -13,10 +13,8 @@ const Main = (): JSX.Element => {
     return (
         <Container maxWidth={'lg'} className={container}>
             {/* <Breadcrumbs /> */}
-            <Grid container>
-                {!showLog ? <IncompleteGridItem /> : <LogsGridItem />}
-                {showCreateTaskForm && <TaskForm />}
-            </Grid>
+            {!showLog ? <IncompleteTasks /> : <LogsGridItem />}
+            {showCreateTaskForm && <TaskForm />}
         </Container>
     );
 };

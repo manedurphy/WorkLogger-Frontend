@@ -1,18 +1,20 @@
 import React from 'react';
 import Title from './Title';
+import useMainStyles from '../mainStyles';
 import IncompleteTasksTable from '../../tables/incomplete/IncompleteTasksTable';
-import { Box } from '@material-ui/core';
+import { Box, Paper } from '@material-ui/core';
 
 const IncompleteTasks = (): JSX.Element => {
+    const { paper } = useMainStyles();
     return (
-        <React.Fragment>
+        <Paper className={paper}>
             <Box display={'flex'}>
                 <Box flexGrow={1}>
                     <Title>Incomplete Tasks</Title>
                 </Box>
             </Box>
             <IncompleteTasksTable />
-        </React.Fragment>
+        </Paper>
     );
 };
 

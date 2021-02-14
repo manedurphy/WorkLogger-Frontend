@@ -6,7 +6,7 @@ import { Divider, Drawer } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDrawerState, setDrawer } from '../../redux/slices/drawer/drawerSlice';
 
-const DrawerComponent: React.FC = (): JSX.Element => {
+const DrawerComponent = (): JSX.Element => {
     const dispatch = useDispatch();
     const { open } = useSelector(getDrawerState);
 
