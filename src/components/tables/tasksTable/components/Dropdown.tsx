@@ -1,5 +1,5 @@
 import React from 'react';
-import { DropdownProps } from '../types';
+import { DropdownProps } from '../../types';
 import { Box, Collapse, Table, TableBody, TableCell, TableHead, TableRow } from '@material-ui/core';
 
 const Dropdown: React.FC<DropdownProps> = ({ task, open, Actions }): JSX.Element => (
@@ -28,7 +28,7 @@ const Dropdown: React.FC<DropdownProps> = ({ task, open, Actions }): JSX.Element
                         </TableBody>
                     </Table>
                 </Box>
-                <Actions />
+                <Actions taskId={task.id} />
             </Collapse>
         </TableCell>
     </TableRow>

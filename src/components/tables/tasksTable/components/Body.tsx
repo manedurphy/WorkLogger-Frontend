@@ -1,7 +1,7 @@
 import React from 'react';
 import Row from './Row';
 import { TableBody } from '@material-ui/core';
-import { TasksTableProps } from '../types';
+import { TasksTableProps } from '../../types';
 
 const TaskInfo: React.FC<TasksTableProps> = ({ tasks, Actions }): JSX.Element => {
     return (

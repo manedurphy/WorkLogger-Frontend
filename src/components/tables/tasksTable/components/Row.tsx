@@ -2,7 +2,7 @@ import React, { useState, Fragment } from 'react';
 import useTasksTableStyles from '../styles';
 import { IconButton, TableCell, TableRow } from '@material-ui/core';
 import { KeyboardArrowUp as KeyboardArrowUpIcon, KeyboardArrowDown as KeyboardArrowDownIcon } from '@material-ui/icons';
-import { RowProps } from '../types';
+import { RowProps } from '../../types';
 import Dropdown from './Dropdown';
 
 const Row: React.FC<RowProps> = ({ task, Actions }) => {
@@ -23,7 +23,6 @@ const Row: React.FC<RowProps> = ({ task, Actions }) => {
                 <TableCell>{task.hoursWorked}</TableCell>
                 <TableCell>{task.numberOfReviews}</TableCell>
             </TableRow>
-            {/* <Dropdown task={task} open={open} /> */}
             <Dropdown task={task} open={open} Actions={Actions} />
         </Fragment>
     );
