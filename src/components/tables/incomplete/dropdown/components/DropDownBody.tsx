@@ -1,6 +1,6 @@
 import React from 'react';
 import { TableBody, TableCell, TableRow } from '@material-ui/core';
-import { IRowProps } from '../../../types';
+import { IRowProps } from '../../types';
 
 const DropDownBody: React.FC<IRowProps> = ({ task }): JSX.Element => (
     <TableBody>

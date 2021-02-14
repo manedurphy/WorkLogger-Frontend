@@ -2,10 +2,16 @@ import { ITask } from '../../../redux/slices/tasks/types';
 
 export interface TasksTableProps {
     tasks: ITask[];
-    Dropdown: any;
+    Actions: any;
 }
 
 export interface RowProps {
     task: ITask;
-    Dropdown: any;
+    Actions: any;
+}
+
+export interface DropdownProps {
+    task: ITask;
+    open: boolean;
+    Actions: any;
 }

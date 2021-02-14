@@ -2,7 +2,7 @@
 import React from 'react';
 import DropDown from './components/DropDown';
 import { TableRow, TableCell, Collapse } from '@material-ui/core';
-import { IRowOpenProps } from '../../types';
+import { IRowOpenProps } from '../types';
 
 const IncompleteTaskDropDown: React.FC<IRowOpenProps> = ({ task, open }): JSX.Element => (
     <TableRow>

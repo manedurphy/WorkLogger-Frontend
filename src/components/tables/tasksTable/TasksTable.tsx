@@ -4,10 +4,10 @@ import Body from './components/Body';
 import { Table } from '@material-ui/core';
 import { TasksTableProps } from './types';
 
-const TasksTable: React.FC<TasksTableProps> = ({ tasks, Dropdown }): JSX.Element => (
+const TasksTable: React.FC<TasksTableProps> = ({ tasks, Actions }): JSX.Element => (
     <Table size={'small'}>
         <Head />
-        <Body tasks={tasks} Dropdown={Dropdown} />
+        <Body tasks={tasks} Actions={Actions} />
     </Table>
 );
 
