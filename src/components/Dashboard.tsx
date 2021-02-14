@@ -31,22 +31,6 @@ const useStyles = makeStyles((theme) => ({
         position: 'relative',
         zIndex: theme.zIndex.drawer + 5,
     },
-    mainBackground: {
-        backgroundColor: '#F7F5FA',
-        height: '100%',
-        top: 250,
-        left: 240,
-        bottom: 0,
-        right: 0,
-        width: `calc(100% - ${240}px)`,
-        position: 'absolute',
-        zIndex: theme.zIndex.drawer + 1,
-    },
-    main: {
-        backgroundColor: '#F7F5FA',
-        width: '100vw',
-        height: '100vh',
-    },
 }));
 
 const Dashboard: React.FC = (): JSX.Element => {
@@ -91,7 +75,7 @@ const Dashboard: React.FC = (): JSX.Element => {
     // }, [showCompleted]);
 
     return (
-        <main className={classes.main}>
+        <main>
             {/* <div className={classes.mainBackground}></div> */}
             {/* <div className={classes.root}> */}
             <Modal />

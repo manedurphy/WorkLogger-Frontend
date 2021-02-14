@@ -6,4 +6,8 @@ export default makeStyles({
             borderBottom: 'unset',
         },
     },
+    link: {
+        marginTop: '15px',
+        cursor: 'pointer',
+    },
 });

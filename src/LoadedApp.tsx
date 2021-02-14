@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Dashboard from './components/Dashboard';
 import Register from './components/authentication/register/Register';
 import Login from './components/authentication/login/Login';
@@ -12,7 +12,7 @@ interface ILoadedAppProps {
 
 const LoadedApp: React.FC<ILoadedAppProps> = (props): JSX.Element => {
     return (
-        <React.Fragment>
+        <Fragment>
             <Switch>
                 <Route exact path={'/'} component={Dashboard} />
                 <Route exact path={'/register'} component={Register} />
@@ -26,7 +26,7 @@ const LoadedApp: React.FC<ILoadedAppProps> = (props): JSX.Element => {
                     anchor={{ vertical: 'bottom', horizontal: 'center' }}
                 />
             ))}
-        </React.Fragment>
+        </Fragment>
     );
 };
 
