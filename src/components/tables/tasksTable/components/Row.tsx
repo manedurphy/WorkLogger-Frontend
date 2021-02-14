@@ -1,12 +1,12 @@
 import React, { useState, Fragment } from 'react';
-import useTaskTableStyles from '../styles';
+import useTasksTableStyles from '../styles';
 import { IconButton, TableCell, TableRow } from '@material-ui/core';
 import { KeyboardArrowUp as KeyboardArrowUpIcon, KeyboardArrowDown as KeyboardArrowDownIcon } from '@material-ui/icons';
 import { RowProps } from '../types';
 
 const Row: React.FC<RowProps> = ({ task, Dropdown }) => {
     const [open, setOpen] = useState(false);
-    const { root } = useTaskTableStyles();
+    const { root } = useTasksTableStyles();
     return (
         <Fragment>
             <TableRow className={root}>

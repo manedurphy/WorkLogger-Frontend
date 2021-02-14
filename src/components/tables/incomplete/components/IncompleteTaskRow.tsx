@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { useState, Fragment } from 'react';
-import useTaskTableStyles from '../styles';
+// import useTaskTableStyles from '../styles';
 import IncompleteTaskDropDown from './dropdown/IncompleteTaskDropDown';
 import { IRowProps } from '../types';
 import { IconButton, TableCell, TableRow } from '@material-ui/core';
@@ -8,11 +8,11 @@ import { KeyboardArrowUp as KeyboardArrowUpIcon, KeyboardArrowDown as KeyboardAr
 
 const IncompleteTaskRow: React.FC<IRowProps> = ({ task }): JSX.Element => {
     const [open, setOpen] = useState(false);
-    const { root } = useTaskTableStyles();
+    // const { root } = useTaskTableStyles();
 
     return (
         <Fragment>
-            <TableRow className={root}>
+            <TableRow /*className={root}*/>
                 <TableCell>
                     <IconButton aria-label={'expand row'} size={'small'} onClick={() => setOpen(!open)}>
                         {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
