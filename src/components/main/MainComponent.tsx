@@ -9,13 +9,13 @@ import { getTasksState } from '../../redux/slices/tasks/tasksSlice';
 
 const Main = (): JSX.Element => {
     const { container } = useMainStyles();
-    const { showLog } = useSelector(getTasksState);
+    const { showLog, showCreateTaskForm } = useSelector(getTasksState);
     return (
         <Container maxWidth={'lg'} className={container}>
             {/* <Breadcrumbs /> */}
-            <Grid container spacing={3}>
+            <Grid container>
                 {!showLog ? <IncompleteGridItem /> : <LogsGridItem />}
-                <TaskForm />
+                {showCreateTaskForm && <TaskForm />}
             </Grid>
         </Container>
     );

@@ -26,4 +26,5 @@ export const initialTaskState: ITaskState = {
     edit: false,
     showLog: false,
     showCompleted: false,
+    showCreateTaskForm: false,
 };

@@ -47,6 +47,7 @@ export interface ITaskState {
     edit: boolean;
     showLog: boolean;
     showCompleted: boolean;
+    showCreateTaskForm: boolean;
 }
 
 export type SetTasksAction = { payload: ITask[] };
@@ -55,3 +56,4 @@ export type SetEditTaskAction = { payload: boolean };
 export type SetShowModalAction = { payload: boolean };
 export type SetCurrentTaskAction = { payload: ITask };
 export type SetShowLogAction = { payload: boolean };
+export type SetShowCreateTaskForm = { payload: boolean };

@@ -2,14 +2,13 @@ import React, { FormEvent, ChangeEvent, useState } from 'react';
 import Title from '../../main/components/Title';
 import CloseIcon from '@material-ui/icons/Close';
 import useFormStyles from '../styles';
-import { Box, Button, Container, Fade, Grid, IconButton, Paper, TextField } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
-import { handleSubmitNewTask } from '../../../redux/slices/tasks/tasksSlice';
+import { Box, Button, Container, Fade, Grid, Paper, TextField } from '@material-ui/core';
+import { handleSubmitNewTask, setShowCreateNewTaskForm } from '../../../redux/slices/tasks/tasksSlice';
 
 const TaskForm = () => {
     const dispatch = useDispatch();
-
-    const { paper, form, title, submit } = useFormStyles();
+    const { paper, form, title, submit, close } = useFormStyles();
     const [formData, setFormData] = useState({
         name: '',
         projectNumber: 0,
@@ -30,17 +29,18 @@ const TaskForm = () => {
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         dispatch(handleSubmitNewTask(formData));
+        dispatch(setShowCreateNewTaskForm(false));
     };
 
     return (
-        <Fade in={true} timeout={500} enter exit={false}>
+        <Fade in={true} timeout={500} enter>
             <Paper className={paper}>
                 <form className={form} onSubmit={handleSubmit}>
                     <Box className={title}>
                         <Title>Create New Task</Title>
-                        <IconButton>
+                        <Box className={close} onClick={() => dispatch(setShowCreateNewTaskForm(false))}>
                             <CloseIcon />
-                        </IconButton>
+                        </Box>
                     </Box>
 
                     <Grid container spacing={2}>

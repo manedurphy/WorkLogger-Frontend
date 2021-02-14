@@ -13,6 +13,7 @@ import {
     SetCurrentTaskAction,
     SetEditTaskAction,
     SetLoadingTasksAction,
+    SetShowCreateTaskForm,
     SetShowLogAction,
     SetTasksAction,
 } from './types';
@@ -52,10 +53,23 @@ const taskSlice = createSlice({
                 showLog: action.payload,
             };
         },
+        setShowCreateNewTaskForm: (state: ITaskState, action: SetShowCreateTaskForm) => {
+            return {
+                ...state,
+                showCreateTaskForm: action.payload,
+            };
+        },
     },
 });
 
-export const { setIncompleteTasks, setLoadingTasks, setCurrentTask, setShowLog, setEditTask } = taskSlice.actions;
+export const {
+    setIncompleteTasks,
+    setLoadingTasks,
+    setCurrentTask,
+    setShowLog,
+    setEditTask,
+    setShowCreateNewTaskForm,
+} = taskSlice.actions;
 
 export const getTasksState = (state: IGlobalState): ITaskState => state.tasks;
 export const getIncompleteTasksState = (state: IGlobalState): ITask[] => state.tasks.incompletedTasks;

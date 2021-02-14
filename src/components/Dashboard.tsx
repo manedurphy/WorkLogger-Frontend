@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const Dashboard: React.FC = (): JSX.Element => {
+const Dashboard = (): JSX.Element => {
     const classes = useStyles();
     const dispatch = useDispatch();
     // const [isLoggedIn, setIsLoggedIn] = useState(true);

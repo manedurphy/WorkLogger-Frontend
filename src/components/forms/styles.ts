@@ -3,11 +3,12 @@ import { makeStyles, Theme } from '@material-ui/core';
 export default makeStyles((theme: Theme) => {
     return {
         form: {
-            padding: '10px 20px',
+            padding: '5px 20px',
         },
         paper: {
             position: 'relative',
             zIndex: theme.zIndex.drawer + 5,
+            marginTop: '12px',
         },
         title: {
             display: 'flex',
@@ -18,6 +19,9 @@ export default makeStyles((theme: Theme) => {
         submit: {
             display: 'flex',
             justifyContent: 'center',
+        },
+        close: {
+            cursor: 'pointer',
         },
     };
 });
