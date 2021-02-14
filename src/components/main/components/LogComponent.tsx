@@ -1,18 +1,20 @@
-import React, { Fragment } from 'react';
+import React from 'react';
+import useMainStyles from '../mainStyles';
 import Title from './Title';
 import LogTable from '../../tables/log/LogTable';
-import { Box } from '@material-ui/core';
+import { Box, Paper } from '@material-ui/core';
 
 const LogComponent = (): JSX.Element => {
+    const { paper } = useMainStyles();
     return (
-        <Fragment>
+        <Paper className={paper}>
             <Box display={'flex'}>
                 <Box flexGrow={1}>
                     <Title>Task 2 Log</Title>
                 </Box>
             </Box>
             <LogTable />
-        </Fragment>
+        </Paper>
     );
 };
 

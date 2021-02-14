@@ -4,12 +4,17 @@ import DeleteButton from '../buttons/Delete';
 import LogButton from '../buttons/Log';
 import { Box } from '@material-ui/core';
 import { TaskActionsProps } from '../types';
+import { useSelector } from 'react-redux';
+import { getTasksState } from '../../../redux/slices/tasks/tasksSlice';
 
-const IncompleteTaskActions: React.FC<TaskActionsProps> = ({ taskId }): JSX.Element => (
-    <Box display={'flex'} justifyContent={'space-evenly'}>
-        <DeleteButton taskId={taskId} />
-        <LogButton taskId={taskId} />
-    </Box>
-);
+const CompleteTaskActions: React.FC<TaskActionsProps> = ({ taskId }): JSX.Element => {
+    const { completeTasks } = useSelector(getTasksState);
+    return (
+        <Box display={'flex'} justifyContent={'space-evenly'}>
+            <DeleteButton taskId={taskId} />
+            <LogButton taskId={taskId} tasks={completeTasks} />
+        </Box>
+    );
+};
 
-export default IncompleteTaskActions;
+export default CompleteTaskActions;

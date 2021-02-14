@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import AppBarComponent from './appbar/AppBarComponent';
-import CompleteTasksGridItem from './main/grid/CompleteGridItem';
+import MainComplete from './main/MainComplete';
 import DrawerComponent from './drawer/DrawerComponent';
 import Modal from './ui/Modal';
 import { Redirect } from 'react-router-dom';
@@ -21,7 +21,7 @@ const Archive = (): JSX.Element => {
             <Modal />
             <AppBarComponent />
             <DrawerComponent />
-            <CompleteTasksGridItem />
+            <MainComplete />
             {!loginSuccess && <Redirect to={'/login'} />}
         </main>
     );
