@@ -6,10 +6,12 @@ import useMainStyles from './mainStyles';
 import { Container } from '@material-ui/core';
 import { useSelector } from 'react-redux';
 import { getTasksState } from '../../redux/slices/tasks/tasksSlice';
+import { getLogState } from '../../redux/slices/log/logSlice';
 
 const MainComplete = (): JSX.Element => {
     const { container } = useMainStyles();
-    const { showLog, showCreateTaskForm } = useSelector(getTasksState);
+    const { showCreateTaskForm } = useSelector(getTasksState);
+    const { showLog } = useSelector(getLogState);
     return (
         <Container maxWidth={'lg'} className={container}>
             {!showLog ? <CompleteTasks /> : <Log />}

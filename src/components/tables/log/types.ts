@@ -1,4 +1,4 @@
-import { ILog } from '../../../redux/slices/tasks/types';
+import { ILog } from '../../../redux/slices/log/types';
 
 export interface LogItemProps {
     logItem: ILog;

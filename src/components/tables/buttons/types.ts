@@ -1,4 +1,5 @@
-import { ILog, ITask } from '../../../redux/slices/tasks/types';
+import { ILog } from '../../../redux/slices/log/types';
+import { ITask } from '../../../redux/slices/tasks/types';
 
 export interface IButtonProps {
     taskId: number;
