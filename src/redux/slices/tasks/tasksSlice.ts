@@ -8,11 +8,13 @@ import { ThunkActionType, ThunkDispatchType } from '../users/types';
 import { completeTask, createTask, deleteTask, getCompleteTasks, getIncompleteTasks } from './helpers';
 import { initialTaskState } from './initialState';
 import {
+    ILog,
     ITask,
     ITaskState,
     SetCurrentTaskAction,
     SetEditTaskAction,
     SetLoadingTasksAction,
+    SetLogItemAction,
     SetShowCreateTaskForm,
     SetShowLogAction,
     SetTasksAction,
@@ -68,6 +70,12 @@ const taskSlice = createSlice({
                 showCreateTaskForm: action.payload,
             };
         },
+        setCurrentLogItem: (state: ITaskState, action: SetLogItemAction) => {
+            return {
+                ...state,
+                currentLogItem: action.payload,
+            };
+        },
     },
 });
 
@@ -79,6 +87,7 @@ export const {
     setShowLog,
     setEditTask,
     setShowCreateNewTaskForm,
+    setCurrentLogItem,
 } = taskSlice.actions;
 
 export const getTasksState = (state: IGlobalState): ITaskState => state.tasks;
@@ -118,15 +127,10 @@ export const setCurrentAndShowLog = (id: number, tasks: ITask[]): ThunkActionTyp
     }
 };
 
-export const setCurrentAndEdit = (id: number, tasks: ITask[]): ThunkActionType => (dispatch: ThunkDispatchType) => {
+export const setCurrentAndEdit = (task: ITask): ThunkActionType => (dispatch: ThunkDispatchType) => {
     try {
-        const task = tasks.find((task) => task.id === id);
-        if (task) {
-            dispatch(setCurrentTask(task));
-            dispatch(setEditTask(true));
-        } else {
-            throw new Error('Task not found.');
-        }
+        dispatch(setCurrentTask(task));
+        dispatch(setEditTask(true));
     } catch (error) {
         dispatch(addAlert({ message: error.message, type: AlertConstants.Error }));
     }
@@ -168,6 +172,21 @@ export const handleDeleteTask = (id: number): ThunkActionType => async (dispatch
         dispatch(setShowModal(false));
     } catch (error) {
         dispatch(addAlert({ ...error.response.data, type: AlertConstants.Error }));
+    }
+};
+
+export const setCurrentLogItemAndShowForm = (id: number, log: ILog[]): ThunkActionType => async (
+    dispatch: ThunkDispatchType,
+) => {
+    try {
+        const logItem = log.find((logItem) => logItem.id === id);
+        if (logItem) {
+            dispatch(setCurrentLogItem(logItem));
+        } else {
+            throw new Error('Task not found.');
+        }
+    } catch (error) {
+        dispatch(addAlert({ message: error.message, type: AlertConstants.Error }));
     }
 };
 

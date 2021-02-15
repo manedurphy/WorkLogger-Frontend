@@ -1,6 +1,6 @@
 import React from 'react';
-import EditButton from '../../buttons/Edit';
-import DeleteButton from '../../buttons/Delete';
+import EditButton from '../../buttons/log/Edit';
+// import DeleteButton from '../../buttons/Delete';
 import { DropdownProps } from '../types';
 import { Box, Collapse, Table, TableBody, TableCell, TableHead, TableRow } from '@material-ui/core';
 
@@ -31,8 +31,8 @@ const Dropdown: React.FC<DropdownProps> = ({ logItem, open }): JSX.Element => (
                     </Table>
                 </Box>
                 <Box display={'flex'} justifyContent={'space-evenly'}>
-                    <EditButton taskId={logItem.TaskId} />
-                    <DeleteButton taskId={logItem.TaskId} />
+                    <EditButton logItem={logItem} />
+                    {/* <DeleteButton taskId={logItem.TaskId} /> */}
                 </Box>
             </Collapse>
         </TableCell>

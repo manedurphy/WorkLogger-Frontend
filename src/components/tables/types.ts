@@ -1,21 +1,18 @@
 import { ITask } from '../../redux/slices/tasks/types';
 
+export interface TaskActionsProps {
+    task: ITask;
+}
+
 export interface TasksTableProps {
     tasks: ITask[];
     Actions: React.FC<TaskActionsProps>;
 }
 
-export interface RowProps {
-    task: ITask;
+export interface RowProps extends TaskActionsProps {
     Actions: React.FC<TaskActionsProps>;
 }
 
-export interface DropdownProps {
-    task: ITask;
+export interface DropdownProps extends RowProps {
     open: boolean;
-    Actions: React.FC<TaskActionsProps>;
-}
-
-export interface TaskActionsProps {
-    taskId: number;
 }

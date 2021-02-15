@@ -28,7 +28,7 @@ const Dropdown: React.FC<DropdownProps> = ({ task, open, Actions }): JSX.Element
                         </TableBody>
                     </Table>
                 </Box>
-                <Actions taskId={task.id} />
+                <Actions task={task} />
             </Collapse>
         </TableCell>
     </TableRow>

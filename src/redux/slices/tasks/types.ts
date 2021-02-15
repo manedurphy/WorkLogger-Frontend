@@ -41,6 +41,7 @@ export interface ILog {
 
 export interface ITaskState {
     currentTask: ITask;
+    currentLogItem: ILog;
     incompletedTasks: ITask[];
     completeTasks: ITask[];
     loading: boolean;
@@ -57,3 +58,4 @@ export type SetShowModalAction = { payload: boolean };
 export type SetCurrentTaskAction = { payload: ITask };
 export type SetShowLogAction = { payload: boolean };
 export type SetShowCreateTaskForm = { payload: boolean };
+export type SetLogItemAction = { payload: ILog };
