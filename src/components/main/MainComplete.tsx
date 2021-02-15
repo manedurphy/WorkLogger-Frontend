@@ -1,7 +1,7 @@
 import React from 'react';
 import CompleteTasks from './components/CompleteTasks';
 import Log from './components/LogComponent';
-import TaskForm from '../forms/task/TaskForm';
+import NewTaskForm from '../forms/task/NewTaskForm';
 import useMainStyles from './mainStyles';
 import { Container } from '@material-ui/core';
 import { useSelector } from 'react-redux';
@@ -13,7 +13,7 @@ const MainComplete = (): JSX.Element => {
     return (
         <Container maxWidth={'lg'} className={container}>
             {!showLog ? <CompleteTasks /> : <Log />}
-            {showCreateTaskForm && <TaskForm />}
+            {showCreateTaskForm && <NewTaskForm />}
         </Container>
     );
 };

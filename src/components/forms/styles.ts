@@ -23,5 +23,17 @@ export default makeStyles((theme: Theme) => {
         close: {
             cursor: 'pointer',
         },
+        update: {
+            marginRight: '5px',
+        },
+        del: {
+            marginLeft: '5px',
+            backgroundColor: '#b60000',
+            color: '#ffffff',
+
+            '&:hover': {
+                backgroundColor: '#b60000',
+            },
+        },
     };
 });
