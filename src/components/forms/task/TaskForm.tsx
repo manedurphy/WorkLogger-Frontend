@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 import { Box, Button, Container, Fade, Grid, Paper, TextField } from '@material-ui/core';
 import { handleSubmitNewTask, setShowCreateNewTaskForm } from '../../../redux/slices/tasks/tasksSlice';
 
-const TaskForm = () => {
+const TaskForm = (): JSX.Element => {
     const dispatch = useDispatch();
     const { paper, form, title, submit, close } = useFormStyles();
     const [formData, setFormData] = useState(getNewForm());

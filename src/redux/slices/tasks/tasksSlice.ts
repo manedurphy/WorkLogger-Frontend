@@ -127,7 +127,7 @@ export const setCurrentAndShowLog = (id: number, tasks: ITask[]): ThunkActionTyp
     }
 };
 
-export const setCurrentAndEdit = (task: ITask): ThunkActionType => (dispatch: ThunkDispatchType) => {
+export const setCurrentTaskAndEdit = (task: ITask): ThunkActionType => (dispatch: ThunkDispatchType) => {
     try {
         dispatch(setCurrentTask(task));
         dispatch(setEditTask(true));

@@ -8,7 +8,7 @@ export interface LogButtonProps extends IButtonProps {
     tasks: ITask[];
 }
 
-export interface EditButtonProps {
+export interface EditTaskButtonProps {
     task: ITask;
 }
 
