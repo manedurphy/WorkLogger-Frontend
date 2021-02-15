@@ -17,7 +17,7 @@ export default makeStyles({
     complete: {
         backgroundColor: 'green',
     },
-    log: {
+    logBtn: {
         backgroundColor: 'purple',
     },
     edit: {

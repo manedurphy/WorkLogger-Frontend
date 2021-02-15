@@ -4,7 +4,7 @@ import Head from './components/Head';
 import Body from './components/Body';
 import { Link, Table } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
-import { setShowLog } from '../../../redux/slices/tasks/tasksSlice';
+import { setShowLog } from '../../../redux/slices/log/logSlice';
 
 const LogTable = (): JSX.Element => {
     const { link } = useLogTableStyles();

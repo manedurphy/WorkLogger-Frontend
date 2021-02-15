@@ -1,3 +1,4 @@
+import { ActionCreatorWithPayload } from '@reduxjs/toolkit';
 import { ChangeEvent } from 'react';
 import { FormEvent } from 'react';
 
@@ -7,6 +8,7 @@ export interface FormContainerProps {
 
 export interface FormHeaderProps {
     header: string;
+    action: ActionCreatorWithPayload<boolean, string>;
 }
 
 export interface FormData {
@@ -17,7 +19,7 @@ export interface FormData {
     reviewHours: number;
     hoursRequiredByBim: number;
     numberOfReviews: number;
-    notes: string;
+    notes: string | null;
     dateAssigned: string;
     dueDate: string;
 }

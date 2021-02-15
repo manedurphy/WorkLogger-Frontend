@@ -1,5 +1,5 @@
-import { Grid, TextField } from '@material-ui/core';
 import React from 'react';
+import { Grid, TextField } from '@material-ui/core';
 import { TaskInputFieldsProps } from '../types';
 
 const TaskInputFields: React.FC<TaskInputFieldsProps> = ({ formData, handleChange }): JSX.Element => {
@@ -24,6 +24,7 @@ const TaskInputFields: React.FC<TaskInputFieldsProps> = ({ formData, handleChang
                     variant={'outlined'}
                     fullWidth
                     required
+                    disabled={formData.projectNumber ? true : false}
                     type={'number'}
                     id={'projectNumber'}
                     label={'Project Number'}

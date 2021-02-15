@@ -6,6 +6,7 @@ import FormHeader from '../common/FormHeader';
 import { getNewForm } from '../helpers';
 import { useDispatch } from 'react-redux';
 import { handleSubmitNewTask } from '../../../redux/slices/tasks/tasksSlice';
+import { setShowCreateNewTaskForm } from '../../../redux/slices/tasks/tasksSlice';
 
 const NewTaskForm = (): JSX.Element => {
     const dispatch = useDispatch();
@@ -23,7 +24,7 @@ const NewTaskForm = (): JSX.Element => {
 
     return (
         <FormContainer handleSubmit={handleSubmit}>
-            <FormHeader header={'Create New Task'} />
+            <FormHeader header={'Create New Task'} action={setShowCreateNewTaskForm} />
             <TaskInputFields formData={formData} handleChange={handleChange} />
             <SubmitButton />
         </FormContainer>

@@ -49,9 +49,9 @@ export async function createTask(formData: FormData): Promise<IAlert> {
     return { ...res.data, type: AlertConstants.Success };
 }
 
-export async function updateTask(formData: FormData): Promise<IAlert> {
+export async function updateTask(id: number, formData: FormData): Promise<IAlert> {
     const { token } = getTokens();
-    const res: AxiosResponse<IAlert> = await axios.put('http://localhost:5000/api/tasks', formData, {
+    const res: AxiosResponse<IAlert> = await axios.put(`http://localhost:5000/api/tasks/${id}`, formData, {
         headers: {
             Authorization: `Bearer ${token}`,
         },

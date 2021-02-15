@@ -6,7 +6,7 @@ import { IAlert } from '../alerts/types';
 import { setShowModal } from '../modals/modalsSlice';
 import { FormData } from '../../../components/forms/types';
 import { ThunkActionType, ThunkDispatchType } from '../users/types';
-import { completeTask, createTask, deleteTask, getCompleteTasks, getIncompleteTasks } from './helpers';
+import { completeTask, createTask, deleteTask, getCompleteTasks, getIncompleteTasks, updateTask } from './helpers';
 import { initialTaskState } from './initialState';
 import {
     ILog,
@@ -153,7 +153,7 @@ export const handleSubmitNewTask = (formData: FormData): ThunkActionType => asyn
 export const handleCompleteTask = (id: number): ThunkActionType => async (dispatch: ThunkDispatchType) => {
     try {
         const success: IAlert = await completeTask(id);
-        const tasks = await getIncompleteTasks();
+        const tasks: ITask[] = await getIncompleteTasks();
 
         dispatch(setIncompleteTasks(tasks));
         dispatch(addAlert(success));
@@ -166,7 +166,7 @@ export const handleCompleteTask = (id: number): ThunkActionType => async (dispat
 export const handleDeleteTask = (id: number): ThunkActionType => async (dispatch: ThunkDispatchType) => {
     try {
         const success: IAlert = await deleteTask(id);
-        const tasks = await getIncompleteTasks();
+        const tasks: ITask[] = await getIncompleteTasks();
 
         dispatch(setIncompleteTasks(tasks));
         dispatch(addAlert(success));
@@ -186,6 +186,21 @@ export const setCurrentLogItemAndShowForm = (id: number, log: ILog[]): ThunkActi
         } else {
             throw new Error('Task not found.');
         }
+    } catch (error) {
+        dispatch(addAlert({ message: error.message, type: AlertConstants.Error }));
+    }
+};
+
+export const handleUpdateTask = (id: number, formData: FormData): ThunkActionType => async (
+    dispatch: ThunkDispatchType,
+) => {
+    try {
+        const success: IAlert = await updateTask(id, formData);
+        const tasks: ITask[] = await getIncompleteTasks();
+
+        dispatch(setIncompleteTasks(tasks));
+        dispatch(addAlert(success));
+        dispatch(setEditTask(false));
     } catch (error) {
         dispatch(addAlert({ message: error.message, type: AlertConstants.Error }));
     }

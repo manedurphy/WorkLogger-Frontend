@@ -1,15 +1,20 @@
-import React, { FormEvent, ChangeEvent, useState } from 'react';
+import React, { FormEvent, ChangeEvent, useState, useEffect } from 'react';
 import FormContainer from '../common/FormContainer';
 import UpdateDelete from '../buttons/UpdateDelete';
 import TaskInputFields from '../common/TaskInputFields';
 import FormHeader from '../common/FormHeader';
-import { getNewForm } from '../helpers';
-import { useDispatch } from 'react-redux';
-import { handleSubmitNewTask } from '../../../redux/slices/tasks/tasksSlice';
+import { getEditForm } from '../helpers';
+import { useDispatch, useSelector } from 'react-redux';
+import { getTasksState, handleUpdateTask, setEditTask } from '../../../redux/slices/tasks/tasksSlice';
 
 const EditTaskForm = (): JSX.Element => {
     const dispatch = useDispatch();
-    const [formData, setFormData] = useState(getNewForm());
+    const { currentTask } = useSelector(getTasksState);
+    const [formData, setFormData] = useState(getEditForm(currentTask));
+
+    useEffect(() => {
+        setFormData(getEditForm(currentTask));
+    }, [currentTask]);
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -17,13 +22,12 @@ const EditTaskForm = (): JSX.Element => {
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        dispatch(handleSubmitNewTask(formData));
-        setFormData(getNewForm());
+        dispatch(handleUpdateTask(currentTask.id, formData));
     };
 
     return (
         <FormContainer handleSubmit={handleSubmit}>
-            <FormHeader header={'Edit Task'} />
+            <FormHeader header={'Edit Task'} action={setEditTask} />
             <TaskInputFields formData={formData} handleChange={handleChange} />
             <UpdateDelete />
         </FormContainer>

@@ -4,8 +4,8 @@ export interface IButtonProps {
     taskId: number;
 }
 
-export interface LogButtonProps extends IButtonProps {
-    tasks: ITask[];
+export interface LogButtonProps {
+    log: ILog[];
 }
 
 export interface EditTaskButtonProps {

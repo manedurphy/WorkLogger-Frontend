@@ -4,16 +4,15 @@ import useFormStyles from '../styles';
 import CloseIcon from '@material-ui/icons/Close';
 import { Box } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
-import { setShowCreateNewTaskForm } from '../../../redux/slices/tasks/tasksSlice';
 import { FormHeaderProps } from '../types';
 
-const FormHeader: React.FC<FormHeaderProps> = ({ header }): JSX.Element => {
+const FormHeader: React.FC<FormHeaderProps> = ({ header, action }): JSX.Element => {
     const dispatch = useDispatch();
     const { title, close } = useFormStyles();
     return (
         <Box className={title}>
             <Title>{header}</Title>
-            <Box className={close} onClick={() => dispatch(setShowCreateNewTaskForm(false))}>
+            <Box className={close} onClick={() => dispatch(action(false))}>
                 <CloseIcon />
             </Box>
         </Box>
