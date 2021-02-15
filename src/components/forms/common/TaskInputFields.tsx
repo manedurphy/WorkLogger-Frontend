@@ -1,7 +1,8 @@
 import { Grid, TextField } from '@material-ui/core';
 import React from 'react';
+import { TaskInputFieldsProps } from '../types';
 
-const TaskInputFields: React.FC<any> = ({ formData, handleChange }): JSX.Element => {
+const TaskInputFields: React.FC<TaskInputFieldsProps> = ({ formData, handleChange }): JSX.Element => {
     return (
         <Grid container spacing={2}>
             <Grid item xs={12} md={6}>

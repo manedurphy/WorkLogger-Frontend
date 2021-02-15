@@ -3,6 +3,7 @@ import { AlertConstants } from '../alerts/AlertConstants';
 import { IAlert } from '../alerts/types';
 import { getTokens } from '../auth/helpers';
 import { ITask } from './types';
+import { FormData } from '../../../components/forms/types';
 
 export async function getIncompleteTasks(): Promise<ITask[]> {
     const { token } = getTokens();
@@ -37,7 +38,7 @@ export async function deleteTask(id: number): Promise<IAlert> {
     return { ...res.data, type: AlertConstants.Warning };
 }
 
-export async function createTask(formData: any): Promise<IAlert> {
+export async function createTask(formData: FormData): Promise<IAlert> {
     const { token } = getTokens();
     const res: AxiosResponse<IAlert> = await axios.post('http://localhost:5000/api/tasks', formData, {
         headers: {
@@ -48,7 +49,7 @@ export async function createTask(formData: any): Promise<IAlert> {
     return { ...res.data, type: AlertConstants.Success };
 }
 
-export async function updateTask(formData: any): Promise<IAlert> {
+export async function updateTask(formData: FormData): Promise<IAlert> {
     const { token } = getTokens();
     const res: AxiosResponse<IAlert> = await axios.put('http://localhost:5000/api/tasks', formData, {
         headers: {
