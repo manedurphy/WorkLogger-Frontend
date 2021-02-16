@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid, TextField } from '@material-ui/core';
 import { TaskInputFieldsProps } from '../types';
 
-const TaskInputFields: React.FC<TaskInputFieldsProps> = ({ formData, handleChange }): JSX.Element => {
+const TaskInputFields: React.FC<TaskInputFieldsProps> = ({ formData, children, handleChange }): JSX.Element => {
     return (
         <Grid container spacing={2}>
             <Grid item xs={12} md={6}>
@@ -117,32 +117,7 @@ const TaskInputFields: React.FC<TaskInputFieldsProps> = ({ formData, handleChang
                     onChange={handleChange}
                 />
             </Grid>
-            <Grid item xs={12}>
-                <TextField
-                    type={'date'}
-                    label={'Date assgined'}
-                    name={'dateAssigned'}
-                    required
-                    onChange={handleChange}
-                    value={formData.dateAssigned}
-                    InputLabelProps={{
-                        shrink: true,
-                    }}
-                />
-            </Grid>
-            <Grid item xs={12}>
-                <TextField
-                    type={'date'}
-                    label={'Due date'}
-                    name={'dueDate'}
-                    required
-                    onChange={handleChange}
-                    value={formData.dueDate}
-                    InputLabelProps={{
-                        shrink: true,
-                    }}
-                />
-            </Grid>
+            {children}
         </Grid>
     );
 };

@@ -4,7 +4,7 @@ import { AlertConstants } from '../alerts/AlertConstants';
 import { addAlert } from '../alerts/alertsSlice';
 import { IAlert } from '../alerts/types';
 import { setShowModal } from '../modals/modalsSlice';
-import { FormData } from '../../../components/forms/types';
+import { TaskFormData } from '../../../components/forms/types';
 import { ThunkActionType, ThunkDispatchType } from '../users/types';
 import { completeTask, createTask, deleteTask, getCompleteTasks, getIncompleteTasks, updateTask } from './helpers';
 import { initialTaskState } from './initialState';
@@ -100,7 +100,7 @@ export const handleGetCompleteTasks = (): ThunkActionType => async (dispatch: Th
     }
 };
 
-export const handleSubmitNewTask = (formData: FormData): ThunkActionType => async (dispatch: ThunkDispatchType) => {
+export const handleSubmitNewTask = (formData: TaskFormData): ThunkActionType => async (dispatch: ThunkDispatchType) => {
     try {
         const success: IAlert = await createTask(formData);
         const tasks: ITask[] = await getIncompleteTasks();
@@ -139,7 +139,7 @@ export const handleDeleteTask = (id: number): ThunkActionType => async (dispatch
     }
 };
 
-export const handleUpdateTask = (id: number, formData: FormData): ThunkActionType => async (
+export const handleUpdateTask = (id: number, formData: TaskFormData): ThunkActionType => async (
     dispatch: ThunkDispatchType,
 ) => {
     try {

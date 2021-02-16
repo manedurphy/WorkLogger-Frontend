@@ -21,11 +21,23 @@ export interface FormData {
     hoursRequiredByBim: number;
     numberOfReviews: number;
     notes: string | null;
+}
+
+export interface TaskFormData extends FormData {
     dateAssigned: string;
     dueDate: string;
+}
+
+export interface LogFormData extends FormData {
+    loggedAt: string;
 }
 
 export interface TaskInputFieldsProps {
     formData: FormData;
     handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
+}
+
+export interface LogInputFieldsProps {
+    handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
+    loggedAt: string;
 }

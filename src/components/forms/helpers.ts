@@ -1,3 +1,4 @@
+import { ILog } from '../../redux/slices/log/types';
 import { ITask } from '../../redux/slices/tasks/types';
 
 export function getNewForm() {
@@ -27,5 +28,19 @@ export function getEditForm(currentTask: ITask) {
         notes: currentTask.notes,
         dateAssigned: currentTask.dateAssigned.slice(0, 10),
         dueDate: currentTask.dueDate.slice(0, 10),
+    };
+}
+
+export function getEditLogForm(currentLog: ILog) {
+    return {
+        name: currentLog.name,
+        projectNumber: currentLog.projectNumber,
+        hoursAvailableToWork: currentLog.hoursAvailableToWork,
+        hoursWorked: currentLog.hoursWorked,
+        reviewHours: currentLog.reviewHours,
+        hoursRequiredByBim: currentLog.hoursRequiredByBim,
+        numberOfReviews: currentLog.numberOfReviews,
+        notes: currentLog.notes,
+        loggedAt: currentLog.loggedAt.slice(0, 10),
     };
 }

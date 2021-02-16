@@ -2,8 +2,8 @@
 import React from 'react';
 import CancelButton from './buttons/Cancel';
 import ConfirmButton from './buttons/Confirm';
-import { actions } from './actions';
 import useModalStyles from './styles';
+import { actions } from './actions';
 import { useSelector } from 'react-redux';
 import { Box, Fade, Modal } from '@material-ui/core';
 import { getModalState } from '../../redux/slices/modals/modalsSlice';

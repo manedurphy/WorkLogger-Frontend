@@ -23,8 +23,10 @@ export interface ILogState {
     currentLogItem: ILog;
     log: ILog[];
     showLog: boolean;
+    showLogForm: boolean;
 }
 
 export type SetLogAction = { payload: ILog[] };
 export type SetLogItemAction = { payload: ILog };
 export type SetShowLog = { payload: boolean };
+export type SetShowLogForm = { payload: boolean };

@@ -3,6 +3,7 @@ import IncompleteTasks from './components/IncompleteTasks';
 import Log from './components/LogComponent';
 import NewTaskForm from '../forms/task/NewTaskForm';
 import useMainStyles from './mainStyles';
+import EditLogForm from '../forms/log/EditLogForm';
 import EditTaskForm from '../forms/task/EditTaskForm';
 import { Container } from '@material-ui/core';
 import { useSelector } from 'react-redux';
@@ -17,6 +18,7 @@ const DashboardMainContent = (): JSX.Element => {
             {!showLog ? <IncompleteTasks /> : <Log />}
             <NewTaskForm />
             <EditTaskForm />
+            <EditLogForm />
         </Container>
     );
 };

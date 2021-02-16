@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { IGlobalState } from '../../types';
 import { initialLogState } from './initialState';
-import { ILogState, SetLogAction, SetLogItemAction, SetShowLog } from './types';
+import { ILogState, SetLogAction, SetLogItemAction, SetShowLog, SetShowLogForm } from './types';
 
 const logSlice = createSlice({
     name: 'log',
@@ -18,6 +18,7 @@ const logSlice = createSlice({
             return {
                 ...state,
                 currentLogItem: action.payload,
+                showLogForm: true,
             };
         },
         setShowLog: (state: ILogState, action: SetShowLog) => {
@@ -26,10 +27,16 @@ const logSlice = createSlice({
                 showLog: action.payload,
             };
         },
+        setShowLogForm: (state: ILogState, action: SetShowLogForm) => {
+            return {
+                ...state,
+                showLogForm: action.payload,
+            };
+        },
     },
 });
 
-export const { setLog, setLogItem, setShowLog } = logSlice.actions;
+export const { setLog, setLogItem, setShowLog, setShowLogForm } = logSlice.actions;
 export const getLogState = (state: IGlobalState) => state.log;
 
 export default logSlice.reducer;

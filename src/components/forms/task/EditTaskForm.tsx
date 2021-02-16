@@ -1,7 +1,7 @@
 import React, { FormEvent, ChangeEvent, useState, useEffect } from 'react';
 import FormContainer from '../common/FormContainer';
 import UpdateDelete from '../buttons/UpdateDelete';
-import TaskInputFields from '../common/TaskInputFields';
+import TaskInputFields from '../common/CommonInputFields';
 import FormHeader from '../common/FormHeader';
 import { getEditForm } from '../helpers';
 import { useDispatch, useSelector } from 'react-redux';

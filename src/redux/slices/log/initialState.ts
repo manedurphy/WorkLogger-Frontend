@@ -23,4 +23,5 @@ export const initialLogState: ILogState = {
     },
     log: [],
     showLog: false,
+    showLogForm: false,
 };
