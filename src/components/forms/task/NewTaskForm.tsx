@@ -4,12 +4,13 @@ import FormContainer from '../common/FormContainer';
 import TaskInputFields from '../common/TaskInputFields';
 import FormHeader from '../common/FormHeader';
 import { getNewForm } from '../helpers';
-import { useDispatch } from 'react-redux';
-import { handleSubmitNewTask } from '../../../redux/slices/tasks/tasksSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { getTasksState, handleSubmitNewTask } from '../../../redux/slices/tasks/tasksSlice';
 import { setShowCreateNewTaskForm } from '../../../redux/slices/tasks/tasksSlice';
 
 const NewTaskForm = (): JSX.Element => {
     const dispatch = useDispatch();
+    const { showCreateTaskForm } = useSelector(getTasksState);
     const [formData, setFormData] = useState(getNewForm());
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -23,7 +24,7 @@ const NewTaskForm = (): JSX.Element => {
     };
 
     return (
-        <FormContainer handleSubmit={handleSubmit}>
+        <FormContainer handleSubmit={handleSubmit} show={showCreateTaskForm}>
             <FormHeader header={'Create New Task'} action={setShowCreateNewTaskForm} />
             <TaskInputFields formData={formData} handleChange={handleChange} />
             <SubmitButton />

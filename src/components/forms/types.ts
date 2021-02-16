@@ -4,6 +4,7 @@ import { FormEvent } from 'react';
 
 export interface FormContainerProps {
     handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
+    show: boolean;
 }
 
 export interface FormHeaderProps {

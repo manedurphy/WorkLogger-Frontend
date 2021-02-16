@@ -5,7 +5,7 @@ import { IModalState, SetModalAction, SetShowModalAction } from './types';
 
 const modalsSlice = createSlice({
     name: 'modal',
-    initialState: initialModalState,
+    initialState: initialModalState as IModalState,
     reducers: {
         setShowModal: (state: IModalState, action: SetShowModalAction) => {
             return {
@@ -20,11 +20,13 @@ const modalsSlice = createSlice({
                 show: true,
             };
         },
+        magic(state) {
+            state.command;
+        },
     },
 });
 
 export const { setShowModal, setModal } = modalsSlice.actions;
-
 export const getModalState = (state: IGlobalState): IModalState => state.modal;
 
 export default modalsSlice.reducer;

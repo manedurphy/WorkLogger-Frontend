@@ -9,7 +9,7 @@ import { getTasksState, handleUpdateTask, setEditTask } from '../../../redux/sli
 
 const EditTaskForm = (): JSX.Element => {
     const dispatch = useDispatch();
-    const { currentTask } = useSelector(getTasksState);
+    const { currentTask, edit } = useSelector(getTasksState);
     const [formData, setFormData] = useState(getEditForm(currentTask));
 
     useEffect(() => {
@@ -26,7 +26,7 @@ const EditTaskForm = (): JSX.Element => {
     };
 
     return (
-        <FormContainer handleSubmit={handleSubmit}>
+        <FormContainer handleSubmit={handleSubmit} show={edit}>
             <FormHeader header={'Edit Task'} action={setEditTask} />
             <TaskInputFields formData={formData} handleChange={handleChange} />
             <UpdateDelete />

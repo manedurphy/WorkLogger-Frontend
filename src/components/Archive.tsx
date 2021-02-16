@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import AppBarComponent from './appbar/AppBarComponent';
 import MainComplete from './main/MainComplete';
 import DrawerComponent from './drawer/DrawerComponent';
-import Modal from './ui/Modal';
+import Modal from './modal/Modal';
 import { Redirect } from 'react-router-dom';
 import { getAuthState } from '../redux/slices/auth/authSlice';
 import { useDispatch, useSelector } from 'react-redux';
