@@ -1,15 +1,15 @@
 import React, { Fragment } from 'react';
 import IncompleteTaskActions from './IncompleteTaskActions';
-import useIncompleteTasksTableStyles from './styles';
-import TasksTable from '../tasksTable/TasksTable';
+import useTasksTableStyles from '../styles';
+import TasksTable from '../common/TasksTable';
 import { Box } from '@material-ui/core';
 import { AddCircle } from '@material-ui/icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { getTasksState, setShowCreateNewTaskForm } from '../../../redux/slices/tasks/tasksSlice';
+import { getTasksState, setShowCreateNewTaskForm } from '../../../../redux/slices/tasks/tasksSlice';
 
 const IncompleteTasksTable = (): JSX.Element => {
     const dispatch = useDispatch();
-    const { add } = useIncompleteTasksTableStyles();
+    const { add } = useTasksTableStyles();
     const { incompletedTasks } = useSelector(getTasksState);
 
     return (

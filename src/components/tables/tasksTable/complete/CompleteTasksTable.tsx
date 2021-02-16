@@ -1,8 +1,8 @@
 import React from 'react';
-import TasksTable from '../tasksTable/TasksTable';
+import TasksTable from '../common/TasksTable';
 import CompleteTaskActions from './CompleteTaskActions';
 import { useSelector } from 'react-redux';
-import { getTasksState } from '../../../redux/slices/tasks/tasksSlice';
+import { getTasksState } from '../../../../redux/slices/tasks/tasksSlice';
 
 const CompleteTasksTable = (): JSX.Element => {
     const { completeTasks } = useSelector(getTasksState);

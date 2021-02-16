@@ -9,6 +9,10 @@ export interface LogButtonProps {
     log: ILog[];
 }
 
+export interface EditButtonProps {
+    handleClick: any;
+}
+
 export interface EditTaskButtonProps {
     task: ITask;
 }

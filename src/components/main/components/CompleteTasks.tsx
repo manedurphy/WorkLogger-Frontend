@@ -1,7 +1,7 @@
 import React from 'react';
 import Title from './Title';
 import useMainStyles from '../mainStyles';
-import CompleteTasksTable from '../../tables/complete/CompleteTasksTable';
+import CompleteTasksTable from '../../tables/tasksTable/complete/CompleteTasksTable';
 import { Box, Paper } from '@material-ui/core';
 
 const CompleteTasks = (): JSX.Element => {
