@@ -21,4 +21,20 @@ export default makeStyles((theme: Theme) => ({
         display: 'flex',
         justifyContent: 'space-between',
     },
+    delBtn: {
+        backgroundColor: '#b60000',
+        color: '#ffffff',
+
+        '&:hover': {
+            backgroundColor: '#b60000',
+        },
+    },
+    completeBtn: {
+        backgroundColor: 'green',
+        color: '#ffffff',
+
+        '&:hover': {
+            backgroundColor: 'green',
+        },
+    },
 }));

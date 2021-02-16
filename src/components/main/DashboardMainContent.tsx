@@ -8,7 +8,7 @@ import { Container } from '@material-ui/core';
 import { useSelector } from 'react-redux';
 import { getLogState } from '../../redux/slices/log/logSlice';
 
-const Main = (): JSX.Element => {
+const DashboardMainContent = (): JSX.Element => {
     const { container } = useMainStyles();
     const { showLog } = useSelector(getLogState);
 
@@ -21,4 +21,4 @@ const Main = (): JSX.Element => {
     );
 };
 
-export default Main;
+export default DashboardMainContent;

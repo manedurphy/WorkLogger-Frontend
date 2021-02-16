@@ -28,6 +28,7 @@ const taskSlice = createSlice({
                 incompletedTasks: action.payload,
                 loading: false,
                 showCreateTaskForm: false,
+                showCompleted: false,
             };
         },
         setCompleteTasks: (state: ITaskState, action: SetTasksAction) => {
@@ -36,6 +37,7 @@ const taskSlice = createSlice({
                 completeTasks: action.payload,
                 loading: false,
                 showCreateTaskForm: false,
+                showCompleted: true,
             };
         },
         setLoadingTasks: (state: ITaskState, action: SetLoadingTasksAction) => {

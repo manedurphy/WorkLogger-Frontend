@@ -1,14 +1,20 @@
 import React from 'react';
+import useButtonStyles from '../styles';
 import { Button } from '@material-ui/core';
-import { useDispatch, useSelector } from 'react-redux';
 import { getModalState } from '../../../redux/slices/modals/modalsSlice';
 import { ConfirmButtonProps } from '../types';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Confirm: React.FC<ConfirmButtonProps> = ({ action }): JSX.Element => {
     const dispatch = useDispatch();
     const { id, command } = useSelector(getModalState);
+    const { completeBtn, delBtn } = useButtonStyles();
     return (
-        <Button variant={'contained'} color={'primary'} onClick={() => dispatch(action(id))}>
+        <Button
+            variant={'contained'}
+            className={command === 'delete' ? delBtn : completeBtn}
+            onClick={() => dispatch(action(id))}
+        >
             Yes, {command}
         </Button>
     );

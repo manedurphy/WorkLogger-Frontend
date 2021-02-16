@@ -1,14 +1,17 @@
 import React from 'react';
 import useAppBarStyles from '../appbarStyles';
 import { Typography, useMediaQuery } from '@material-ui/core';
+import { useSelector } from 'react-redux';
+import { getTasksState } from '../../../redux/slices/tasks/tasksSlice';
 
 const AppBarTitle = () => {
     const lg = useMediaQuery('(min-width: 768px');
     const { title } = useAppBarStyles();
+    const { showCompleted } = useSelector(getTasksState);
 
     return lg ? (
         <Typography component="h1" variant="h6" color="inherit" noWrap className={title}>
-            Dashboard
+            {showCompleted ? 'Archive' : 'Dashboard'}
         </Typography>
     ) : null;
 };
