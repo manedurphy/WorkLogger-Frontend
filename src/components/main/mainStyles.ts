@@ -20,4 +20,8 @@ export default makeStyles((theme) => ({
         zIndex: theme.zIndex.drawer + 10,
         position: 'relative',
     },
+    header: {
+        display: 'flex',
+        justifyContent: 'space-between',
+    },
 }));
