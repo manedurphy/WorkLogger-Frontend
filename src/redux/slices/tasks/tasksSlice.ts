@@ -51,18 +51,21 @@ const taskSlice = createSlice({
                 ...state,
                 currentTask: action.payload,
                 edit: true,
+                showCreateTaskForm: false,
             };
         },
         setEditTask: (state: ITaskState, action: SetEditTaskAction) => {
             return {
                 ...state,
                 edit: action.payload,
+                showCreateTaskForm: false,
             };
         },
         setShowCreateNewTaskForm: (state: ITaskState, action: SetShowCreateTaskForm) => {
             return {
                 ...state,
                 showCreateTaskForm: action.payload,
+                edit: false,
             };
         },
     },
@@ -108,7 +111,6 @@ export const handleSubmitNewTask = (formData: TaskFormData): ThunkActionType => 
         dispatch(setIncompleteTasks(tasks));
         dispatch(addAlert(success));
     } catch (error) {
-        console.log(error.response);
         dispatch(addAlert({ message: error.response.data, type: AlertConstants.Error }));
     }
 };

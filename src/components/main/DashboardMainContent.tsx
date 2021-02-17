@@ -8,16 +8,18 @@ import EditTaskForm from '../forms/task/EditTaskForm';
 import { Container } from '@material-ui/core';
 import { useSelector } from 'react-redux';
 import { getLogState } from '../../redux/slices/log/logSlice';
+import { getTasksState } from '../../redux/slices/tasks/tasksSlice';
 
 const DashboardMainContent = (): JSX.Element => {
     const { container } = useMainStyles();
     const { showLog } = useSelector(getLogState);
+    const { edit, showCreateTaskForm } = useSelector(getTasksState);
 
     return (
         <Container maxWidth={'lg'} className={container}>
             {!showLog ? <IncompleteTasks /> : <Log />}
-            <NewTaskForm />
-            <EditTaskForm />
+            {!edit && <NewTaskForm />}
+            {!showCreateTaskForm && <EditTaskForm />}
             <EditLogForm />
         </Container>
     );
