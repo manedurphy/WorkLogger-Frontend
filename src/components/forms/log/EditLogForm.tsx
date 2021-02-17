@@ -5,12 +5,12 @@ import FormHeader from '../common/FormHeader';
 import UpdateDelete from '../buttons/UpdateDelete';
 import LogInputFields from './LogInputFields';
 import { getEditLogForm } from '../helpers';
-import { getLogState, setShowLogForm } from '../../../redux/slices/log/logSlice';
+import { getLogState, handleUpdateLogItem, setShowLogForm } from '../../../redux/slices/log/logSlice';
 import { useSelector } from 'react-redux';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 const EditLogForm = (): JSX.Element => {
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
     const { showLogForm, currentLogItem } = useSelector(getLogState);
     const [formData, setFormData] = useState(getEditLogForm(currentLogItem));
 
@@ -22,8 +22,13 @@ const EditLogForm = (): JSX.Element => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
+    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        dispatch(handleUpdateLogItem(currentLogItem.id, currentLogItem.TaskId, formData));
+    };
+
     return (
-        <FormContainer handleSubmit={(e: FormEvent<HTMLFormElement>) => e.preventDefault()} show={showLogForm}>
+        <FormContainer handleSubmit={handleSubmit} show={showLogForm}>
             <FormHeader header={'Edit Log'} action={setShowLogForm} />
             <CommonInputFields formData={formData} handleChange={handleChange}>
                 <LogInputFields handleChange={handleChange} loggedAt={formData.loggedAt} />
