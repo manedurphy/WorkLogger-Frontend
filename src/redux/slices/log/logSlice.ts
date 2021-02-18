@@ -4,11 +4,12 @@ import { IGlobalState } from '../../types';
 import { AlertConstants } from '../alerts/AlertConstants';
 import { addAlert } from '../alerts/alertsSlice';
 import { IAlert } from '../alerts/types';
-import { hideTaskForms } from '../tasks/tasksSlice';
+import { setShowModal } from '../modals/modalsSlice';
+import { filterTaskLogs, hideTaskForms } from '../tasks/tasksSlice';
 import { ThunkActionType, ThunkDispatchType } from '../users/types';
 import { deleteLogItem, getLog, updateLog } from './helpers';
 import { initialLogState } from './initialState';
-import { ILog, ILogState, SetLogAction, SetLogItemAction, SetShowLog, SetShowLogForm } from './types';
+import { FilterLogAction, ILog, ILogState, SetLogAction, SetLogItemAction, SetShowLog, SetShowLogForm } from './types';
 
 const logSlice = createSlice({
     name: 'log',
@@ -41,10 +42,11 @@ const logSlice = createSlice({
                 showLogForm: action.payload,
             };
         },
-        filterLog: (state: ILogState, action: any) => {
+        filterLog: (state: ILogState, action: FilterLogAction) => {
             return {
                 ...state,
-                log: state.log.filter((logItem) => logItem != action.payload),
+                log: state.log.filter((logItem) => logItem.id !== action.payload),
+                showLogForm: false,
             };
         },
     },
@@ -73,6 +75,8 @@ export const handleDeleteLogItem = (id: number): ThunkActionType => async (dispa
 
         dispatch(addAlert(success));
         dispatch(filterLog(id));
+        dispatch(setShowModal(false));
+        dispatch(filterTaskLogs(id));
     } catch (error) {
         dispatch(addAlert({ message: error.message, type: AlertConstants.Error }));
     }

@@ -8,6 +8,8 @@ import { TaskFormData } from '../../../components/forms/types';
 import { ThunkActionType, ThunkDispatchType } from '../users/types';
 import { completeTask, createTask, deleteTask, getCompleteTasks, getIncompleteTasks, updateTask } from './helpers';
 import { initialTaskState } from './initialState';
+import { setShowLogForm } from '../log/logSlice';
+import { FilterLogAction } from '../log/types';
 import {
     ITask,
     ITaskState,
@@ -17,7 +19,6 @@ import {
     SetShowCreateTaskForm,
     SetTasksAction,
 } from './types';
-import { setShowLogForm } from '../log/logSlice';
 
 const taskSlice = createSlice({
     name: 'tasks',
@@ -76,6 +77,20 @@ const taskSlice = createSlice({
                 showCreateTaskForm: false,
             };
         },
+        filterTaskLogs: (state: ITaskState, action: FilterLogAction) => {
+            for (let i = 0; i < state.incompletedTasks.length; i++) {
+                state.incompletedTasks[i].Logs = state.incompletedTasks[i].Logs.filter(
+                    (logItem) => logItem.id !== action.payload,
+                );
+            }
+
+            for (let i = 0; i < state.completeTasks.length; i++) {
+                state.completeTasks[i].Logs = state.completeTasks[i].Logs.filter(
+                    (logItem) => logItem.id !== action.payload,
+                );
+            }
+            return state;
+        },
     },
 });
 
@@ -87,6 +102,7 @@ export const {
     setEditTask,
     setShowCreateNewTaskForm,
     hideTaskForms,
+    filterTaskLogs,
 } = taskSlice.actions;
 
 export const getTasksState = (state: IGlobalState): ITaskState => state.tasks;
