@@ -12,7 +12,7 @@ const Confirm: React.FC<ConfirmButtonProps> = ({ action }): JSX.Element => {
     return (
         <Button
             variant={'contained'}
-            className={command === 'delete' ? delBtn : completeBtn}
+            className={command === 'complete' ? completeBtn : delBtn}
             onClick={() => dispatch(action(id))}
         >
             Yes, {command}

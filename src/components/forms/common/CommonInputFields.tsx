@@ -1,8 +1,12 @@
 import React from 'react';
 import { Grid, TextField } from '@material-ui/core';
 import { TaskInputFieldsProps } from '../types';
+import { useSelector } from 'react-redux';
+import { IGlobalState } from '../../../redux/types';
 
 const TaskInputFields: React.FC<TaskInputFieldsProps> = ({ formData, children, handleChange }): JSX.Element => {
+    const state = useSelector((state: IGlobalState) => state);
+    const { tasks, log } = state;
     return (
         <Grid container spacing={2}>
             <Grid item xs={12} md={6}>
@@ -24,7 +28,7 @@ const TaskInputFields: React.FC<TaskInputFieldsProps> = ({ formData, children, h
                     variant={'outlined'}
                     fullWidth
                     required
-                    disabled={formData.projectNumber ? true : false}
+                    disabled={tasks.edit || log.showLogForm}
                     type={'number'}
                     id={'projectNumber'}
                     label={'Project Number'}

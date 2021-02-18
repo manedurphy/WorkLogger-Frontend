@@ -59,14 +59,21 @@ const taskSlice = createSlice({
             return {
                 ...state,
                 edit: action.payload,
-                showCreateTaskForm: action.payload && false,
+                showCreateTaskForm: action.payload === true && false,
             };
         },
         setShowCreateNewTaskForm: (state: ITaskState, action: SetShowCreateTaskForm) => {
             return {
                 ...state,
                 showCreateTaskForm: action.payload,
-                edit: action.payload && false,
+                edit: action.payload === true && false,
+            };
+        },
+        hideTaskForms: (state: ITaskState) => {
+            return {
+                ...state,
+                edit: false,
+                showCreateTaskForm: false,
             };
         },
     },
@@ -79,6 +86,7 @@ export const {
     setCurrentTask,
     setEditTask,
     setShowCreateNewTaskForm,
+    hideTaskForms,
 } = taskSlice.actions;
 
 export const getTasksState = (state: IGlobalState): ITaskState => state.tasks;

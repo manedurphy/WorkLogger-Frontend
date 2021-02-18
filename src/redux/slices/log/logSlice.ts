@@ -4,9 +4,9 @@ import { IGlobalState } from '../../types';
 import { AlertConstants } from '../alerts/AlertConstants';
 import { addAlert } from '../alerts/alertsSlice';
 import { IAlert } from '../alerts/types';
-import { setShowCreateNewTaskForm } from '../tasks/tasksSlice';
+import { hideTaskForms } from '../tasks/tasksSlice';
 import { ThunkActionType, ThunkDispatchType } from '../users/types';
-import { getLog, updateLog } from './helpers';
+import { deleteLogItem, getLog, updateLog } from './helpers';
 import { initialLogState } from './initialState';
 import { ILog, ILogState, SetLogAction, SetLogItemAction, SetShowLog, SetShowLogForm } from './types';
 
@@ -41,10 +41,16 @@ const logSlice = createSlice({
                 showLogForm: action.payload,
             };
         },
+        filterLog: (state: ILogState, action: any) => {
+            return {
+                ...state,
+                log: state.log.filter((logItem) => logItem != action.payload),
+            };
+        },
     },
 });
 
-export const { setLog, setLogItem, setShowLog, setShowLogForm } = logSlice.actions;
+export const { setLog, setLogItem, setShowLog, setShowLogForm, filterLog } = logSlice.actions;
 export const getLogState = (state: IGlobalState) => state.log;
 
 export const handleUpdateLogItem = (id: number, taskId: number, formData: LogFormData): ThunkActionType => async (
@@ -61,9 +67,20 @@ export const handleUpdateLogItem = (id: number, taskId: number, formData: LogFor
     }
 };
 
+export const handleDeleteLogItem = (id: number): ThunkActionType => async (dispatch: ThunkDispatchType) => {
+    try {
+        const success: IAlert = await deleteLogItem(id);
+
+        dispatch(addAlert(success));
+        dispatch(filterLog(id));
+    } catch (error) {
+        dispatch(addAlert({ message: error.message, type: AlertConstants.Error }));
+    }
+};
+
 export const handleClickEdit = (logItem: ILog): ThunkActionType => (dispatch: ThunkDispatchType) => {
     dispatch(setLogItem(logItem));
-    dispatch(setShowCreateNewTaskForm(false));
+    dispatch(hideTaskForms());
 };
 
 export default logSlice.reducer;

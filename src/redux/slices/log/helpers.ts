@@ -16,6 +16,17 @@ export async function updateLog(id: number, formData: LogFormData) {
     return { ...res.data, type: AlertConstants.Success };
 }
 
+export async function deleteLogItem(id: number) {
+    const { token } = getTokens();
+    const res: AxiosResponse<IAlert> = await axios.delete(`http://localhost:5000/api/logs/log-item/${id}`, {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    });
+
+    return { ...res.data, type: AlertConstants.Warning };
+}
+
 export async function getLog(taskId: number) {
     const { token } = getTokens();
     const res: AxiosResponse<ILog[]> = await axios.get(`http://localhost:5000/api/logs/${taskId}`, {
