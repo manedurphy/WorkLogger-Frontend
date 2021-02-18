@@ -4,6 +4,7 @@ import { IGlobalState } from '../../types';
 import { AlertConstants } from '../alerts/AlertConstants';
 import { addAlert } from '../alerts/alertsSlice';
 import { IAlert } from '../alerts/types';
+import { setShowCreateNewTaskForm } from '../tasks/tasksSlice';
 import { ThunkActionType, ThunkDispatchType } from '../users/types';
 import { getLog, updateLog } from './helpers';
 import { initialLogState } from './initialState';
@@ -58,6 +59,11 @@ export const handleUpdateLogItem = (id: number, taskId: number, formData: LogFor
     } catch (error) {
         dispatch(addAlert({ message: error.message, type: AlertConstants.Error }));
     }
+};
+
+export const handleClickEdit = (logItem: ILog): ThunkActionType => (dispatch: ThunkDispatchType) => {
+    dispatch(setLogItem(logItem));
+    dispatch(setShowCreateNewTaskForm(false));
 };
 
 export default logSlice.reducer;

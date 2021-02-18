@@ -5,7 +5,7 @@ import TasksTable from '../common/TasksTable';
 import { Box } from '@material-ui/core';
 import { AddCircle } from '@material-ui/icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { getTasksState, setShowCreateNewTaskForm } from '../../../../redux/slices/tasks/tasksSlice';
+import { getTasksState, handleClickAdd } from '../../../../redux/slices/tasks/tasksSlice';
 
 const IncompleteTasksTable = (): JSX.Element => {
     const dispatch = useDispatch();
@@ -16,7 +16,7 @@ const IncompleteTasksTable = (): JSX.Element => {
         <Fragment>
             <TasksTable tasks={incompletedTasks} Actions={IncompleteTaskActions} />
             <Box display={'flex'} justifyContent={'flex-end'}>
-                <AddCircle className={add} onClick={() => dispatch(setShowCreateNewTaskForm(true))} />
+                <AddCircle className={add} onClick={() => dispatch(handleClickAdd())} />
             </Box>
         </Fragment>
     );

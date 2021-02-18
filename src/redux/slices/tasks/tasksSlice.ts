@@ -17,6 +17,7 @@ import {
     SetShowCreateTaskForm,
     SetTasksAction,
 } from './types';
+import { setShowLogForm } from '../log/logSlice';
 
 const taskSlice = createSlice({
     name: 'tasks',
@@ -58,14 +59,14 @@ const taskSlice = createSlice({
             return {
                 ...state,
                 edit: action.payload,
-                showCreateTaskForm: false,
+                showCreateTaskForm: action.payload && false,
             };
         },
         setShowCreateNewTaskForm: (state: ITaskState, action: SetShowCreateTaskForm) => {
             return {
                 ...state,
                 showCreateTaskForm: action.payload,
-                edit: false,
+                edit: action.payload && false,
             };
         },
     },
@@ -154,6 +155,16 @@ export const handleUpdateTask = (id: number, formData: TaskFormData): ThunkActio
     } catch (error) {
         dispatch(addAlert({ message: error.message, type: AlertConstants.Error }));
     }
+};
+
+export const handleClickEdit = (task: ITask): ThunkActionType => (dispatch: ThunkDispatchType) => {
+    dispatch(setCurrentTask(task));
+    dispatch(setShowLogForm(false));
+};
+
+export const handleClickAdd = (): ThunkActionType => (dispatch: ThunkDispatchType) => {
+    dispatch(setShowCreateNewTaskForm(true));
+    dispatch(setShowLogForm(false));
 };
 
 export default taskSlice.reducer;

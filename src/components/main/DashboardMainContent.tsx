@@ -12,15 +12,15 @@ import { getTasksState } from '../../redux/slices/tasks/tasksSlice';
 
 const DashboardMainContent = (): JSX.Element => {
     const { container } = useMainStyles();
-    const { showLog } = useSelector(getLogState);
+    const { showLog, showLogForm } = useSelector(getLogState);
     const { edit, showCreateTaskForm } = useSelector(getTasksState);
 
     return (
         <Container maxWidth={'lg'} className={container}>
             {!showLog ? <IncompleteTasks /> : <Log />}
-            {!edit && <NewTaskForm />}
-            {!showCreateTaskForm && <EditTaskForm />}
-            <EditLogForm />
+            {!edit && !showLogForm && <NewTaskForm />}
+            {!showCreateTaskForm && !showLogForm && <EditTaskForm />}
+            {!edit && !showCreateTaskForm && <EditLogForm />}
         </Container>
     );
 };
