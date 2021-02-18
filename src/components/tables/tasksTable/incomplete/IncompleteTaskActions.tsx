@@ -13,7 +13,7 @@ const IncompleteTaskActions: React.FC<TaskActionsProps> = ({ task }): JSX.Elemen
     return (
         <Box className={flexSpace}>
             <EditButton task={task} />
-            <DeleteButton taskId={task.id} />
+            <DeleteButton taskId={task.id} command={'delete'} />
             <CompleteButton taskId={task.id} />
             <LogButton log={task.Logs} />
         </Box>

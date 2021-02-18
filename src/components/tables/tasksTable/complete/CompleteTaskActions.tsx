@@ -10,7 +10,7 @@ const CompleteTaskActions: React.FC<TaskActionsProps> = ({ task }): JSX.Element 
     const { flexSpace } = useTasksTableStyles();
     return (
         <Box className={flexSpace}>
-            <DeleteButton taskId={task.id} />
+            <DeleteButton taskId={task.id} command={'deleteComplete'} />
             <LogButton log={task.Logs} />
         </Box>
     );

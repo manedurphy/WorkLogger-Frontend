@@ -95,10 +95,15 @@ const taskSlice = createSlice({
         updateTaskLogs: (state: ITaskState, action: UpdateTaskLogAction) => {
             let task = state.incompletedTasks.find((task) => task.id === action.payload.taskId);
 
-            if (task != null) task.Logs = action.payload.log;
-            else {
+            if (task != null) {
+                task.Logs = action.payload.log;
+                if (task.Logs[0].hoursWorked !== task.hoursWorked) task.hoursWorked = task.Logs[0].hoursWorked;
+            } else {
                 task = state.completeTasks.find((task) => task.id === action.payload.taskId);
-                if (task != null) task.Logs = action.payload.log;
+                if (task != null) {
+                    task.Logs = action.payload.log;
+                    if (task.Logs[0].hoursWorked !== task.hoursWorked) task.hoursWorked = task.Logs[0].hoursWorked;
+                }
             }
 
             return state;
@@ -172,6 +177,19 @@ export const handleDeleteTask = (id: number): ThunkActionType => async (dispatch
         const tasks: ITask[] = await getIncompleteTasks();
 
         dispatch(setIncompleteTasks(tasks));
+        dispatch(addAlert(success));
+        dispatch(setShowModal(false));
+    } catch (error) {
+        dispatch(addAlert({ ...error.response.data, type: AlertConstants.Error }));
+    }
+};
+
+export const handleDeleteCompleteTask = (id: number): ThunkActionType => async (dispatch: ThunkDispatchType) => {
+    try {
+        const success: IAlert = await deleteTask(id);
+        const tasks: ITask[] = await getCompleteTasks();
+
+        dispatch(setCompleteTasks(tasks));
         dispatch(addAlert(success));
         dispatch(setShowModal(false));
     } catch (error) {

@@ -7,6 +7,10 @@ export interface IButtonProps {
     taskId: number;
 }
 
+export interface TaskDeleteButtonProps extends IButtonProps {
+    command: Command;
+}
+
 export interface LogDeleteButtonProps {
     logId: number;
 }
