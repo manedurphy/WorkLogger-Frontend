@@ -24,7 +24,7 @@ const Dropdown: React.FC<DropdownProps> = ({ logItem, open }): JSX.Element => (
                                 <TableCell>{logItem.hoursRequiredByBim}</TableCell>
                                 <TableCell>{logItem.reviewHours}</TableCell>
                                 <TableCell>{logItem.hoursRemaining}</TableCell>
-                                <TableCell>In progress</TableCell>
+                                <TableCell>{logItem.complete ? 'Complete' : 'In progress'}</TableCell>
                                 <TableCell>{logItem.notes}</TableCell>
                             </TableRow>
                         </TableBody>

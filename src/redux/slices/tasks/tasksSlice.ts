@@ -8,7 +8,7 @@ import { TaskFormData } from '../../../components/forms/types';
 import { ThunkActionType, ThunkDispatchType } from '../users/types';
 import { completeTask, createTask, deleteTask, getCompleteTasks, getIncompleteTasks, updateTask } from './helpers';
 import { initialTaskState } from './initialState';
-import { setShowLogForm } from '../log/logSlice';
+import { setShowLog, setShowLogForm } from '../log/logSlice';
 import { FilterLogAction } from '../log/types';
 import {
     ITask,
@@ -131,6 +131,7 @@ export const handleGetIncompleteTasks = (): ThunkActionType => async (dispatch: 
         dispatch(setLoadingTasks(true));
         const tasks: ITask[] = await getIncompleteTasks();
         dispatch(setIncompleteTasks(tasks));
+        dispatch(setShowLog(false));
     } catch (error) {
         dispatch(addAlert({ ...error.response.data, type: AlertConstants.Error }));
     }
@@ -141,6 +142,7 @@ export const handleGetCompleteTasks = (): ThunkActionType => async (dispatch: Th
         dispatch(setLoadingTasks(true));
         const tasks: ITask[] = await getCompleteTasks();
         dispatch(setCompleteTasks(tasks));
+        dispatch(setShowLog(false));
     } catch (error) {
         dispatch(addAlert({ ...error.response.data, type: AlertConstants.Error }));
     }
