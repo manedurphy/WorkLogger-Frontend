@@ -10,7 +10,11 @@ const App = (): JSX.Element => {
     const { user, alerts } = useSelector((state: IGlobalState) => state);
 
     useEffect(() => {
-        dispatch(verifyUser());
+        const getStatus = () => dispatch(verifyUser());
+        getStatus();
+
+        const statusInterval = setInterval(() => getStatus(), 600000);
+        return () => clearInterval(statusInterval);
     }, []);
 
     return user.loading ? <Spinner /> : <LoadedApp alerts={alerts} />;

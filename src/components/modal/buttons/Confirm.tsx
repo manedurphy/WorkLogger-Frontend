@@ -15,7 +15,7 @@ const Confirm: React.FC<ConfirmButtonProps> = ({ action }): JSX.Element => {
             className={command === 'complete' ? completeBtn : delBtn}
             onClick={() => dispatch(action(id))}
         >
-            Yes, {command}
+            Yes, {command === 'complete' ? 'complete' : 'delete'}
         </Button>
     );
 };

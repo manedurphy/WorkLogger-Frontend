@@ -20,9 +20,6 @@ const modalsSlice = createSlice({
                 show: true,
             };
         },
-        magic(state) {
-            state.command;
-        },
     },
 });
 

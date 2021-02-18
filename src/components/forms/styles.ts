@@ -20,9 +20,6 @@ export default makeStyles((theme: Theme) => {
             display: 'flex',
             justifyContent: 'center',
         },
-        close: {
-            cursor: 'pointer',
-        },
         update: {
             marginRight: '5px',
         },

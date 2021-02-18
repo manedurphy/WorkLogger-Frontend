@@ -1,7 +1,8 @@
 import React, { FormEvent, ChangeEvent, useState, useEffect } from 'react';
 import FormContainer from '../common/FormContainer';
 import UpdateDelete from '../buttons/UpdateDelete';
-import TaskInputFields from '../common/CommonInputFields';
+import CommonInputFields from '../common/CommonInputFields';
+import TaskInputFields from './TaskInputFields';
 import FormHeader from '../common/FormHeader';
 import { getEditForm } from '../helpers';
 import { useDispatch, useSelector } from 'react-redux';
@@ -28,7 +29,13 @@ const EditTaskForm = (): JSX.Element => {
     return (
         <FormContainer handleSubmit={handleSubmit} show={edit}>
             <FormHeader header={'Edit Task'} action={setEditTask} />
-            <TaskInputFields formData={formData} handleChange={handleChange} />
+            <CommonInputFields formData={formData} handleChange={handleChange}>
+                <TaskInputFields
+                    handleChange={handleChange}
+                    dateAssigned={formData.dateAssigned}
+                    dueDate={formData.dueDate}
+                />
+            </CommonInputFields>
             <UpdateDelete />
         </FormContainer>
     );

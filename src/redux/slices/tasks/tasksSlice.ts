@@ -18,6 +18,7 @@ import {
     SetLoadingTasksAction,
     SetShowCreateTaskForm,
     SetTasksAction,
+    UpdateTaskLogAction,
 } from './types';
 
 const taskSlice = createSlice({
@@ -91,6 +92,17 @@ const taskSlice = createSlice({
             }
             return state;
         },
+        updateTaskLogs: (state: ITaskState, action: UpdateTaskLogAction) => {
+            let task = state.incompletedTasks.find((task) => task.id === action.payload.taskId);
+
+            if (task != null) task.Logs = action.payload.log;
+            else {
+                task = state.completeTasks.find((task) => task.id === action.payload.taskId);
+                if (task != null) task.Logs = action.payload.log;
+            }
+
+            return state;
+        },
     },
 });
 
@@ -103,6 +115,7 @@ export const {
     setShowCreateNewTaskForm,
     hideTaskForms,
     filterTaskLogs,
+    updateTaskLogs,
 } = taskSlice.actions;
 
 export const getTasksState = (state: IGlobalState): ITaskState => state.tasks;

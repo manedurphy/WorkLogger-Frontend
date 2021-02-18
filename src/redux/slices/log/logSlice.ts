@@ -5,7 +5,7 @@ import { AlertConstants } from '../alerts/AlertConstants';
 import { addAlert } from '../alerts/alertsSlice';
 import { IAlert } from '../alerts/types';
 import { setShowModal } from '../modals/modalsSlice';
-import { filterTaskLogs, hideTaskForms } from '../tasks/tasksSlice';
+import { filterTaskLogs, hideTaskForms, updateTaskLogs } from '../tasks/tasksSlice';
 import { ThunkActionType, ThunkDispatchType } from '../users/types';
 import { deleteLogItem, getLog, updateLog } from './helpers';
 import { initialLogState } from './initialState';
@@ -64,6 +64,7 @@ export const handleUpdateLogItem = (id: number, taskId: number, formData: LogFor
 
         dispatch(addAlert(success));
         dispatch(setLog(log));
+        dispatch(updateTaskLogs({ log, taskId }));
     } catch (error) {
         dispatch(addAlert({ message: error.message, type: AlertConstants.Error }));
     }

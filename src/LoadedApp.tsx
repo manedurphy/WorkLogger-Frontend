@@ -15,12 +15,12 @@ interface ILoadedAppProps {
 const LoadedApp: React.FC<ILoadedAppProps> = (props): JSX.Element => (
     <Fragment>
         <Switch>
+            <Route exact path={'/register'} component={Register} />
+            <Route exact path={'/login'} component={Login} />
             <Layout>
                 <Route exact path={'/'} component={Dashboard} />
                 <Route exact path={'/archive'} component={Archive} />
             </Layout>
-            <Route exact path={'/register'} component={Register} />
-            <Route exact path={'/login'} component={Login} />
         </Switch>
         {props.alerts.map((alert: IAlert, i: number) => (
             <SnackBarComponent

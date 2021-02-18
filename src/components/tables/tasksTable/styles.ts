@@ -16,4 +16,8 @@ export default makeStyles({
             color: '#293785',
         },
     },
+    flexSpace: {
+        display: 'flex',
+        justifyContent: 'space-evenly',
+    },
 });
