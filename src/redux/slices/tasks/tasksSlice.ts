@@ -6,10 +6,18 @@ import { IAlert } from '../alerts/types';
 import { setShowModal } from '../modals/modalsSlice';
 import { TaskFormData } from '../../../components/forms/types';
 import { ThunkActionType, ThunkDispatchType } from '../users/types';
-import { completeTask, createTask, deleteTask, getCompleteTasks, getIncompleteTasks, updateTask } from './helpers';
 import { initialTaskState } from './initialState';
 import { setShowLog, setShowLogForm } from '../log/logSlice';
 import { FilterLogAction } from '../log/types';
+import {
+    addHours,
+    completeTask,
+    createTask,
+    deleteTask,
+    getCompleteTasks,
+    getIncompleteTasks,
+    updateTask,
+} from './helpers';
 import {
     ITask,
     ITaskState,
@@ -209,6 +217,21 @@ export const handleUpdateTask = (id: number, formData: TaskFormData): ThunkActio
         dispatch(setIncompleteTasks(tasks));
         dispatch(addAlert(success));
         dispatch(setEditTask(false));
+    } catch (error) {
+        dispatch(addAlert({ message: error.message, type: AlertConstants.Error }));
+    }
+};
+
+export const handleAddHours = (id: number, formData: { [key: string]: number }): ThunkActionType => async (
+    dispatch: ThunkDispatchType,
+) => {
+    try {
+        const success: IAlert = await addHours(id, formData);
+        const tasks: ITask[] = await getIncompleteTasks();
+
+        dispatch(setIncompleteTasks(tasks));
+        dispatch(addAlert(success));
+        dispatch(setShowModal(false));
     } catch (error) {
         dispatch(addAlert({ message: error.message, type: AlertConstants.Error }));
     }

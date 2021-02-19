@@ -37,4 +37,17 @@ export default makeStyles((theme: Theme) => ({
             backgroundColor: 'green',
         },
     },
+    addHoursBtnContainer: {
+        display: 'flex',
+        justifyContent: 'space-evenly',
+        marginTop: '5px',
+    },
+    addHoursBtn: {
+        backgroundColor: '#6E1010',
+        color: '#ffffff',
+
+        '&:hover': {
+            backgroundColor: '#6E1010',
+        },
+    },
 }));

@@ -26,4 +26,8 @@ export default makeStyles({
     dlt: {
         backgroundColor: '#b60000',
     },
+    addbtn: {
+        backgroundColor: '#6E1010',
+        paddingLeft: '5px',
+    },
 });

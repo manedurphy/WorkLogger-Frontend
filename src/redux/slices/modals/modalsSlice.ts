@@ -11,6 +11,10 @@ const modalsSlice = createSlice({
             return {
                 ...state,
                 show: action.payload,
+                addHours: {
+                    ...state.addHours,
+                    show: action.payload === false && false,
+                },
             };
         },
         setModal: (state: IModalState, action: SetModalAction) => {
@@ -20,10 +24,19 @@ const modalsSlice = createSlice({
                 show: true,
             };
         },
+        setAddHoursModal: (state: IModalState, action: any) => {
+            return {
+                ...state,
+                addHours: {
+                    id: action.payload,
+                    show: true,
+                },
+            };
+        },
     },
 });
 
-export const { setShowModal, setModal } = modalsSlice.actions;
+export const { setShowModal, setModal, setAddHoursModal } = modalsSlice.actions;
 export const getModalState = (state: IGlobalState): IModalState => state.modal;
 
 export default modalsSlice.reducer;

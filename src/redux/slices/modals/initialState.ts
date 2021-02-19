@@ -3,4 +3,8 @@ export const initialModalState = {
     show: false,
     header: '',
     command: '',
+    addHours: {
+        id: 0,
+        show: false,
+    },
 };

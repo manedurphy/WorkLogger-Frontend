@@ -19,6 +19,7 @@ export default makeStyles((theme: Theme) => {
         submit: {
             display: 'flex',
             justifyContent: 'center',
+            marginTop: '5px',
         },
         update: {
             marginRight: '5px',

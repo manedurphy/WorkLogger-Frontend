@@ -5,6 +5,7 @@ import NewTaskForm from '../forms/task/NewTaskForm';
 import useMainStyles from './mainStyles';
 import EditLogForm from '../forms/log/EditLogForm';
 import EditTaskForm from '../forms/task/EditTaskForm';
+import AddHoursModal from '../modal/AddHoursModal';
 import { Container } from '@material-ui/core';
 import { useSelector } from 'react-redux';
 import { getLogState } from '../../redux/slices/log/logSlice';
@@ -21,6 +22,7 @@ const DashboardMainContent = (): JSX.Element => {
             {!edit && !showLogForm && <NewTaskForm />}
             {!showCreateTaskForm && !showLogForm && <EditTaskForm />}
             {!edit && !showCreateTaskForm && <EditLogForm />}
+            <AddHoursModal />
         </Container>
     );
 };

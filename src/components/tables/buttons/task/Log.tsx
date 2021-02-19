@@ -6,7 +6,7 @@ import { LogButtonProps } from '../types';
 import { useDispatch } from 'react-redux';
 import { setLog } from '../../../../redux/slices/log/logSlice';
 
-const Log: React.FC<LogButtonProps> = ({ log }) => {
+const Log: React.FC<LogButtonProps> = ({ log }): JSX.Element => {
     const dispatch = useDispatch();
     const { logBtn, button } = useButtonStyles();
     return (

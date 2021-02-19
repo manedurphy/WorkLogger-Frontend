@@ -3,9 +3,13 @@ export interface IModalState {
     show: boolean;
     header: string;
     command: Command;
+    addHours: {
+        id: number;
+        show: boolean;
+    };
 }
 
 export type SetShowModalAction = { payload: boolean };
 export type SetModalAction = { payload: { id: number; header: string; command: Command } };
 
-export type Command = 'complete' | 'delete' | 'deleteLogItem' | 'deleteComplete';
+export type Command = 'complete' | 'delete' | 'deleteLogItem' | 'deleteComplete' | 'addHours';
