@@ -71,7 +71,7 @@ export async function getCompleteTasks(): Promise<ITask[]> {
     return res.data;
 }
 
-export async function addHours(taskId: number, hours: { [key: string]: number }): Promise<IAlert> {
+export async function addHours(taskId: number, hours: { [key: string]: string }): Promise<IAlert> {
     const { token } = getTokens();
     const res: AxiosResponse<IAlert> = await axios.patch(`http://localhost:5000/api/tasks/add-hours/${taskId}`, hours, {
         headers: {

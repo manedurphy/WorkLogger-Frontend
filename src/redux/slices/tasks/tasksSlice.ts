@@ -222,7 +222,7 @@ export const handleUpdateTask = (id: number, formData: TaskFormData): ThunkActio
     }
 };
 
-export const handleAddHours = (id: number, formData: { [key: string]: number }): ThunkActionType => async (
+export const handleAddHours = (id: number, formData: { [key: string]: string }): ThunkActionType => async (
     dispatch: ThunkDispatchType,
 ) => {
     try {

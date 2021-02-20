@@ -21,6 +21,7 @@ const Row: React.FC<LogItemProps> = ({ logItem }): JSX.Element => {
                 <TableCell>{logItem.projectNumber}</TableCell>
                 <TableCell>{logItem.hoursAvailableToWork}</TableCell>
                 <TableCell>{logItem.hoursWorked}</TableCell>
+                <TableCell>{logItem.productiveHours}</TableCell>
                 <TableCell>{logItem.numberOfReviews}</TableCell>
             </TableRow>
             <Dropdown logItem={logItem} open={open} />

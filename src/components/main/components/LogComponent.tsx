@@ -11,7 +11,7 @@ const LogComponent = (): JSX.Element => {
     const { log } = useSelector(getLogState);
     return (
         <Paper className={paper}>
-            <Title>Project {log[0].projectNumber} Log</Title>
+            <Title>{log[0] ? `Project ${log[0].projectNumber} Log` : 'No Log For This Task'}</Title>
             <LogTable />
         </Paper>
     );

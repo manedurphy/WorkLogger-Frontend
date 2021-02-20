@@ -5,9 +5,11 @@ import { AlertConstants } from '../alerts/AlertConstants';
 import { addAlert } from '../alerts/alertsSlice';
 import { IAlert } from '../alerts/types';
 import { setShowModal } from '../modals/modalsSlice';
-import { filterTaskLogs, hideTaskForms, updateTaskLogs } from '../tasks/tasksSlice';
+import { getIncompleteTasks } from '../tasks/helpers';
+import { hideTaskForms, setIncompleteTasks } from '../tasks/tasksSlice';
+import { ITask } from '../tasks/types';
 import { ThunkActionType, ThunkDispatchType } from '../users/types';
-import { deleteLogItem, getLog, updateLog } from './helpers';
+import { deleteLogItem, updateLog } from './helpers';
 import { initialLogState } from './initialState';
 import { FilterLogAction, ILog, ILogState, SetLogAction, SetLogItemAction, SetShowLog, SetShowLogForm } from './types';
 
@@ -60,26 +62,31 @@ export const handleUpdateLogItem = (id: number, taskId: number, formData: LogFor
 ) => {
     try {
         const success: IAlert = await updateLog(id, formData);
-        const log: ILog[] = await getLog(taskId);
+        const tasks: ITask[] = await getIncompleteTasks();
+        const task = tasks.find((task) => task.id === taskId);
 
         dispatch(addAlert(success));
-        dispatch(setLog(log));
-        dispatch(updateTaskLogs({ log, taskId }));
+        dispatch(setIncompleteTasks(tasks));
+        if (task) dispatch(setLog(task.Logs));
     } catch (error) {
         dispatch(addAlert({ message: error.message, type: AlertConstants.Error }));
     }
 };
 
-export const handleDeleteLogItem = (id: number): ThunkActionType => async (dispatch: ThunkDispatchType) => {
+export const handleDeleteLogItem = (id: number, taskId: number): ThunkActionType => async (
+    dispatch: ThunkDispatchType,
+) => {
     try {
         const success: IAlert = await deleteLogItem(id);
+        const tasks: ITask[] = await getIncompleteTasks();
+        const task = tasks.find((task) => task.id === taskId);
 
         dispatch(addAlert(success));
-        dispatch(filterLog(id));
+        dispatch(setIncompleteTasks(tasks));
+        if (task) dispatch(setLog(task.Logs));
         dispatch(setShowModal(false));
-        dispatch(filterTaskLogs(id));
     } catch (error) {
-        dispatch(addAlert({ message: error.message, type: AlertConstants.Error }));
+        dispatch(addAlert({ ...error.response.data, type: AlertConstants.Error }));
     }
 };
 

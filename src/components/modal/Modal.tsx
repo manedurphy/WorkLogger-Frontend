@@ -2,27 +2,23 @@
 import React from 'react';
 import CancelButton from './buttons/Cancel';
 import ConfirmButton from './buttons/Confirm';
+import ModalContainer from './common/ModalContainer';
 import useModalStyles from './styles';
 import { actions } from './actions';
 import { useSelector } from 'react-redux';
-import { Box, Fade, Modal } from '@material-ui/core';
+import { Box } from '@material-ui/core';
 import { getModalState } from '../../redux/slices/modals/modalsSlice';
 
 const ConfirmModal = (): JSX.Element => {
-    const { modal, paper, headerStyle, btnContainer } = useModalStyles();
-    const { show, header, command } = useSelector(getModalState);
+    const { btnContainer } = useModalStyles();
+    const { command, header, show } = useSelector(getModalState);
     return (
-        <Modal open={show} className={modal}>
-            <Fade in={show}>
-                <div className={paper}>
-                    <h2 className={headerStyle}>{header}</h2>
-                    <Box className={btnContainer}>
-                        <ConfirmButton action={actions[command]} />
-                        <CancelButton />
-                    </Box>
-                </div>
-            </Fade>
-        </Modal>
+        <ModalContainer header={header} show={show}>
+            <Box className={btnContainer}>
+                <ConfirmButton action={actions[command]} />
+                <CancelButton />
+            </Box>
+        </ModalContainer>
     );
 };
 

@@ -7,13 +7,13 @@ import { useDispatch, useSelector } from 'react-redux';
 
 const Confirm: React.FC<ConfirmButtonProps> = ({ action }): JSX.Element => {
     const dispatch = useDispatch();
-    const { id, command } = useSelector(getModalState);
+    const { id, command, taskId } = useSelector(getModalState);
     const { completeBtn, delBtn } = useButtonStyles();
     return (
         <Button
             variant={'contained'}
             className={command === 'complete' ? completeBtn : delBtn}
-            onClick={() => dispatch(action(id))}
+            onClick={() => dispatch(action(id, taskId))}
         >
             Yes, {command === 'complete' ? 'complete' : 'delete'}
         </Button>

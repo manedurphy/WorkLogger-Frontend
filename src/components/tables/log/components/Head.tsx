@@ -10,6 +10,7 @@ const Head = (): JSX.Element => (
             <TableCell>Project Number</TableCell>
             <TableCell>Hours Permitted</TableCell>
             <TableCell>Hours Worked</TableCell>
+            <TableCell>Productivity</TableCell>
             <TableCell>No. Reviews</TableCell>
         </TableRow>
     </TableHead>

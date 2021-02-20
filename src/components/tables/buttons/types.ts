@@ -13,6 +13,7 @@ export interface TaskDeleteButtonProps extends IButtonProps {
 
 export interface LogDeleteButtonProps {
     logId: number;
+    taskId: number;
 }
 
 export interface LogButtonProps {
