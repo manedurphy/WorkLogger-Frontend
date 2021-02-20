@@ -30,4 +30,3 @@ export type SetLogAction = { payload: ILog[] };
 export type SetLogItemAction = { payload: ILog };
 export type SetShowLog = { payload: boolean };
 export type SetShowLogForm = { payload: boolean };
-export type FilterLogAction = { payload: number };

@@ -11,7 +11,7 @@ import { ITask } from '../tasks/types';
 import { ThunkActionType, ThunkDispatchType } from '../users/types';
 import { deleteLogItem, updateLog } from './helpers';
 import { initialLogState } from './initialState';
-import { FilterLogAction, ILog, ILogState, SetLogAction, SetLogItemAction, SetShowLog, SetShowLogForm } from './types';
+import { ILog, ILogState, SetLogAction, SetLogItemAction, SetShowLog, SetShowLogForm } from './types';
 
 const logSlice = createSlice({
     name: 'log',
@@ -44,17 +44,10 @@ const logSlice = createSlice({
                 showLogForm: action.payload,
             };
         },
-        filterLog: (state: ILogState, action: FilterLogAction) => {
-            return {
-                ...state,
-                log: state.log.filter((logItem) => logItem.id !== action.payload),
-                showLogForm: false,
-            };
-        },
     },
 });
 
-export const { setLog, setLogItem, setShowLog, setShowLogForm, filterLog } = logSlice.actions;
+export const { setLog, setLogItem, setShowLog, setShowLogForm } = logSlice.actions;
 export const getLogState = (state: IGlobalState) => state.log;
 
 export const handleUpdateLogItem = (id: number, taskId: number, formData: LogFormData): ThunkActionType => async (

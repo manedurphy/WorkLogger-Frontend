@@ -36,4 +36,3 @@ export type SetEditTaskAction = { payload: boolean };
 export type SetShowModalAction = { payload: boolean };
 export type SetCurrentTaskAction = { payload: ITask };
 export type SetShowCreateTaskForm = { payload: boolean };
-export type UpdateTaskLogAction = { payload: { log: ILog[]; taskId: number } };

@@ -8,7 +8,6 @@ import { TaskFormData } from '../../../components/forms/types';
 import { ThunkActionType, ThunkDispatchType } from '../users/types';
 import { initialTaskState } from './initialState';
 import { setShowLog, setShowLogForm } from '../log/logSlice';
-import { FilterLogAction } from '../log/types';
 import {
     addHours,
     completeTask,
@@ -26,7 +25,6 @@ import {
     SetLoadingTasksAction,
     SetShowCreateTaskForm,
     SetTasksAction,
-    UpdateTaskLogAction,
 } from './types';
 
 const taskSlice = createSlice({
@@ -86,36 +84,6 @@ const taskSlice = createSlice({
                 showCreateTaskForm: false,
             };
         },
-        filterTaskLogs: (state: ITaskState, action: FilterLogAction) => {
-            for (let i = 0; i < state.incompletedTasks.length; i++) {
-                state.incompletedTasks[i].Logs = state.incompletedTasks[i].Logs.filter(
-                    (logItem) => logItem.id !== action.payload,
-                );
-            }
-
-            for (let i = 0; i < state.completeTasks.length; i++) {
-                state.completeTasks[i].Logs = state.completeTasks[i].Logs.filter(
-                    (logItem) => logItem.id !== action.payload,
-                );
-            }
-            return state;
-        },
-        updateTaskLogs: (state: ITaskState, action: UpdateTaskLogAction) => {
-            let task = state.incompletedTasks.find((task) => task.id === action.payload.taskId);
-
-            if (task != null) {
-                task.Logs = action.payload.log;
-                if (task.Logs[0].hoursWorked !== task.hoursWorked) task.hoursWorked = task.Logs[0].hoursWorked;
-            } else {
-                task = state.completeTasks.find((task) => task.id === action.payload.taskId);
-                if (task != null) {
-                    task.Logs = action.payload.log;
-                    if (task.Logs[0].hoursWorked !== task.hoursWorked) task.hoursWorked = task.Logs[0].hoursWorked;
-                }
-            }
-
-            return state;
-        },
     },
 });
 
@@ -127,8 +95,6 @@ export const {
     setEditTask,
     setShowCreateNewTaskForm,
     hideTaskForms,
-    filterTaskLogs,
-    updateTaskLogs,
 } = taskSlice.actions;
 
 export const getTasksState = (state: IGlobalState): ITaskState => state.tasks;
