@@ -30,7 +30,7 @@ const RegisterForm: React.FC<RegisterFormProps> = (props) => {
                         autoFocus
                         value={props.formData.firstName}
                         onChange={props.handleChange}
-                        inputProps={{ 'data-testid': 'firstName' }}
+                        inputProps={{ 'aria-label': 'firstName' }}
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -44,7 +44,7 @@ const RegisterForm: React.FC<RegisterFormProps> = (props) => {
                         autoComplete="lname"
                         value={props.formData.lastName}
                         onChange={props.handleChange}
-                        inputProps={{ 'data-testid': 'lastName' }}
+                        inputProps={{ 'aria-label': 'lastName' }}
                     />
                 </Grid>
                 <Grid item xs={12}>
@@ -58,7 +58,7 @@ const RegisterForm: React.FC<RegisterFormProps> = (props) => {
                         autoComplete="email"
                         value={props.formData.email}
                         onChange={props.handleChange}
-                        inputProps={{ 'data-testid': 'email' }}
+                        inputProps={{ 'aria-label': 'email' }}
                     />
                 </Grid>
                 <Grid item xs={12}>
@@ -73,7 +73,7 @@ const RegisterForm: React.FC<RegisterFormProps> = (props) => {
                         autoComplete="current-password"
                         value={props.formData.password}
                         onChange={props.handleChange}
-                        inputProps={{ 'data-testid': 'password' }}
+                        inputProps={{ 'aria-label': 'password' }}
                     />
                 </Grid>
                 <Grid item xs={12}>
@@ -88,16 +88,16 @@ const RegisterForm: React.FC<RegisterFormProps> = (props) => {
                         autoComplete="current-password"
                         value={props.formData.password2}
                         onChange={props.handleChange}
-                        inputProps={{ 'data-testid': 'password2' }}
+                        inputProps={{ 'aria-label': 'password2' }}
                     />
                 </Grid>
             </Grid>
-            <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
+            <Button type={'submit'} fullWidth variant={'contained'} color={'primary'} className={classes.submit}>
                 Sign Up
             </Button>
-            <Grid container justify="flex-end">
+            <Grid container justify={'flex-end'}>
                 <Grid item>
-                    <Link href="/login" variant="body2">
+                    <Link href={'/login'} variant={'body2'}>
                         Already have an account? Sign in
                     </Link>
                 </Grid>

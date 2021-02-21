@@ -2,16 +2,8 @@ import React from 'react';
 import RegisterForm from '../register/RegisterForm';
 import { render, fireEvent } from '@testing-library/react';
 import { Provider } from 'react-redux';
-import { setupServer } from 'msw/node';
 import { postRegisterForm } from '../../../redux/slices/users/helpers';
 import { store } from '../../../redux/store';
-import { handlers } from '../../../mocks/handlers';
-
-const server = setupServer(...handlers);
-
-beforeAll(() => server.listen());
-afterEach(() => server.resetHandlers());
-afterAll(() => server.close());
 
 it('should respond with a success alert for successful registration', async () => {
     const res = await postRegisterForm({
@@ -26,10 +18,10 @@ it('should respond with a success alert for successful registration', async () =
     expect(res.type).toEqual('success');
 });
 
-it('should properly fire event handlers', () => {
+it('should properly fire event handlers and register a new user on submit', () => {
     const handleSubmit = jest.fn();
     const handleChange = jest.fn();
-    const { getByTestId } = render(
+    const { getByLabelText, getByTestId, getByRole } = render(
         <Provider store={store}>
             <RegisterForm
                 handleSubmit={handleSubmit}
@@ -39,11 +31,11 @@ it('should properly fire event handlers', () => {
         </Provider>,
     );
 
-    const firstName = getByTestId('firstName');
-    const lastName = getByTestId('lastName');
-    const email = getByTestId('email');
-    const password = getByTestId('password');
-    const password2 = getByTestId('password2');
+    const firstName = getByLabelText('firstName');
+    const lastName = getByLabelText('lastName');
+    const email = getByLabelText('email');
+    const password = getByLabelText('password');
+    const password2 = getByLabelText('password2');
     const form = getByTestId('register-form');
 
     fireEvent.change(firstName, { target: { value: 'Test' } });
@@ -62,5 +54,10 @@ it('should properly fire event handlers', () => {
     expect(handleChange).toHaveBeenCalled();
 
     fireEvent.submit(form);
+    expect(handleSubmit).toHaveBeenCalled();
+
+    const signUpBtn = getByRole('button');
+    fireEvent.click(signUpBtn);
+
     expect(handleSubmit).toHaveBeenCalled();
 });

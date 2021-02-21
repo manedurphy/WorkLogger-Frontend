@@ -9,43 +9,45 @@ const LoginForm: React.FC<LoginFormProps> = (props): JSX.Element => {
     return (
         <form className={form} noValidate onSubmit={props.handleSubmit}>
             <TextField
-                variant="outlined"
-                margin="normal"
+                variant={'outlined'}
+                margin={'normal'}
                 required
                 fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
+                id={'email'}
+                label={'Email Address'}
+                inputProps={{ 'aria-label': 'email-address' }}
+                name={'email'}
+                autoComplete={'email'}
                 autoFocus
                 value={props.formData.email}
                 onChange={props.handleChange}
             />
             <TextField
-                variant="outlined"
-                margin="normal"
+                variant={'outlined'}
+                margin={'normal'}
                 required
                 fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
+                name={'password'}
+                label={'Password'}
+                inputProps={{ 'aria-label': 'password' }}
+                type={'password'}
+                id={'password'}
+                autoComplete={'current-password'}
                 value={props.formData.password}
                 onChange={props.handleChange}
             />
-            <FormControlLabel control={<Checkbox value="remember" color="primary" />} label="Remember me" />
-            <Button type="submit" fullWidth variant="contained" color="primary" className={submit}>
+            <FormControlLabel control={<Checkbox value={'remember'} color={'primary'} />} label={'Remember me'} />
+            <Button type={'submit'} fullWidth variant={'contained'} color={'primary'} className={submit}>
                 Sign In
             </Button>
             <Grid container>
                 <Grid item xs>
-                    <Link href="#" variant="body2">
+                    <Link href="#" variant={'body2'}>
                         Forgot password?
                     </Link>
                 </Grid>
                 <Grid item>
-                    <Link href="/register" variant="body2">
+                    <Link href={'/register'} variant={'body2'}>
                         {"Don't have an account? Sign Up"}
                     </Link>
                 </Grid>

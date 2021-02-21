@@ -2,25 +2,20 @@ import React from 'react';
 import Login from '../login/Login';
 import { store } from '../../../redux/store';
 import { Provider } from 'react-redux';
-import { render } from '@testing-library/react';
-import { setLogin } from '../../../redux/slices/auth/authSlice';
-import { setLoadingUser, setUser } from '../../../redux/slices/users/usersSlice';
+import { render, fireEvent, screen } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { IUserState } from '../../../redux/slices/users/types';
-import { addAlert } from '../../../redux/slices/alerts/alertsSlice';
+// import { IUserState } from '../../../redux/slices/users/types';
 
-let sandbox: any;
-
-const loginUser: IUserState = {
-    id: 0,
-    firstName: 'Test',
-    lastName: 'User',
-    email: 'testuser@mail.com',
-    loading: false,
-};
+// const loginUser: IUserState = {
+//     id: 0,
+//     firstName: 'Test',
+//     lastName: 'User',
+//     email: 'testuser@mail.com',
+//     loading: false,
+// };
 
 beforeEach(() => {
-    sandbox = render(
+    render(
         <Router>
             <Provider store={store}>
                 <Login />
@@ -29,33 +24,26 @@ beforeEach(() => {
     );
 });
 
-it('should set login status to false and loading to false on load', () => {
-    store.dispatch(setLogin(false));
-    store.dispatch(setLoadingUser(false));
+it('should successfully log a user in and dispatch their information to the redux store', (done) => {
+    const emailInput = screen.getByLabelText('email-address') as HTMLInputElement;
+    const passwordInput = screen.getByLabelText('password') as HTMLInputElement;
 
-    const { auth, user } = store.getState();
-    expect(user.loading).toBeFalsy();
-    expect(auth.loginSuccess).toBeFalsy();
-    expect(sandbox.getByText('Sign In')).toBeInTheDocument();
-});
+    fireEvent.change(emailInput, { target: { value: 'testuser@test.com' } });
+    fireEvent.change(passwordInput, { target: { value: 'testpassword' } });
 
-it('should dispatch user information to the store', () => {
-    store.dispatch(setUser(loginUser));
-    const { user } = store.getState();
+    expect(emailInput).toBeInTheDocument();
+    expect(emailInput.value).toBe('testuser@test.com');
+    expect(passwordInput.value).toBe('testpassword');
 
-    expect(user.loading).toBeFalsy();
-    expect(user.id).toEqual(0);
-    expect(user.firstName).toEqual('Test');
-    expect(user.lastName).toEqual('User');
-    expect(user.email).toEqual('testuser@mail.com');
-});
+    const submitBtn = screen.getByText('Sign In');
+    fireEvent.click(submitBtn);
 
-it('should set an alert on screen when dispatched to store', () => {
-    store.dispatch(addAlert({ message: 'Login test alert', type: 'error' }));
-
-    const { alerts } = store.getState();
-    const alert = sandbox.getByText('Login test alert');
-
-    expect(alerts.length).toEqual(1);
-    expect(alert).toBeInTheDocument();
+    setTimeout(() => {
+        const state = store.getState();
+        const { user } = state;
+        expect(user.firstName).toBe('Test');
+        expect(user.lastName).toBe('User');
+        expect(user.email).toBe('testuser@test.com');
+        done();
+    }, 500);
 });
