@@ -2,9 +2,9 @@ import axios, { AxiosResponse } from 'axios';
 import { getTokens, setLoginTokens } from '../auth/helpers';
 import { AlertConstants } from '../alerts/AlertConstants';
 import { IAlert, IAlertResponse } from '../alerts/types';
-import { IUser, LoginResponse } from './types';
+import { IUser, LoginFormData, LoginResponse, RegisterFormData } from './types';
 
-export async function postLoginForm(data: any): Promise<IUser> {
+export async function postLoginForm(data: LoginFormData): Promise<IUser> {
     const res: AxiosResponse<LoginResponse> = await axios.post('/api/users/login', data);
 
     const { jwt, refreshToken } = res.data;
@@ -14,7 +14,7 @@ export async function postLoginForm(data: any): Promise<IUser> {
     return { id, firstName, lastName, email };
 }
 
-export async function postRegisterForm(data: any): Promise<IAlert> {
+export async function postRegisterForm(data: RegisterFormData): Promise<IAlert> {
     const res: AxiosResponse<IAlertResponse> = await axios.post('/api/users/register', data);
     return { ...res.data, type: AlertConstants.Success };
 }

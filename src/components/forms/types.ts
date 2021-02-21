@@ -32,7 +32,7 @@ export interface LogFormData extends FormData {
     loggedAt: string;
 }
 
-export interface TaskInputFieldsProps {
+export interface CommonInputFieldsProps {
     formData: FormData;
     handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
@@ -40,4 +40,10 @@ export interface TaskInputFieldsProps {
 export interface LogInputFieldsProps {
     handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
     loggedAt: string;
+}
+
+export interface TaskInputFieldProps {
+    handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
+    dateAssigned: string;
+    dueDate: string;
 }

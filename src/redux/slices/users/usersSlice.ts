@@ -10,6 +10,7 @@ import {
     IUser,
     IUserState,
     LoginFormData,
+    RegisterFormData,
     SetLoadingUserAction,
     SetUserAction,
     ThunkActionType,
@@ -51,7 +52,7 @@ export const handleLogin = (data: LoginFormData): ThunkActionType => async (disp
     }
 };
 
-export const handleRegister = (data: LoginFormData): ThunkActionType => async (dispatch: ThunkDispatchType) => {
+export const handleRegister = (data: RegisterFormData): ThunkActionType => async (dispatch: ThunkDispatchType) => {
     try {
         const success: IAlert = await postRegisterForm(data);
         dispatch(addAlert(success));

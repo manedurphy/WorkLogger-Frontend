@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { IGlobalState } from '../../types';
 import { initialModalState } from './initialState';
-import { IModalState, SetModalAction, SetShowModalAction } from './types';
+import { IModalState, SetAddHoursAction, SetModalAction, SetShowModalAction } from './types';
 
 const modalsSlice = createSlice({
     name: 'modal',
@@ -24,7 +24,7 @@ const modalsSlice = createSlice({
                 show: true,
             };
         },
-        setAddHoursModal: (state: IModalState, action: any) => {
+        setAddHoursModal: (state: IModalState, action: SetAddHoursAction) => {
             return {
                 ...state,
                 addHours: {

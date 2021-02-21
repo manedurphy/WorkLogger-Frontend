@@ -15,6 +15,14 @@ export interface LoginResponse {
     refreshToken: string;
 }
 
+export interface RegisterFormData {
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+    password2: string;
+}
+
 export interface IUser {
     id: number;
     firstName: string;

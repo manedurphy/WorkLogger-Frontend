@@ -11,6 +11,7 @@ export interface IModalState {
 }
 
 export type SetShowModalAction = { payload: boolean };
+export type SetAddHoursAction = { payload: number };
 export type SetModalAction = { payload: { id: number; header: string; command: Command; taskId?: number } };
 
 export type Command = 'complete' | 'delete' | 'deleteLogItem' | 'deleteComplete' | 'addHours';

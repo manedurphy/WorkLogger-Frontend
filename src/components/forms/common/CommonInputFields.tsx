@@ -1,10 +1,10 @@
 import React from 'react';
 import { Grid, TextField } from '@material-ui/core';
-import { TaskInputFieldsProps } from '../types';
+import { CommonInputFieldsProps } from '../types';
 import { useSelector } from 'react-redux';
 import { IGlobalState } from '../../../redux/types';
 
-const TaskInputFields: React.FC<TaskInputFieldsProps> = ({ formData, children, handleChange }): JSX.Element => {
+const TaskInputFields: React.FC<CommonInputFieldsProps> = ({ formData, children, handleChange }): JSX.Element => {
     const state = useSelector((state: IGlobalState) => state);
     const { tasks, log } = state;
     return (
