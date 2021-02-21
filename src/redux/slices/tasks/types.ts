@@ -28,6 +28,7 @@ export interface ITaskState {
     edit: boolean;
     showCompleted: boolean;
     showCreateTaskForm: boolean;
+    search: string;
 }
 
 export type SetTasksAction = { payload: ITask[] };
@@ -37,3 +38,4 @@ export type SetShowModalAction = { payload: boolean };
 export type SetCurrentTaskAction = { payload: ITask };
 export type SetShowCreateTaskForm = { payload: boolean };
 export type FindAndReplaceTaskAction = { payload: ITask };
+export type SearchTaskAction = { payload: string };

@@ -21,6 +21,7 @@ import {
     FindAndReplaceTaskAction,
     ITask,
     ITaskState,
+    SearchTaskAction,
     SetCurrentTaskAction,
     SetEditTaskAction,
     SetLoadingTasksAction,
@@ -86,6 +87,12 @@ const taskSlice = createSlice({
                 showCreateTaskForm: false,
             };
         },
+        searchTask: (state: ITaskState, action: SearchTaskAction) => {
+            return {
+                ...state,
+                search: action.payload,
+            };
+        },
         findAndReplaceTask: (state: ITaskState, action: FindAndReplaceTaskAction) => {
             let index = state.incompletedTasks.findIndex((task) => task.id === action.payload.id);
 
@@ -114,6 +121,7 @@ export const {
     setShowCreateNewTaskForm,
     hideTaskForms,
     findAndReplaceTask,
+    searchTask,
 } = taskSlice.actions;
 
 export const getTasksState = (state: IGlobalState): ITaskState => state.tasks;
