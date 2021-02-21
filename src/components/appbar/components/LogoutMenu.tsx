@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Menu, MenuItem, Fade, IconButton, Badge } from '@material-ui/core';
 import { ExitToApp as ExitToAppIcon } from '@material-ui/icons';
 
-const NotificationsMenu: React.FC = (): JSX.Element => {
+const NotificationsMenu = (): JSX.Element => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
 
@@ -22,13 +22,13 @@ const NotificationsMenu: React.FC = (): JSX.Element => {
 
     return (
         <div>
-            <IconButton color="inherit" onClick={handleClick}>
-                <Badge color="secondary">
+            <IconButton color={'inherit'} data-testid={'logout-btn'} onClick={handleClick}>
+                <Badge color={'secondary'}>
                     <ExitToAppIcon />
                 </Badge>
             </IconButton>
             <Menu
-                id="fade-menu"
+                id={'fade-menu'}
                 anchorEl={anchorEl}
                 getContentAnchorEl={null}
                 anchorOrigin={{ vertical: 'center', horizontal: 'right' }}

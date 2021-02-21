@@ -19,6 +19,7 @@ const SearchBar = (): JSX.Element => {
                 <SearchIcon />
             </div>
             <InputBase
+                inputProps={{ 'aria-label': 'search' }}
                 placeholder={'Search...'}
                 classes={{ root: inputRoot, input: inputInput }}
                 onChange={handleChange}

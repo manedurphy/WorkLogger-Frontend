@@ -4,7 +4,7 @@ import { fireEvent, render } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { store } from '../../../redux/store';
 import { setCompleteTasks } from '../../../redux/slices/tasks/tasksSlice';
-import { mockIncompleteData } from '../../../mocks/mockIncompleteData';
+import { mockData } from '../../../mocks/mockData';
 
 describe('Complete table behavior', () => {
     test('should render', () => {
@@ -17,7 +17,7 @@ describe('Complete table behavior', () => {
     });
 
     test('should display task info when incomplete tasks are in the store', () => {
-        store.dispatch(setCompleteTasks(mockIncompleteData));
+        store.dispatch(setCompleteTasks(mockData));
         const { getByText } = render(
             <Provider store={store}>
                 <CompleteTasks />

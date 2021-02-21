@@ -1,6 +1,6 @@
 import { ITask } from '../redux/slices/tasks/types';
 
-export const mockIncompleteData: ITask[] = [
+export const mockData: ITask[] = [
     {
         id: 11,
         name: 'Task 4',

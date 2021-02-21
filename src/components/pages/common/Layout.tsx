@@ -4,15 +4,13 @@ import AppBarComponent from '../../appbar/AppBarComponent';
 import DrawerComponent from '../../drawer/DrawerComponent';
 import { LayoutProps } from '../types';
 
-const Layout: React.FC<LayoutProps> = ({ children }): JSX.Element => {
-    return (
-        <Fragment>
-            <Modal />
-            <AppBarComponent />
-            <DrawerComponent />
-            {children}
-        </Fragment>
-    );
-};
+const Layout: React.FC<LayoutProps> = ({ children }): JSX.Element => (
+    <Fragment>
+        <Modal />
+        <AppBarComponent />
+        <DrawerComponent />
+        {children}
+    </Fragment>
+);
 
 export default Layout;
