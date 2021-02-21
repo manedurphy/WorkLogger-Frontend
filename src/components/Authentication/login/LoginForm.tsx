@@ -1,22 +1,13 @@
 /* eslint-disable react/prop-types */
-import { Button, Checkbox, FormControlLabel, Grid, Link, makeStyles, TextField } from '@material-ui/core';
 import React from 'react';
+import useAuthStyles from '../styles';
+import { Button, Checkbox, FormControlLabel, Grid, Link, TextField } from '@material-ui/core';
 import { LoginFormProps } from './types';
 
-const useStyles = makeStyles((theme) => ({
-    form: {
-        width: '100%',
-        marginTop: theme.spacing(1),
-    },
-    submit: {
-        margin: theme.spacing(3, 0, 2),
-    },
-}));
-
 const LoginForm: React.FC<LoginFormProps> = (props): JSX.Element => {
-    const classes = useStyles();
+    const { form, submit } = useAuthStyles();
     return (
-        <form className={classes.form} noValidate onSubmit={props.handleSubmit}>
+        <form className={form} noValidate onSubmit={props.handleSubmit}>
             <TextField
                 variant="outlined"
                 margin="normal"
@@ -44,7 +35,7 @@ const LoginForm: React.FC<LoginFormProps> = (props): JSX.Element => {
                 onChange={props.handleChange}
             />
             <FormControlLabel control={<Checkbox value="remember" color="primary" />} label="Remember me" />
-            <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
+            <Button type="submit" fullWidth variant="contained" color="primary" className={submit}>
                 Sign In
             </Button>
             <Grid container>

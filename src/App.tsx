@@ -13,7 +13,7 @@ const App = (): JSX.Element => {
         const getStatus = () => dispatch(verifyUser());
         getStatus();
 
-        const statusInterval = setInterval(() => getStatus(), 600000);
+        const statusInterval = setInterval(() => getStatus(), 300000);
         return () => clearInterval(statusInterval);
     }, []);
 

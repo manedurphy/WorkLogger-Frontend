@@ -7,7 +7,7 @@ import { FormData } from '../../../components/forms/types';
 
 export async function getTaskById(id: number): Promise<ITask> {
     const { token } = getTokens();
-    const res: AxiosResponse<ITask> = await axios.get(`http://localhost:5000/api/tasks/${id}`, {
+    const res: AxiosResponse<ITask> = await axios.get(`/api/tasks/${id}`, {
         headers: {
             Authorization: `Bearer ${token}`,
         },
@@ -18,7 +18,7 @@ export async function getTaskById(id: number): Promise<ITask> {
 
 export async function getIncompleteTasks(): Promise<ITask[]> {
     const { token } = getTokens();
-    const res: AxiosResponse<ITask[]> = await axios.get('http://localhost:5000/api/tasks/incomplete', {
+    const res: AxiosResponse<ITask[]> = await axios.get('/api/tasks/incomplete', {
         headers: {
             Authorization: `Bearer ${token}`,
         },
@@ -29,7 +29,7 @@ export async function getIncompleteTasks(): Promise<ITask[]> {
 
 export async function completeTask(id: number): Promise<IAlert> {
     const { token } = getTokens();
-    const res: AxiosResponse<IAlert> = await axios.put(`http://localhost:5000/api/tasks/incomplete/${id}`, null, {
+    const res: AxiosResponse<IAlert> = await axios.put(`/api/tasks/incomplete/${id}`, null, {
         headers: {
             Authorization: `Bearer ${token}`,
         },
@@ -40,7 +40,7 @@ export async function completeTask(id: number): Promise<IAlert> {
 
 export async function deleteTask(id: number): Promise<IAlert> {
     const { token } = getTokens();
-    const res: AxiosResponse<IAlert> = await axios.delete(`http://localhost:5000/api/tasks/${id}`, {
+    const res: AxiosResponse<IAlert> = await axios.delete(`/api/tasks/${id}`, {
         headers: {
             Authorization: `Bearer ${token}`,
         },
@@ -51,7 +51,7 @@ export async function deleteTask(id: number): Promise<IAlert> {
 
 export async function createTask(formData: FormData): Promise<IAlert> {
     const { token } = getTokens();
-    const res: AxiosResponse<IAlert> = await axios.post('http://localhost:5000/api/tasks', formData, {
+    const res: AxiosResponse<IAlert> = await axios.post('/api/tasks', formData, {
         headers: {
             Authorization: `Bearer ${token}`,
         },
@@ -62,7 +62,7 @@ export async function createTask(formData: FormData): Promise<IAlert> {
 
 export async function updateTask(id: number, formData: FormData): Promise<IAlert> {
     const { token } = getTokens();
-    const res: AxiosResponse<IAlert> = await axios.put(`http://localhost:5000/api/tasks/${id}`, formData, {
+    const res: AxiosResponse<IAlert> = await axios.put(`/api/tasks/${id}`, formData, {
         headers: {
             Authorization: `Bearer ${token}`,
         },
@@ -73,7 +73,7 @@ export async function updateTask(id: number, formData: FormData): Promise<IAlert
 
 export async function getCompleteTasks(): Promise<ITask[]> {
     const { token } = getTokens();
-    const res: AxiosResponse<ITask[]> = await axios.get('http://localhost:5000/api/tasks/complete', {
+    const res: AxiosResponse<ITask[]> = await axios.get('/api/tasks/complete', {
         headers: {
             Authorization: `Bearer ${token}`,
         },
@@ -84,7 +84,7 @@ export async function getCompleteTasks(): Promise<ITask[]> {
 
 export async function addHours(taskId: number, hours: { [key: string]: string }): Promise<IAlert> {
     const { token } = getTokens();
-    const res: AxiosResponse<IAlert> = await axios.patch(`http://localhost:5000/api/tasks/add-hours/${taskId}`, hours, {
+    const res: AxiosResponse<IAlert> = await axios.patch(`/api/tasks/add-hours/${taskId}`, hours, {
         headers: {
             Authorization: `Bearer ${token}`,
         },

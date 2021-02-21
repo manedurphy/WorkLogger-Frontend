@@ -7,7 +7,7 @@ import { ILog } from './types';
 
 export async function updateLog(id: number, formData: LogFormData) {
     const { token } = getTokens();
-    const res: AxiosResponse<IAlert> = await axios.put(`http://localhost:5000/api/logs/log-item/${id}`, formData, {
+    const res: AxiosResponse<IAlert> = await axios.put(`/api/logs/log-item/${id}`, formData, {
         headers: {
             Authorization: `Bearer ${token}`,
         },
@@ -18,7 +18,7 @@ export async function updateLog(id: number, formData: LogFormData) {
 
 export async function deleteLogItem(id: number) {
     const { token } = getTokens();
-    const res: AxiosResponse<IAlert> = await axios.delete(`http://localhost:5000/api/logs/log-item/${id}`, {
+    const res: AxiosResponse<IAlert> = await axios.delete(`/api/logs/log-item/${id}`, {
         headers: {
             Authorization: `Bearer ${token}`,
         },
@@ -29,7 +29,7 @@ export async function deleteLogItem(id: number) {
 
 export async function getLog(taskId: number) {
     const { token } = getTokens();
-    const res: AxiosResponse<ILog[]> = await axios.get(`http://localhost:5000/api/logs/${taskId}`, {
+    const res: AxiosResponse<ILog[]> = await axios.get(`/api/logs/${taskId}`, {
         headers: {
             Authorization: `Bearer ${token}`,
         },

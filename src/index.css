@@ -71,7 +71,7 @@ code {
     content: '';
 }
 .loader:after {
-    background:/* #f7f5fa;*/ #f7f5fa;
+    background: #f7f5fa;
     width: 75%;
     height: 75%;
     border-radius: 50%;
