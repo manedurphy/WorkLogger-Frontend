@@ -18,6 +18,7 @@ import {
     updateTask,
 } from './helpers';
 import {
+    FindAndReplaceTaskAction,
     ITask,
     ITaskState,
     SetCurrentTaskAction,
@@ -38,6 +39,7 @@ const taskSlice = createSlice({
                 loading: false,
                 showCreateTaskForm: false,
                 showCompleted: false,
+                edit: false,
             };
         },
         setCompleteTasks: (state: ITaskState, action: SetTasksAction) => {
@@ -84,6 +86,22 @@ const taskSlice = createSlice({
                 showCreateTaskForm: false,
             };
         },
+        findAndReplaceTask: (state: ITaskState, action: FindAndReplaceTaskAction) => {
+            let index = state.incompletedTasks.findIndex((task) => task.id === action.payload.id);
+
+            if (index != null) {
+                state.incompletedTasks[index] = action.payload;
+                return state;
+            }
+
+            index = state.completeTasks.findIndex((task) => task.id === action.payload.id);
+
+            if (index != null) {
+                state.completeTasks[index] = action.payload;
+                return state;
+            }
+            return state;
+        },
     },
 });
 
@@ -95,6 +113,7 @@ export const {
     setEditTask,
     setShowCreateNewTaskForm,
     hideTaskForms,
+    findAndReplaceTask,
 } = taskSlice.actions;
 
 export const getTasksState = (state: IGlobalState): ITaskState => state.tasks;

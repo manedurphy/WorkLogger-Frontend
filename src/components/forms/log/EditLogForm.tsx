@@ -5,9 +5,10 @@ import FormHeader from '../common/FormHeader';
 import UpdateDelete from '../buttons/UpdateDelete';
 import LogInputFields from './LogInputFields';
 import { getEditLogForm } from '../helpers';
-import { getLogState, handleUpdateLogItem, setShowLogForm } from '../../../redux/slices/log/logSlice';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
+import { getLogState, handleUpdateLogItem, setShowLogForm } from '../../../redux/slices/log/logSlice';
+import { setModal } from '../../../redux/slices/modals/modalsSlice';
 
 const EditLogForm = (): JSX.Element => {
     const dispatch = useDispatch();
@@ -17,6 +18,16 @@ const EditLogForm = (): JSX.Element => {
     useEffect(() => {
         setFormData(getEditLogForm(currentLogItem));
     }, [currentLogItem]);
+
+    const handleDelete = () =>
+        dispatch(
+            setModal({
+                id: currentLogItem.id,
+                header: 'Are you sure you want to delete?',
+                command: 'deleteLogItem',
+                taskId: currentLogItem.TaskId,
+            }),
+        );
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -33,7 +44,7 @@ const EditLogForm = (): JSX.Element => {
             <CommonInputFields formData={formData} handleChange={handleChange}>
                 <LogInputFields handleChange={handleChange} loggedAt={formData.loggedAt} />
             </CommonInputFields>
-            <UpdateDelete />
+            <UpdateDelete handleDelete={handleDelete} />
         </FormContainer>
     );
 };

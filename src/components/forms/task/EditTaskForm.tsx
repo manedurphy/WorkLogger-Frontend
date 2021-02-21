@@ -6,6 +6,7 @@ import TaskInputFields from './TaskInputFields';
 import FormHeader from '../common/FormHeader';
 import { getEditForm } from '../helpers';
 import { useDispatch, useSelector } from 'react-redux';
+import { setModal } from '../../../redux/slices/modals/modalsSlice';
 import { getTasksState, handleUpdateTask, setEditTask } from '../../../redux/slices/tasks/tasksSlice';
 
 const EditTaskForm = (): JSX.Element => {
@@ -16,6 +17,9 @@ const EditTaskForm = (): JSX.Element => {
     useEffect(() => {
         setFormData(getEditForm(currentTask));
     }, [currentTask]);
+
+    const handleDelete = () =>
+        dispatch(setModal({ id: currentTask.id, header: 'Are you sure you want to delete?', command: 'delete' }));
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -36,7 +40,7 @@ const EditTaskForm = (): JSX.Element => {
                     dueDate={formData.dueDate}
                 />
             </CommonInputFields>
-            <UpdateDelete />
+            <UpdateDelete handleDelete={handleDelete} />
         </FormContainer>
     );
 };

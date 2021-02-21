@@ -36,6 +36,7 @@ const AddHoursModal = (): JSX.Element => {
                     value={formData.hours}
                     onChange={handleChange}
                     autoFocus
+                    required
                 />
                 <Box className={addHoursBtnContainer}>
                     <AddHoursButton />
