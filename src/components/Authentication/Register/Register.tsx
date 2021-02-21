@@ -2,27 +2,15 @@ import React, { ChangeEvent, useState, FormEvent } from 'react';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import RegisterForm from './RegisterForm';
 import Copyright from '../Copyright';
+import useAuthStyles from '../styles';
 import { handleRegister } from '../../../redux/slices/users/usersSlice';
 import { Redirect } from 'react-router-dom';
 import { getAuthState } from '../../../redux/slices/auth/authSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import { Avatar, CssBaseline, Box, makeStyles, Typography, Container } from '@material-ui/core';
-
-const useStyles = makeStyles((theme) => ({
-    paper: {
-        marginTop: theme.spacing(8),
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-    },
-    avatar: {
-        margin: theme.spacing(1),
-        backgroundColor: theme.palette.secondary.main,
-    },
-}));
+import { Avatar, CssBaseline, Box, Typography, Container } from '@material-ui/core';
 
 const Register = (): JSX.Element => {
-    const classes = useStyles();
+    const { paper, avatar } = useAuthStyles();
     const dispatch = useDispatch();
     const auth = useSelector(getAuthState);
     const [formData, setFormData] = useState({
@@ -45,8 +33,8 @@ const Register = (): JSX.Element => {
     return (
         <Container component="main" maxWidth="xs">
             <CssBaseline />
-            <div className={classes.paper}>
-                <Avatar className={classes.avatar}>
+            <div className={paper}>
+                <Avatar className={avatar}>
                     <LockOutlinedIcon />
                 </Avatar>
                 <Typography component="h1" variant="h5">

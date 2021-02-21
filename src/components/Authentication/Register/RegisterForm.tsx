@@ -1,32 +1,23 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { TextField, Link, Grid, Button, makeStyles } from '@material-ui/core';
+import useAuthStyles from '../styles';
+import { TextField, Link, Grid, Button } from '@material-ui/core';
 import { RegisterFormProps } from './types';
 
-const useStyles = makeStyles((theme) => ({
-    form: {
-        width: '100%',
-        marginTop: theme.spacing(3),
-    },
-    submit: {
-        margin: theme.spacing(3, 0, 2),
-    },
-}));
-
 const RegisterForm: React.FC<RegisterFormProps> = (props) => {
-    const classes = useStyles();
+    const { form, submit } = useAuthStyles();
     return (
-        <form className={classes.form} noValidate onSubmit={props.handleSubmit} data-testid={'register-form'}>
+        <form className={form} noValidate onSubmit={props.handleSubmit} data-testid={'register-form'}>
             <Grid container spacing={2}>
                 <Grid item xs={12} sm={6}>
                     <TextField
-                        autoComplete="fname"
-                        name="firstName"
-                        variant="outlined"
+                        autoComplete={'fname'}
+                        name={'firstName'}
+                        variant={'outlined'}
                         required
                         fullWidth
-                        id="firstName"
-                        label="First Name"
+                        id={'firstName'}
+                        label={'First Name'}
                         autoFocus
                         value={props.formData.firstName}
                         onChange={props.handleChange}
@@ -35,13 +26,13 @@ const RegisterForm: React.FC<RegisterFormProps> = (props) => {
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <TextField
-                        variant="outlined"
+                        variant={'outlined'}
                         required
                         fullWidth
-                        id="lastName"
-                        label="Last Name"
-                        name="lastName"
-                        autoComplete="lname"
+                        id={'lastName'}
+                        label={'Last Name'}
+                        name={'lastName'}
+                        autoComplete={'lname'}
                         value={props.formData.lastName}
                         onChange={props.handleChange}
                         inputProps={{ 'aria-label': 'lastName' }}
@@ -49,13 +40,13 @@ const RegisterForm: React.FC<RegisterFormProps> = (props) => {
                 </Grid>
                 <Grid item xs={12}>
                     <TextField
-                        variant="outlined"
+                        variant={'outlined'}
                         required
                         fullWidth
-                        id="email"
-                        label="Email Address"
-                        name="email"
-                        autoComplete="email"
+                        id={'email'}
+                        label={'Email Address'}
+                        name={'email'}
+                        autoComplete={'email'}
                         value={props.formData.email}
                         onChange={props.handleChange}
                         inputProps={{ 'aria-label': 'email' }}
@@ -63,13 +54,13 @@ const RegisterForm: React.FC<RegisterFormProps> = (props) => {
                 </Grid>
                 <Grid item xs={12}>
                     <TextField
-                        variant="outlined"
+                        variant={'outlined'}
                         required
                         fullWidth
-                        name="password"
-                        label="Password"
-                        type="password"
-                        id="password"
+                        name={'password'}
+                        label={'Password'}
+                        type={'password'}
+                        id={'password'}
                         autoComplete="current-password"
                         value={props.formData.password}
                         onChange={props.handleChange}
@@ -78,21 +69,21 @@ const RegisterForm: React.FC<RegisterFormProps> = (props) => {
                 </Grid>
                 <Grid item xs={12}>
                     <TextField
-                        variant="outlined"
+                        variant={'outlined'}
                         required
                         fullWidth
-                        name="password2"
-                        label="Confirm Password"
-                        type="password"
-                        id="password2"
-                        autoComplete="current-password"
+                        name={'password2'}
+                        label={'Confirm Password'}
+                        type={'password'}
+                        id={'password2'}
+                        autoComplete={'current-password'}
                         value={props.formData.password2}
                         onChange={props.handleChange}
                         inputProps={{ 'aria-label': 'password2' }}
                     />
                 </Grid>
             </Grid>
-            <Button type={'submit'} fullWidth variant={'contained'} color={'primary'} className={classes.submit}>
+            <Button type={'submit'} fullWidth variant={'contained'} color={'primary'} className={submit}>
                 Sign Up
             </Button>
             <Grid container justify={'flex-end'}>
