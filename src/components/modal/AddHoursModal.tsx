@@ -32,7 +32,7 @@ const AddHoursModal = (): JSX.Element => {
                 <Input
                     type={'number'}
                     fullWidth={true}
-                    inputProps={{ step: 0.01 }}
+                    inputProps={{ step: 0.01, 'aria-label': 'add-hours' }}
                     value={formData.hours}
                     onChange={handleChange}
                     autoFocus

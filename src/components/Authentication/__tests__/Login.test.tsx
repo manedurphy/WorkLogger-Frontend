@@ -4,15 +4,6 @@ import { store } from '../../../redux/store';
 import { Provider } from 'react-redux';
 import { render, fireEvent, screen } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
-// import { IUserState } from '../../../redux/slices/users/types';
-
-// const loginUser: IUserState = {
-//     id: 0,
-//     firstName: 'Test',
-//     lastName: 'User',
-//     email: 'testuser@mail.com',
-//     loading: false,
-// };
 
 beforeEach(() => {
     render(
