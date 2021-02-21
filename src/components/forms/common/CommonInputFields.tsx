@@ -17,6 +17,7 @@ const TaskInputFields: React.FC<CommonInputFieldsProps> = ({ formData, children,
                     fullWidth
                     id={'name'}
                     label={'Task Name'}
+                    inputProps={{ 'aria-label': 'name' }}
                     autoFocus
                     value={formData.name}
                     onChange={handleChange}
@@ -32,6 +33,7 @@ const TaskInputFields: React.FC<CommonInputFieldsProps> = ({ formData, children,
                     type={'number'}
                     id={'projectNumber'}
                     label={'Project Number'}
+                    inputProps={{ 'aria-label': 'projectNumber' }}
                     name={'projectNumber'}
                     value={formData.projectNumber}
                     onChange={handleChange}
@@ -44,7 +46,7 @@ const TaskInputFields: React.FC<CommonInputFieldsProps> = ({ formData, children,
                     required
                     fullWidth
                     type={'number'}
-                    inputProps={{ step: 0.01 }}
+                    inputProps={{ step: 0.01, 'aria-label': 'hoursAvailableToWork' }}
                     id={'hoursAvailableToWork'}
                     label={'Hours Available to Work'}
                     name={'hoursAvailableToWork'}
@@ -59,7 +61,7 @@ const TaskInputFields: React.FC<CommonInputFieldsProps> = ({ formData, children,
                     required
                     fullWidth
                     type={'number'}
-                    inputProps={{ step: 0.01 }}
+                    inputProps={{ step: 0.01, 'aria-label': 'hoursWorked' }}
                     id={'hoursWorked'}
                     label={'Hours Worked'}
                     name={'hoursWorked'}
@@ -74,7 +76,7 @@ const TaskInputFields: React.FC<CommonInputFieldsProps> = ({ formData, children,
                     required
                     fullWidth
                     type={'number'}
-                    inputProps={{ step: 0.01 }}
+                    inputProps={{ step: 0.01, 'aria-label': 'reviewHours' }}
                     id={'reviewHours'}
                     label={'Hours Spent on Review'}
                     name={'reviewHours'}
@@ -89,7 +91,7 @@ const TaskInputFields: React.FC<CommonInputFieldsProps> = ({ formData, children,
                     required
                     fullWidth
                     type={'number'}
-                    inputProps={{ step: 0.01 }}
+                    inputProps={{ step: 0.01, 'aria-label': 'hoursRequiredByBim' }}
                     id={'hoursRequiredByBim'}
                     label={'Hours Required By BIM'}
                     name={'hoursRequiredByBim'}
@@ -103,6 +105,7 @@ const TaskInputFields: React.FC<CommonInputFieldsProps> = ({ formData, children,
                     required
                     fullWidth
                     type={'number'}
+                    inputProps={{ 'aria-label': 'numberOfReviews' }}
                     id={'numberOfReviews'}
                     label={'Number of Reviews'}
                     name={'numberOfReviews'}
@@ -115,6 +118,7 @@ const TaskInputFields: React.FC<CommonInputFieldsProps> = ({ formData, children,
                     variant={'outlined'}
                     fullWidth
                     id={'notes'}
+                    inputProps={{ 'aria-label': 'notes' }}
                     label={'Notes or Comments'}
                     name={'notes'}
                     value={formData.notes}

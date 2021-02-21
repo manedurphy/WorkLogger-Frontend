@@ -21,7 +21,7 @@ it('should respond with a success alert for successful registration', async () =
 it('should properly fire event handlers and register a new user on submit', () => {
     const handleSubmit = jest.fn();
     const handleChange = jest.fn();
-    const { getByLabelText, getByTestId, getByRole } = render(
+    const { getByLabelText, getByTestId } = render(
         <Provider store={store}>
             <RegisterForm
                 handleSubmit={handleSubmit}
@@ -56,8 +56,7 @@ it('should properly fire event handlers and register a new user on submit', () =
     fireEvent.submit(form);
     expect(handleSubmit).toHaveBeenCalled();
 
-    const signUpBtn = getByRole('button');
-    fireEvent.click(signUpBtn);
+    fireEvent.submit(form);
 
     expect(handleSubmit).toHaveBeenCalled();
 });

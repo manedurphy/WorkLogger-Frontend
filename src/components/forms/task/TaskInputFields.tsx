@@ -9,6 +9,7 @@ const TaskInputFields: React.FC<TaskInputFieldProps> = ({ handleChange, dateAssi
                 type={'date'}
                 label={'Date assgined'}
                 name={'dateAssigned'}
+                inputProps={{ 'aria-label': 'dateAssigned' }}
                 required
                 onChange={handleChange}
                 value={dateAssigned}
@@ -22,6 +23,7 @@ const TaskInputFields: React.FC<TaskInputFieldProps> = ({ handleChange, dateAssi
                 type={'date'}
                 label={'Due date'}
                 name={'dueDate'}
+                inputProps={{ 'aria-label': 'dueDate' }}
                 required
                 onChange={handleChange}
                 value={dueDate}
