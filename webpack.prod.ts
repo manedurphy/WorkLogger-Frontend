@@ -2,6 +2,9 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractLoader from 'mini-css-extract-plugin';
 import webpack from 'webpack';
 import CompressionPlugin from 'compression-webpack-plugin';
+import TerserPlugin from 'terser-webpack-plugin';
+import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
+import zlip from 'zlib';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import { resolve } from 'path';
@@ -37,26 +40,40 @@ const config: webpack.Configuration = {
         publicPath: '/',
     },
     optimization: {
+        minimize: true,
+        minimizer: [new CssMinimizerPlugin(), new TerserPlugin()],
+        runtimeChunk: 'single',
         splitChunks: {
             cacheGroups: {
-                vendors: {
-                    test: /node_modules/,
+                commons: {
+                    test: /[\\/]node_modules[\\/]/,
                     name: 'vendors',
+                    enforce: true,
                     chunks: 'all',
                 },
             },
-        },
-        runtimeChunk: {
-            name: 'manifest',
         },
     },
     plugins: [
         new HtmlWebpackPlugin({
             template: resolve(__dirname, 'public', 'index.html'),
+            minify: {
+                removeAttributeQuotes: true,
+                collapseWhitespace: true,
+                removeComments: true,
+            },
         }),
-        new MiniCssExtractLoader(),
+        new MiniCssExtractLoader({ filename: '[name].[contenthash].css' }),
         new CleanWebpackPlugin(),
-        new CompressionPlugin(),
+        new CompressionPlugin({
+            algorithm: 'brotliCompress',
+            test: /\.(js|css|html|svg)$/,
+            minRatio: 0.8,
+            threshold: 10240,
+            compressionOptions: {
+                [zlip.constants.BROTLI_PARAM_QUALITY]: 11,
+            },
+        }),
         new BundleAnalyzerPlugin(),
     ],
 };

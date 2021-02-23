@@ -1,6 +1,8 @@
-import { fade, makeStyles } from '@material-ui/core';
+import makeStyles from '@material-ui/core/styles/makeStyles';
+import { fade } from '@material-ui/core/styles';
+import { Theme } from '@material-ui/core/styles';
 
-export default makeStyles((theme) => ({
+export default makeStyles((theme: Theme) => ({
     appBar: {
         transition: theme.transitions.create(['width', 'margin'], {
             easing: theme.transitions.easing.sharp,

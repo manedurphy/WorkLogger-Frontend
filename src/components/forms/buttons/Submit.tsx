@@ -1,6 +1,7 @@
+import Button from '@material-ui/core/Button';
+import Container from '@material-ui/core/Container';
 import React from 'react';
 import useFormStyles from '../styles';
-import { Button, Container } from '@material-ui/core';
 
 const Submit = (): JSX.Element => {
     const { submit } = useFormStyles();

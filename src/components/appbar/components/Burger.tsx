@@ -1,7 +1,7 @@
 import React from 'react';
 import useAppBarStyles from '../appbarStyles';
-import { IconButton } from '@material-ui/core';
-import { Menu as MenuIcon } from '@material-ui/icons';
+import MenuIcon from '@material-ui/icons/Menu';
+import IconButton from '@material-ui/core/IconButton';
 import { useDispatch } from 'react-redux';
 import { setDrawer } from '../../../redux/slices/drawer/drawerSlice';
 

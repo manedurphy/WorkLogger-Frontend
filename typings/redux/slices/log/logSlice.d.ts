@@ -1,0 +1,11 @@
+import { LogFormData } from '../../../components/forms/types';
+import { IGlobalState } from '../../types';
+import { ThunkActionType } from '../users/types';
+import { ILog, ILogState } from './types';
+export declare const setLog: import("@reduxjs/toolkit").ActionCreatorWithPayload<ILog[], string>, setLogItem: import("@reduxjs/toolkit").ActionCreatorWithPayload<ILog, string>, setShowLog: import("@reduxjs/toolkit").ActionCreatorWithPayload<boolean, string>, setShowLogForm: import("@reduxjs/toolkit").ActionCreatorWithPayload<boolean, string>;
+export declare const getLogState: (state: IGlobalState) => ILogState;
+export declare const handleUpdateLogItem: (id: number, taskId: number, formData: LogFormData) => ThunkActionType;
+export declare const handleDeleteLogItem: (id: number, taskId: number) => ThunkActionType;
+export declare const handleClickEdit: (logItem: ILog) => ThunkActionType;
+declare const _default: import("redux").Reducer<ILogState, import("redux").AnyAction>;
+export default _default;

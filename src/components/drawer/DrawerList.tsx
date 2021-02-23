@@ -3,7 +3,7 @@ import React from 'react';
 import DrawerListItem from './DrawerListItem';
 import useDrawerStyles from './drawerStyles';
 import drawerListItems from './drawerListItems';
-import { List } from '@material-ui/core';
+import List from '@material-ui/core/List';
 import { IDrawerListItem } from './types';
 
 const DrawerList = (): JSX.Element => {

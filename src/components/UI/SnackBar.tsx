@@ -2,8 +2,8 @@
 import React, { useState } from 'react';
 import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
 import Snackbar from '@material-ui/core/Snackbar';
-import { SnackBarProps } from './types';
 import makeStyles from '@material-ui/core/styles/makeStyles';
+import { SnackBarProps } from './types';
 import { Theme } from '@material-ui/core/styles/createMuiTheme';
 
 function Alert(props: AlertProps) {

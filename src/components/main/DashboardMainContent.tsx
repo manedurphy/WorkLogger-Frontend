@@ -6,7 +6,7 @@ import useMainStyles from './mainStyles';
 import EditLogForm from '../forms/log/EditLogForm';
 import EditTaskForm from '../forms/task/EditTaskForm';
 import AddHoursModal from '../modal/AddHoursModal';
-import { Container } from '@material-ui/core';
+import Container from '@material-ui/core/Container';
 import { useSelector } from 'react-redux';
 import { getLogState } from '../../redux/slices/log/logSlice';
 import { getTasksState } from '../../redux/slices/tasks/tasksSlice';

@@ -1,12 +1,12 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import Box from '@material-ui/core/Box';
 import CancelButton from './buttons/Cancel';
 import ConfirmButton from './buttons/Confirm';
 import ModalContainer from './common/ModalContainer';
 import useModalStyles from './styles';
 import { actions } from './actions';
 import { useSelector } from 'react-redux';
-import { Box } from '@material-ui/core';
 import { getModalState } from '../../redux/slices/modals/modalsSlice';
 
 const ConfirmModal = (): JSX.Element => {

@@ -1,7 +1,7 @@
 import React, { ChangeEvent } from 'react';
 import useAppBarStyles from '../appbarStyles';
-import { Search as SearchIcon } from '@material-ui/icons';
-import { InputBase } from '@material-ui/core';
+import SearchIcon from '@material-ui/icons/Search';
+import InputBase from '@material-ui/core/InputBase';
 import { useDispatch } from 'react-redux';
 import { searchTask } from '../../../redux/slices/tasks/tasksSlice';
 

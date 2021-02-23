@@ -1,4 +1,4 @@
-import { SnackbarOrigin } from '@material-ui/core';
+import { SnackbarOrigin } from '@material-ui/core/Snackbar/Snackbar';
 
 export interface SnackBarProps {
     message: string;

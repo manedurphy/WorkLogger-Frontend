@@ -2,11 +2,14 @@ import React, { ChangeEvent, FormEvent, useState } from 'react';
 import LoginForm from './LoginForm';
 import Copyright from '../Copyright';
 import useAuthStyles from '../styles';
+import Container from '@material-ui/core/Container';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
 import { IGlobalState } from '../../../redux/types';
 import { handleLogin } from '../../../redux/slices/users/usersSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { CssBaseline, Box, Typography, Container } from '@material-ui/core';
 
 const Login = (): JSX.Element => {
     const { paper } = useAuthStyles();
@@ -26,7 +29,7 @@ const Login = (): JSX.Element => {
     };
 
     return (
-        <Container component="main" maxWidth="xs">
+        <Container component={'main'} maxWidth={'xs'}>
             <CssBaseline />
             <div className={paper}>
                 <img

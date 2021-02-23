@@ -2,11 +2,14 @@ import React, { ChangeEvent, useState, FormEvent } from 'react';
 import RegisterForm from './RegisterForm';
 import Copyright from '../Copyright';
 import useAuthStyles from '../styles';
+import Box from '@material-ui/core/Box';
+import Container from '@material-ui/core/Container';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Typography from '@material-ui/core/Typography';
 import { handleRegister } from '../../../redux/slices/users/usersSlice';
 import { Redirect } from 'react-router-dom';
 import { getAuthState } from '../../../redux/slices/auth/authSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import { CssBaseline, Box, Typography, Container } from '@material-ui/core';
 
 const Register = (): JSX.Element => {
     const { paper } = useAuthStyles();

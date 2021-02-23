@@ -1,4 +1,5 @@
-import { Assignment as AssignmentIcon, DataUsage as DataUsageIcon } from '@material-ui/icons';
+import AssignmentIcon from '@material-ui/icons/Assignment';
+import DataUsageIcon from '@material-ui/icons/DataUsage';
 import { IDrawerListItem } from './types';
 
 const drawerListItems: IDrawerListItem[] = [

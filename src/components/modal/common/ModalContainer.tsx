@@ -1,6 +1,7 @@
+import Fade from '@material-ui/core/Fade';
+import Modal from '@material-ui/core/Modal';
 import React from 'react';
 import useModalStyles from '../styles';
-import { Fade, Modal } from '@material-ui/core';
 
 interface ModalContainerProps {
     children: JSX.Element;

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Grid, TextField } from '@material-ui/core';
+import Grid from '@material-ui/core/Grid';
+import TextField from '@material-ui/core/TextField';
 import { LogInputFieldsProps } from '../types';
 
 const LogInputFields: React.FC<LogInputFieldsProps> = ({ handleChange, loggedAt }): JSX.Element => (

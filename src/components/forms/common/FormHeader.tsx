@@ -2,7 +2,8 @@ import React from 'react';
 import Title from '../../main/components/Title';
 import useFormStyles from '../styles';
 import CloseIcon from '@material-ui/icons/Close';
-import { Box, IconButton } from '@material-ui/core';
+import Box from '@material-ui/core/Box';
+import IconButton from '@material-ui/core/IconButton';
 import { useDispatch } from 'react-redux';
 import { FormHeaderProps } from '../types';
 

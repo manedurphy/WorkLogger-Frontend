@@ -1,6 +1,7 @@
 import React from 'react';
 import useFormStyles from '../styles';
-import { Button, Container } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+import Container from '@material-ui/core/Container';
 import { Command } from '../../../redux/slices/modals/types';
 
 interface UpdateDeleteProps {

@@ -1,4 +1,5 @@
-import { makeStyles, Theme } from '@material-ui/core';
+import makeStyles from '@material-ui/core/styles/makeStyles';
+import { Theme } from '@material-ui/core/styles/createMuiTheme';
 
 export default makeStyles((theme: Theme) => ({
     modal: {

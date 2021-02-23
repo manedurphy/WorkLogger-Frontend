@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
-import { Menu, MenuItem, Fade, IconButton, Badge } from '@material-ui/core';
-import { ExitToApp as ExitToAppIcon } from '@material-ui/icons';
+import Badge from '@material-ui/core/Badge';
+import IconButton from '@material-ui/core/IconButton';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import Menu from '@material-ui/core/Menu';
+import Fade from '@material-ui/core/Fade';
+import MenuItem from '@material-ui/core/MenuItem';
 
 const NotificationsMenu = (): JSX.Element => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
