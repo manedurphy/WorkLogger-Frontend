@@ -24,6 +24,10 @@ const config: webpack.Configuration = {
                 enforce: 'pre',
                 use: 'source-map-loader',
             },
+            {
+                test: /\.png$/i,
+                use: 'file-loader',
+            },
         ],
     },
     resolve: {

@@ -6,7 +6,8 @@ export default makeStyles({
     },
     header: {
         display: 'flex',
-        justifyContent: 'center',
+        justifyContent: 'space-evenly',
+        alignItems: 'center',
         margin: '20px 0',
         fontFamily: 'Fjalla One, sans-serif',
     },

@@ -1,16 +1,16 @@
 import React, { ChangeEvent, useState, FormEvent } from 'react';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import RegisterForm from './RegisterForm';
 import Copyright from '../Copyright';
 import useAuthStyles from '../styles';
+import logo from '../../../assets/work-logger-logo-min.png';
 import { handleRegister } from '../../../redux/slices/users/usersSlice';
 import { Redirect } from 'react-router-dom';
 import { getAuthState } from '../../../redux/slices/auth/authSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import { Avatar, CssBaseline, Box, Typography, Container } from '@material-ui/core';
+import { CssBaseline, Box, Typography, Container } from '@material-ui/core';
 
 const Register = (): JSX.Element => {
-    const { paper, avatar } = useAuthStyles();
+    const { paper } = useAuthStyles();
     const dispatch = useDispatch();
     const auth = useSelector(getAuthState);
     const [formData, setFormData] = useState({
@@ -34,10 +34,8 @@ const Register = (): JSX.Element => {
         <Container component="main" maxWidth="xs">
             <CssBaseline />
             <div className={paper}>
-                <Avatar className={avatar}>
-                    <LockOutlinedIcon />
-                </Avatar>
-                <Typography component="h1" variant="h5">
+                <img src={logo} alt={'logo'} width={75} height={50} />
+                <Typography component={'h1'} variant={'h5'}>
                     Register
                 </Typography>
                 <RegisterForm formData={formData} handleChange={handleChange} handleSubmit={handleSubmit} />

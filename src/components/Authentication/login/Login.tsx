@@ -1,16 +1,16 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 import LoginForm from './LoginForm';
 import Copyright from '../Copyright';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import useAuthStyles from '../styles';
+import logo from '../../../assets/work-logger-logo-min.png';
 import { IGlobalState } from '../../../redux/types';
 import { handleLogin } from '../../../redux/slices/users/usersSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { Avatar, CssBaseline, Box, Typography, Container } from '@material-ui/core';
+import { CssBaseline, Box, Typography, Container } from '@material-ui/core';
 
 const Login = (): JSX.Element => {
-    const { paper, avatar } = useAuthStyles();
+    const { paper } = useAuthStyles();
     const dispatch = useDispatch();
     const { auth } = useSelector((state: IGlobalState) => state);
     const [formData, setFormData] = useState({
@@ -30,9 +30,7 @@ const Login = (): JSX.Element => {
         <Container component="main" maxWidth="xs">
             <CssBaseline />
             <div className={paper}>
-                <Avatar className={avatar}>
-                    <LockOutlinedIcon />
-                </Avatar>
+                <img src={logo} alt={'logo'} width={75} height={50} />
                 <Typography component="h1" variant="h5">
                     Sign in
                 </Typography>
