@@ -4,6 +4,7 @@ import { render, fireEvent } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { postRegisterForm } from '../../../redux/slices/users/helpers';
 import { store } from '../../../redux/store';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 it('should respond with a success alert for successful registration', async () => {
     const res = await postRegisterForm({
@@ -22,13 +23,15 @@ it('should properly fire event handlers and register a new user on submit', () =
     const handleSubmit = jest.fn();
     const handleChange = jest.fn();
     const { getByLabelText, getByTestId } = render(
-        <Provider store={store}>
-            <RegisterForm
-                handleSubmit={handleSubmit}
-                handleChange={handleChange}
-                formData={{ firstName: '', lastName: '', email: '', password: '', password2: '' }}
-            />
-        </Provider>,
+        <Router>
+            <Provider store={store}>
+                <RegisterForm
+                    handleSubmit={handleSubmit}
+                    handleChange={handleChange}
+                    formData={{ firstName: '', lastName: '', email: '', password: '', password2: '' }}
+                />
+            </Provider>
+        </Router>,
     );
 
     const firstName = getByLabelText('firstName');

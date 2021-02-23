@@ -2,7 +2,8 @@ import React, { Fragment } from 'react';
 import useLogTableStyles from './styles';
 import Head from './components/Head';
 import Body from './components/Body';
-import { Link, Table } from '@material-ui/core';
+import Table from '@material-ui/core/Table';
+import Link from '@material-ui/core/Link';
 import { useDispatch } from 'react-redux';
 import { setShowLog } from '../../../redux/slices/log/logSlice';
 

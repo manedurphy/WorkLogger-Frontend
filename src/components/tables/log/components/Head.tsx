@@ -1,5 +1,7 @@
 import React from 'react';
-import { TableCell, TableHead, TableRow } from '@material-ui/core';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import TableCell from '@material-ui/core/TableCell';
 
 const Head = (): JSX.Element => (
     <TableHead>

@@ -1,9 +1,12 @@
 import React, { useState, Fragment } from 'react';
 import Dropdown from './Dropdown';
 import useLogTableStyles from '../styles';
+import IconButton from '@material-ui/core/IconButton';
+import TableCell from '@material-ui/core/TableCell';
+import TableRow from '@material-ui/core/TableRow';
+import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import { LogItemProps } from '../types';
-import { IconButton, TableCell, TableRow } from '@material-ui/core';
-import { KeyboardArrowUp as KeyboardArrowUpIcon, KeyboardArrowDown as KeyboardArrowDownIcon } from '@material-ui/icons';
 
 const Row: React.FC<LogItemProps> = ({ logItem }): JSX.Element => {
     const { root } = useLogTableStyles();

@@ -1,7 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import useButtonStyles from '../buttonStyles';
-import { Edit as EditIcon } from '@material-ui/icons';
+import EditIcon from '@material-ui/icons/Edit';
 import { EditButtonProps } from '../types';
 
 const Edit: React.FC<EditButtonProps> = ({ handleClick }): JSX.Element => {

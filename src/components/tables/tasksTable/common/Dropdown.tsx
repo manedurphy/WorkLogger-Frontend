@@ -1,6 +1,12 @@
+import Box from '@material-ui/core/Box';
+import Collapse from '@material-ui/core/Collapse';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
 import React from 'react';
 import { DropdownProps } from '../../types';
-import { Box, Collapse, Table, TableBody, TableCell, TableHead, TableRow } from '@material-ui/core';
 
 const Dropdown: React.FC<DropdownProps> = ({ task, open, Actions }): JSX.Element => {
     const showHoursOver = task.hoursRemaining < 0;
