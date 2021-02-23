@@ -18,4 +18,12 @@ export default makeStyles((theme: Theme) => ({
     submit: {
         margin: theme.spacing(3, 0, 2),
     },
+    link: {
+        textDecoration: 'none',
+        color: '#3f51b5',
+
+        '&:hover': {
+            textDecoration: 'underline',
+        },
+    },
 }));

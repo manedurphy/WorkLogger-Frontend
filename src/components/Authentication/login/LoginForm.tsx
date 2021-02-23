@@ -1,13 +1,14 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import useAuthStyles from '../styles';
-import { Button, Box, Link, TextField } from '@material-ui/core';
+import { Button, Box, TextField } from '@material-ui/core';
 import { LoginFormProps } from './types';
+import { Link } from 'react-router-dom';
 
-const LoginForm: React.FC<LoginFormProps> = (props): JSX.Element => {
-    const { form, submit } = useAuthStyles();
+const LoginForm: React.FC<LoginFormProps> = ({ formData, handleChange, handleSubmit }): JSX.Element => {
+    const { form, submit, link } = useAuthStyles();
     return (
-        <form className={form} noValidate onSubmit={props.handleSubmit}>
+        <form className={form} onSubmit={handleSubmit}>
             <TextField
                 variant={'outlined'}
                 margin={'normal'}
@@ -19,8 +20,8 @@ const LoginForm: React.FC<LoginFormProps> = (props): JSX.Element => {
                 name={'email'}
                 autoComplete={'email'}
                 autoFocus
-                value={props.formData.email}
-                onChange={props.handleChange}
+                value={formData.email}
+                onChange={handleChange}
             />
             <TextField
                 variant={'outlined'}
@@ -33,15 +34,15 @@ const LoginForm: React.FC<LoginFormProps> = (props): JSX.Element => {
                 type={'password'}
                 id={'password'}
                 autoComplete={'current-password'}
-                value={props.formData.password}
-                onChange={props.handleChange}
+                value={formData.password}
+                onChange={handleChange}
             />
             <Button type={'submit'} fullWidth variant={'contained'} color={'primary'} className={submit}>
                 Sign In
             </Button>
             <Box display={'flex'} justifyContent={'center'}>
-                <Link href={'/register'} variant={'body2'}>
-                    {"Don't have an account? Sign Up"}
+                <Link className={link} to={'/register'}>
+                    Don't have an account? Sign Up
                 </Link>
             </Box>
         </form>
