@@ -2,7 +2,6 @@ import React, { ChangeEvent, FormEvent, useState } from 'react';
 import LoginForm from './LoginForm';
 import Copyright from '../Copyright';
 import useAuthStyles from '../styles';
-import logo from '../../../assets/work-logger-logo-min.png';
 import { IGlobalState } from '../../../redux/types';
 import { handleLogin } from '../../../redux/slices/users/usersSlice';
 import { useDispatch, useSelector } from 'react-redux';
@@ -30,7 +29,12 @@ const Login = (): JSX.Element => {
         <Container component="main" maxWidth="xs">
             <CssBaseline />
             <div className={paper}>
-                <img src={logo} alt={'logo'} width={75} height={50} />
+                <img
+                    src={'https://work-logger-connor.s3.amazonaws.com/work-logger-logo-min.png'}
+                    alt={'logo'}
+                    width={75}
+                    height={50}
+                />
                 <Typography component="h1" variant="h5">
                     Sign in
                 </Typography>

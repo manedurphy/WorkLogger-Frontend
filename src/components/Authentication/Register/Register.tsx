@@ -2,7 +2,6 @@ import React, { ChangeEvent, useState, FormEvent } from 'react';
 import RegisterForm from './RegisterForm';
 import Copyright from '../Copyright';
 import useAuthStyles from '../styles';
-import logo from '../../../assets/work-logger-logo-min.png';
 import { handleRegister } from '../../../redux/slices/users/usersSlice';
 import { Redirect } from 'react-router-dom';
 import { getAuthState } from '../../../redux/slices/auth/authSlice';
@@ -34,7 +33,12 @@ const Register = (): JSX.Element => {
         <Container component="main" maxWidth="xs">
             <CssBaseline />
             <div className={paper}>
-                <img src={logo} alt={'logo'} width={75} height={50} />
+                <img
+                    src={'https://work-logger-connor.s3.amazonaws.com/work-logger-logo-min.png'}
+                    alt={'logo'}
+                    width={75}
+                    height={50}
+                />
                 <Typography component={'h1'} variant={'h5'}>
                     Register
                 </Typography>

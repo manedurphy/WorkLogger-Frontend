@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import useAuthStyles from '../styles';
-import { Button, Checkbox, FormControlLabel, Grid, Link, TextField } from '@material-ui/core';
+import { Button, Box, Link, TextField } from '@material-ui/core';
 import { LoginFormProps } from './types';
 
 const LoginForm: React.FC<LoginFormProps> = (props): JSX.Element => {
@@ -36,22 +36,14 @@ const LoginForm: React.FC<LoginFormProps> = (props): JSX.Element => {
                 value={props.formData.password}
                 onChange={props.handleChange}
             />
-            <FormControlLabel control={<Checkbox value={'remember'} color={'primary'} />} label={'Remember me'} />
             <Button type={'submit'} fullWidth variant={'contained'} color={'primary'} className={submit}>
                 Sign In
             </Button>
-            <Grid container>
-                <Grid item xs>
-                    <Link href="#" variant={'body2'}>
-                        Forgot password?
-                    </Link>
-                </Grid>
-                <Grid item>
-                    <Link href={'/register'} variant={'body2'}>
-                        {"Don't have an account? Sign Up"}
-                    </Link>
-                </Grid>
-            </Grid>
+            <Box display={'flex'} justifyContent={'center'}>
+                <Link href={'/register'} variant={'body2'}>
+                    {"Don't have an account? Sign Up"}
+                </Link>
+            </Box>
         </form>
     );
 };
