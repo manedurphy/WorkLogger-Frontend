@@ -157,7 +157,7 @@ export const handleSubmitNewTask = (formData: TaskFormData): ThunkActionType => 
         dispatch(setIncompleteTasks(tasks));
         dispatch(addAlert(success));
     } catch (error) {
-        dispatch(addAlert({ message: error.response.data, type: AlertConstants.Error }));
+        dispatch(addAlert({ ...error.response.data, type: AlertConstants.Error }));
     }
 };
 
@@ -170,7 +170,7 @@ export const handleCompleteTask = (id: number): ThunkActionType => async (dispat
         dispatch(addAlert(success));
         dispatch(setShowModal(false));
     } catch (error) {
-        dispatch(addAlert({ message: error.message, type: AlertConstants.Error }));
+        dispatch(addAlert({ ...error.response.data, type: AlertConstants.Error }));
     }
 };
 
