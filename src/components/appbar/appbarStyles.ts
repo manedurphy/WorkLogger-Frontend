@@ -1,6 +1,6 @@
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import { fade } from '@material-ui/core/styles';
-import { Theme } from '@material-ui/core/styles';
+import { Theme } from '@material-ui/core/styles/createMuiTheme';
 
 export default makeStyles((theme: Theme) => ({
     appBar: {
@@ -8,7 +8,6 @@ export default makeStyles((theme: Theme) => ({
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen,
         }),
-        backgroundColor: 'black',
         height: '250px',
     },
     toolbar: {

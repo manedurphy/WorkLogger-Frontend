@@ -12,7 +12,7 @@ const AppBarComponent = (): JSX.Element => {
     const { appBar, toolbar } = useAppBarStyles();
 
     return (
-        <AppBar position={'absolute'} elevation={0} className={appBar}>
+        <AppBar position={'absolute'} style={{ backgroundColor: 'black' }} elevation={0} className={appBar}>
             <Toolbar className={toolbar}>
                 <Burger />
                 <AppBarTitle />

@@ -42,7 +42,6 @@ const config: webpack.Configuration = {
     optimization: {
         minimize: true,
         minimizer: [new CssMinimizerPlugin(), new TerserPlugin()],
-        runtimeChunk: 'single',
         splitChunks: {
             cacheGroups: {
                 commons: {
@@ -55,6 +54,23 @@ const config: webpack.Configuration = {
         },
     },
     plugins: [
+        new CompressionPlugin({
+            filename: '[path][base].br',
+            algorithm: 'brotliCompress',
+            test: /\.(js|css|html|svg)$/,
+            minRatio: 0.8,
+            threshold: 10240,
+            compressionOptions: {
+                [zlip.constants.BROTLI_PARAM_QUALITY]: 11,
+            },
+        }),
+        new CompressionPlugin({
+            filename: '[path][base].gz',
+            algorithm: 'gzip',
+            test: /\.js$|\.css$|\.html$/,
+            threshold: 10240,
+            minRatio: 0.8,
+        }),
         new HtmlWebpackPlugin({
             template: resolve(__dirname, 'public', 'index.html'),
             minify: {
@@ -65,15 +81,6 @@ const config: webpack.Configuration = {
         }),
         new MiniCssExtractLoader({ filename: '[name].[contenthash].css' }),
         new CleanWebpackPlugin(),
-        new CompressionPlugin({
-            algorithm: 'brotliCompress',
-            test: /\.(js|css|html|svg)$/,
-            minRatio: 0.8,
-            threshold: 10240,
-            compressionOptions: {
-                [zlip.constants.BROTLI_PARAM_QUALITY]: 11,
-            },
-        }),
         new BundleAnalyzerPlugin(),
     ],
 };

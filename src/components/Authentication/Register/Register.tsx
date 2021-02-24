@@ -14,7 +14,7 @@ import { useDispatch, useSelector } from 'react-redux';
 const Register = (): JSX.Element => {
     const { paper } = useAuthStyles();
     const dispatch = useDispatch();
-    const auth = useSelector(getAuthState);
+    const { registerSuccess } = useSelector(getAuthState);
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
@@ -50,7 +50,7 @@ const Register = (): JSX.Element => {
             <Box mt={5}>
                 <Copyright />
             </Box>
-            {auth.registerSuccess && <Redirect to="/login" />}
+            {registerSuccess && <Redirect to="/login" />}
         </Container>
     );
 };

@@ -6,15 +6,15 @@ import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import { IGlobalState } from '../../../redux/types';
 import { handleLogin } from '../../../redux/slices/users/usersSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import { getAuthState } from '../../../redux/slices/auth/authSlice';
 
 const Login = (): JSX.Element => {
     const { paper } = useAuthStyles();
     const dispatch = useDispatch();
-    const { auth } = useSelector((state: IGlobalState) => state);
+    const { loginSuccess } = useSelector(getAuthState);
     const [formData, setFormData] = useState({
         email: '',
         password: '',
@@ -46,7 +46,7 @@ const Login = (): JSX.Element => {
             <Box mt={8}>
                 <Copyright />
             </Box>
-            {auth.loginSuccess && <Redirect to="/" />}
+            {loginSuccess && <Redirect to="/" />}
         </Container>
     );
 };
