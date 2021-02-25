@@ -16,7 +16,6 @@ const AppBarComponent = (): JSX.Element => {
             <Toolbar className={toolbar}>
                 <Burger />
                 <AppBarTitle />
-
                 <SearchBar />
                 <LogoutMenu />
             </Toolbar>

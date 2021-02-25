@@ -5,7 +5,7 @@ import CompressionPlugin from 'compression-webpack-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 import zlip from 'zlib';
-import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+// import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import { resolve } from 'path';
 
@@ -35,7 +35,7 @@ const config: webpack.Configuration = {
         extensions: ['.tsx', '.ts', '.js'],
     },
     output: {
-        filename: '[name].[chunkhash].bundle.js',
+        filename: '[name].bundle.js',
         path: resolve(__dirname, 'dist'),
         publicPath: '/',
     },
@@ -79,9 +79,9 @@ const config: webpack.Configuration = {
                 removeComments: true,
             },
         }),
-        new MiniCssExtractLoader({ filename: '[name].[contenthash].css' }),
+        new MiniCssExtractLoader({ filename: '[name].css' }),
         new CleanWebpackPlugin(),
-        new BundleAnalyzerPlugin(),
+        // new BundleAnalyzerPlugin(),
     ],
 };
 
