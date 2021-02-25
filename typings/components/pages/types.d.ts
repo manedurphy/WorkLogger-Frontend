@@ -1,6 +1,6 @@
 export interface MainContainerProps {
-    children: JSX.Element;
+    children: any;
 }
 export interface LayoutProps {
-    children: JSX.Element;
+    children: any;
 }
