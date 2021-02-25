@@ -1,6 +1,7 @@
 import React from 'react';
 import useAppBarStyles from '../appbarStyles';
-import { Typography, useMediaQuery } from '@material-ui/core';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import Typography from '@material-ui/core/Typography';
 import { useSelector } from 'react-redux';
 import { getTasksState } from '../../../redux/slices/tasks/tasksSlice';
 

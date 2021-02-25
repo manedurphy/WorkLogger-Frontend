@@ -3,7 +3,7 @@ import Log from './components/LogComponent';
 import CompleteTasks from './components/CompleteTasks';
 import EditLogForm from '../forms/log/EditLogForm';
 import useMainStyles from './mainStyles';
-import { Container } from '@material-ui/core';
+import Container from '@material-ui/core/Container';
 import { useSelector } from 'react-redux';
 import { getLogState } from '../../redux/slices/log/logSlice';
 import { getTasksState } from '../../redux/slices/tasks/tasksSlice';

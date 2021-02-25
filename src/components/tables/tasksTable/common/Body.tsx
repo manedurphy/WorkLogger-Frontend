@@ -1,6 +1,6 @@
 import React from 'react';
 import Row from './Row';
-import { TableBody } from '@material-ui/core';
+import TableBody from '@material-ui/core/TableBody';
 import { TasksTableProps } from '../../types';
 import { useSelector } from 'react-redux';
 import { getTasksState } from '../../../../redux/slices/tasks/tasksSlice';

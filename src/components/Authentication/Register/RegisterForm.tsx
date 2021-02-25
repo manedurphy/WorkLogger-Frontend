@@ -1,13 +1,17 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import useAuthStyles from '../styles';
-import { TextField, Link, Grid, Button } from '@material-ui/core';
+import Box from '@material-ui/core/Box';
+import Grid from '@material-ui/core/Grid';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 import { RegisterFormProps } from './types';
+import { Link } from 'react-router-dom';
 
-const RegisterForm: React.FC<RegisterFormProps> = (props) => {
-    const { form, submit } = useAuthStyles();
+const RegisterForm: React.FC<RegisterFormProps> = ({ formData, handleChange, handleSubmit }): JSX.Element => {
+    const { form, submit, link } = useAuthStyles();
     return (
-        <form className={form} noValidate onSubmit={props.handleSubmit} data-testid={'register-form'}>
+        <form className={form} onSubmit={handleSubmit} data-testid={'register-form'}>
             <Grid container spacing={2}>
                 <Grid item xs={12} sm={6}>
                     <TextField
@@ -19,8 +23,8 @@ const RegisterForm: React.FC<RegisterFormProps> = (props) => {
                         id={'firstName'}
                         label={'First Name'}
                         autoFocus
-                        value={props.formData.firstName}
-                        onChange={props.handleChange}
+                        value={formData.firstName}
+                        onChange={handleChange}
                         inputProps={{ 'aria-label': 'firstName' }}
                     />
                 </Grid>
@@ -33,8 +37,8 @@ const RegisterForm: React.FC<RegisterFormProps> = (props) => {
                         label={'Last Name'}
                         name={'lastName'}
                         autoComplete={'lname'}
-                        value={props.formData.lastName}
-                        onChange={props.handleChange}
+                        value={formData.lastName}
+                        onChange={handleChange}
                         inputProps={{ 'aria-label': 'lastName' }}
                     />
                 </Grid>
@@ -47,8 +51,8 @@ const RegisterForm: React.FC<RegisterFormProps> = (props) => {
                         label={'Email Address'}
                         name={'email'}
                         autoComplete={'email'}
-                        value={props.formData.email}
-                        onChange={props.handleChange}
+                        value={formData.email}
+                        onChange={handleChange}
                         inputProps={{ 'aria-label': 'email' }}
                     />
                 </Grid>
@@ -62,8 +66,8 @@ const RegisterForm: React.FC<RegisterFormProps> = (props) => {
                         type={'password'}
                         id={'password'}
                         autoComplete="current-password"
-                        value={props.formData.password}
-                        onChange={props.handleChange}
+                        value={formData.password}
+                        onChange={handleChange}
                         inputProps={{ 'aria-label': 'password' }}
                     />
                 </Grid>
@@ -77,8 +81,8 @@ const RegisterForm: React.FC<RegisterFormProps> = (props) => {
                         type={'password'}
                         id={'password2'}
                         autoComplete={'current-password'}
-                        value={props.formData.password2}
-                        onChange={props.handleChange}
+                        value={formData.password2}
+                        onChange={handleChange}
                         inputProps={{ 'aria-label': 'password2' }}
                     />
                 </Grid>
@@ -86,13 +90,11 @@ const RegisterForm: React.FC<RegisterFormProps> = (props) => {
             <Button type={'submit'} fullWidth variant={'contained'} color={'primary'} className={submit}>
                 Sign Up
             </Button>
-            <Grid container justify={'flex-end'}>
-                <Grid item>
-                    <Link href={'/login'} variant={'body2'}>
-                        Already have an account? Sign in
-                    </Link>
-                </Grid>
-            </Grid>
+            <Box display={'flex'} justifyContent={'center'}>
+                <Link className={link} to={'/login'}>
+                    Already have an account? Sign in
+                </Link>
+            </Box>
         </form>
     );
 };

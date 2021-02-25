@@ -1,4 +1,5 @@
-import { makeStyles, Theme } from '@material-ui/core';
+import makeStyles from '@material-ui/core/styles/makeStyles';
+import { Theme } from '@material-ui/core/styles';
 
 export default makeStyles((theme: Theme) => ({
     paper: {
@@ -17,5 +18,13 @@ export default makeStyles((theme: Theme) => ({
     },
     submit: {
         margin: theme.spacing(3, 0, 2),
+    },
+    link: {
+        textDecoration: 'none',
+        color: '#3f51b5',
+
+        '&:hover': {
+            textDecoration: 'underline',
+        },
     },
 }));

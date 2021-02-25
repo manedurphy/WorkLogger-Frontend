@@ -2,7 +2,13 @@ import React from 'react';
 import EditButton from '../../buttons/log/Edit';
 import DeleteButton from '../../buttons/log/Delete';
 import { DropdownProps } from '../types';
-import { Box, Collapse, Table, TableBody, TableCell, TableHead, TableRow } from '@material-ui/core';
+import Box from '@material-ui/core/Box';
+import Collapse from '@material-ui/core/Collapse';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import TableCell from '@material-ui/core/TableCell';
 
 const Dropdown: React.FC<DropdownProps> = ({ logItem, open }): JSX.Element => {
     const showHoursOver = logItem.hoursRemaining < 0;

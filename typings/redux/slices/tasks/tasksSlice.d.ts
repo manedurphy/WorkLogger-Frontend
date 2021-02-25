@@ -1,4 +1,21 @@
-import { ITaskState } from './types';
-export declare const setIncompleteTasks: import("@reduxjs/toolkit").ActionCreatorWithPayload<import("./types").ITask[], string>;
+import { IGlobalState } from '../../types';
+import { TaskFormData } from '../../../components/forms/types';
+import { ThunkActionType } from '../users/types';
+import { ITask, ITaskState } from './types';
+export declare const setIncompleteTasks: import("@reduxjs/toolkit").ActionCreatorWithPayload<ITask[], string>, setCompleteTasks: import("@reduxjs/toolkit").ActionCreatorWithPayload<ITask[], string>, setLoadingTasks: import("@reduxjs/toolkit").ActionCreatorWithPayload<boolean, string>, setCurrentTask: import("@reduxjs/toolkit").ActionCreatorWithPayload<ITask, string>, setEditTask: import("@reduxjs/toolkit").ActionCreatorWithPayload<boolean, string>, setShowCreateNewTaskForm: import("@reduxjs/toolkit").ActionCreatorWithPayload<boolean, string>, hideTaskForms: import("@reduxjs/toolkit").ActionCreatorWithoutPayload<string>, findAndReplaceTask: import("@reduxjs/toolkit").ActionCreatorWithPayload<ITask, string>, searchTask: import("@reduxjs/toolkit").ActionCreatorWithPayload<string, string>;
+export declare const getTasksState: (state: IGlobalState) => ITaskState;
+export declare const getIncompleteTasksState: (state: IGlobalState) => ITask[];
+export declare const handleGetIncompleteTasks: () => ThunkActionType;
+export declare const handleGetCompleteTasks: () => ThunkActionType;
+export declare const handleSubmitNewTask: (formData: TaskFormData) => ThunkActionType;
+export declare const handleCompleteTask: (id: number) => ThunkActionType;
+export declare const handleDeleteTask: (id: number) => ThunkActionType;
+export declare const handleDeleteCompleteTask: (id: number) => ThunkActionType;
+export declare const handleUpdateTask: (id: number, formData: TaskFormData) => ThunkActionType;
+export declare const handleAddHours: (id: number, formData: {
+    [key: string]: string;
+}) => ThunkActionType;
+export declare const handleClickEdit: (task: ITask) => ThunkActionType;
+export declare const handleClickAdd: () => ThunkActionType;
 declare const _default: import("redux").Reducer<ITaskState, import("redux").AnyAction>;
 export default _default;

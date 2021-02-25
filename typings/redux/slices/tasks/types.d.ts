@@ -1,3 +1,4 @@
+import { ILog } from '../log/types';
 export interface ITask {
     id: number;
     name: string;
@@ -15,6 +16,7 @@ export interface ITask {
     UserId: number;
     createdAt: string;
     updatedAt: string;
+    Logs: ILog[];
 }
 export interface ITaskState {
     currentTask: ITask;
@@ -23,10 +25,30 @@ export interface ITaskState {
     loading: boolean;
     edit: boolean;
     showCompleted: boolean;
+    showCreateTaskForm: boolean;
+    search: string;
 }
 export declare type SetTasksAction = {
     payload: ITask[];
 };
 export declare type SetLoadingTasksAction = {
     payload: boolean;
+};
+export declare type SetEditTaskAction = {
+    payload: boolean;
+};
+export declare type SetShowModalAction = {
+    payload: boolean;
+};
+export declare type SetCurrentTaskAction = {
+    payload: ITask;
+};
+export declare type SetShowCreateTaskForm = {
+    payload: boolean;
+};
+export declare type FindAndReplaceTaskAction = {
+    payload: ITask;
+};
+export declare type SearchTaskAction = {
+    payload: string;
 };

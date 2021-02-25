@@ -1,22 +1,34 @@
 export declare const store: import("@reduxjs/toolkit").EnhancedStore<import("redux").CombinedState<{
-    counter: {
-        value: number;
+    auth: {
+        registerSuccess: boolean;
+        loginSuccess: boolean;
     };
     alerts: never[];
     tasks: import("./slices/tasks/types").ITaskState;
+    log: import("./slices/log/types").ILogState;
     user: import("./slices/users/types").IUserState;
+    modal: import("./slices/modals/types").IModalState;
+    drawer: import("./slices/drawer/types").IDrawerState;
 }>, import("redux").AnyAction, [import("redux-thunk").ThunkMiddleware<import("redux").CombinedState<{
-    counter: {
-        value: number;
+    auth: {
+        registerSuccess: boolean;
+        loginSuccess: boolean;
     };
     alerts: never[];
     tasks: import("./slices/tasks/types").ITaskState;
+    log: import("./slices/log/types").ILogState;
     user: import("./slices/users/types").IUserState;
+    modal: import("./slices/modals/types").IModalState;
+    drawer: import("./slices/drawer/types").IDrawerState;
 }>, import("redux").AnyAction, null> | import("redux-thunk").ThunkMiddleware<import("redux").CombinedState<{
-    counter: {
-        value: number;
+    auth: {
+        registerSuccess: boolean;
+        loginSuccess: boolean;
     };
     alerts: never[];
     tasks: import("./slices/tasks/types").ITaskState;
+    log: import("./slices/log/types").ILogState;
     user: import("./slices/users/types").IUserState;
+    modal: import("./slices/modals/types").IModalState;
+    drawer: import("./slices/drawer/types").IDrawerState;
 }>, import("redux").AnyAction, undefined>]>;

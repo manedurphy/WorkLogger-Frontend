@@ -1,6 +1,6 @@
 import React from 'react';
 import useButtonStyles from '../styles';
-import { Button } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
 import { getModalState } from '../../../redux/slices/modals/modalsSlice';
 import { ConfirmButtonProps } from '../types';
 import { useDispatch, useSelector } from 'react-redux';

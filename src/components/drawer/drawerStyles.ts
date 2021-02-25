@@ -1,4 +1,4 @@
-import { makeStyles } from '@material-ui/core';
+import makeStyles from '@material-ui/core/styles/makeStyles';
 
 export default makeStyles({
     list: {
@@ -6,7 +6,8 @@ export default makeStyles({
     },
     header: {
         display: 'flex',
-        justifyContent: 'center',
+        justifyContent: 'space-evenly',
+        alignItems: 'center',
         margin: '20px 0',
         fontFamily: 'Fjalla One, sans-serif',
     },

@@ -3,7 +3,9 @@ import Title from './Title';
 import useMainStyles from '../mainStyles';
 import RefreshIcon from '@material-ui/icons/Refresh';
 import IncompleteTasksTable from '../../tables/tasksTable/incomplete/IncompleteTasksTable';
-import { Box, IconButton, Paper } from '@material-ui/core';
+import Box from '@material-ui/core/Box';
+import Paper from '@material-ui/core/Paper';
+import IconButton from '@material-ui/core/IconButton';
 import { handleGetIncompleteTasks } from '../../../redux/slices/tasks/tasksSlice';
 import { useDispatch } from 'react-redux';
 

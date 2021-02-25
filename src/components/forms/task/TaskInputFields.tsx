@@ -1,5 +1,6 @@
-import { Grid, TextField } from '@material-ui/core';
 import React, { Fragment } from 'react';
+import Grid from '@material-ui/core/Grid';
+import TextField from '@material-ui/core/TextField';
 import { TaskInputFieldProps } from '../types';
 
 const TaskInputFields: React.FC<TaskInputFieldProps> = ({ handleChange, dateAssigned, dueDate }): JSX.Element => (

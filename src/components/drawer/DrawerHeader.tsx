@@ -6,6 +6,12 @@ const DrawerHeader = (): JSX.Element => {
     return (
         <div className={classes.header}>
             <h2>Work Logger</h2>
+            <img
+                src={'https://work-logger-connor.s3.amazonaws.com/work-logger-logo-min.png'}
+                alt={'logo'}
+                width={60.3}
+                height={40}
+            />
         </div>
     );
 };

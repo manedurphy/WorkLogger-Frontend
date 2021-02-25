@@ -1,18 +1,20 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 import LoginForm from './LoginForm';
 import Copyright from '../Copyright';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import useAuthStyles from '../styles';
-import { IGlobalState } from '../../../redux/types';
+import Container from '@material-ui/core/Container';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
 import { handleLogin } from '../../../redux/slices/users/usersSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { Avatar, CssBaseline, Box, Typography, Container } from '@material-ui/core';
+import { getAuthState } from '../../../redux/slices/auth/authSlice';
 
 const Login = (): JSX.Element => {
-    const { paper, avatar } = useAuthStyles();
+    const { paper } = useAuthStyles();
     const dispatch = useDispatch();
-    const { auth } = useSelector((state: IGlobalState) => state);
+    const { loginSuccess } = useSelector(getAuthState);
     const [formData, setFormData] = useState({
         email: '',
         password: '',
@@ -27,12 +29,15 @@ const Login = (): JSX.Element => {
     };
 
     return (
-        <Container component="main" maxWidth="xs">
+        <Container component={'main'} maxWidth={'xs'}>
             <CssBaseline />
             <div className={paper}>
-                <Avatar className={avatar}>
-                    <LockOutlinedIcon />
-                </Avatar>
+                <img
+                    src={'https://work-logger-connor.s3.amazonaws.com/work-logger-logo-min.png'}
+                    alt={'logo'}
+                    width={75}
+                    height={50}
+                />
                 <Typography component="h1" variant="h5">
                     Sign in
                 </Typography>
@@ -41,7 +46,7 @@ const Login = (): JSX.Element => {
             <Box mt={8}>
                 <Copyright />
             </Box>
-            {auth.loginSuccess && <Redirect to="/" />}
+            {loginSuccess && <Redirect to="/" />}
         </Container>
     );
 };

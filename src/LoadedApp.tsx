@@ -1,36 +1,32 @@
-import React, { Fragment } from 'react';
-import Dashboard from './components/pages/Dashboard';
-import Archive from './components/pages/Archive';
-import Register from './components/authentication/register/Register';
-import Login from './components/authentication/login/Login';
+import React, { Suspense, lazy } from 'react';
+import Spinner from './components/ui/Spinner';
 import SnackBarComponent from './components/ui/SnackBar';
-import Layout from './components/pages/common/Layout';
-import { Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { IAlert } from './redux/slices/alerts/types';
+import { ILoadedAppProps } from './components/types';
+import { useSelector } from 'react-redux';
+import { getUserState } from './redux/slices/users/usersSlice';
 
-interface ILoadedAppProps {
-    alerts: IAlert[];
-}
+const Authenticated = lazy(() => import('./app/Authenticated'));
+const Unauthenticated = lazy(() => import('./app/Unauthenticated'));
 
-const LoadedApp: React.FC<ILoadedAppProps> = (props): JSX.Element => (
-    <Fragment>
-        <Switch>
-            <Route exact path={'/register'} component={Register} />
-            <Route exact path={'/login'} component={Login} />
-            <Layout>
-                <Route exact path={'/'} component={Dashboard} />
-                <Route exact path={'/archive'} component={Archive} />
-            </Layout>
-        </Switch>
-        {props.alerts.map((alert: IAlert, i: number) => (
-            <SnackBarComponent
-                key={i}
-                message={alert.message}
-                type={alert.type}
-                anchor={{ vertical: 'bottom', horizontal: 'center' }}
-            />
-        ))}
-    </Fragment>
-);
+const LoadedApp: React.FC<ILoadedAppProps> = ({ alerts }): JSX.Element => {
+    const { firstName, loading } = useSelector(getUserState);
+
+    return (
+        <Suspense fallback={null}>
+            <Router>{loading ? <Spinner /> : !firstName ? <Unauthenticated /> : <Authenticated />}</Router>
+
+            {alerts.map((alert: IAlert, i: number) => (
+                <SnackBarComponent
+                    key={i}
+                    message={alert.message}
+                    type={alert.type}
+                    anchor={{ vertical: 'bottom', horizontal: 'center' }}
+                />
+            ))}
+        </Suspense>
+    );
+};
 
 export default LoadedApp;

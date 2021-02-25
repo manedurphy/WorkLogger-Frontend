@@ -6,7 +6,7 @@ import CompleteButton from '../../buttons/task/Complete';
 import LogButton from '../../buttons/task/Log';
 import AddButton from '../../buttons/task/Add';
 import useTasksTableStyles from '../styles';
-import { Box } from '@material-ui/core';
+import Box from '@material-ui/core/Box';
 import { TaskActionsProps } from '../../types';
 
 const IncompleteTaskActions: React.FC<TaskActionsProps> = ({ task }): JSX.Element => {

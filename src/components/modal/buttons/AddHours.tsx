@@ -1,6 +1,6 @@
 import React from 'react';
 import useButtonStyles from '../styles';
-import { Button } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
 
 const AddHours = (): JSX.Element => {
     const { addHoursBtn } = useButtonStyles();

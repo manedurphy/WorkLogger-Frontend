@@ -1,13 +1,16 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import useAuthStyles from '../styles';
-import { Button, Checkbox, FormControlLabel, Grid, Link, TextField } from '@material-ui/core';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import Box from '@material-ui/core/Box';
 import { LoginFormProps } from './types';
+import { Link } from 'react-router-dom';
 
-const LoginForm: React.FC<LoginFormProps> = (props): JSX.Element => {
-    const { form, submit } = useAuthStyles();
+const LoginForm: React.FC<LoginFormProps> = ({ formData, handleChange, handleSubmit }): JSX.Element => {
+    const { form, submit, link } = useAuthStyles();
     return (
-        <form className={form} noValidate onSubmit={props.handleSubmit}>
+        <form className={form} onSubmit={handleSubmit}>
             <TextField
                 variant={'outlined'}
                 margin={'normal'}
@@ -19,8 +22,8 @@ const LoginForm: React.FC<LoginFormProps> = (props): JSX.Element => {
                 name={'email'}
                 autoComplete={'email'}
                 autoFocus
-                value={props.formData.email}
-                onChange={props.handleChange}
+                value={formData.email}
+                onChange={handleChange}
             />
             <TextField
                 variant={'outlined'}
@@ -33,25 +36,17 @@ const LoginForm: React.FC<LoginFormProps> = (props): JSX.Element => {
                 type={'password'}
                 id={'password'}
                 autoComplete={'current-password'}
-                value={props.formData.password}
-                onChange={props.handleChange}
+                value={formData.password}
+                onChange={handleChange}
             />
-            <FormControlLabel control={<Checkbox value={'remember'} color={'primary'} />} label={'Remember me'} />
             <Button type={'submit'} fullWidth variant={'contained'} color={'primary'} className={submit}>
                 Sign In
             </Button>
-            <Grid container>
-                <Grid item xs>
-                    <Link href="#" variant={'body2'}>
-                        Forgot password?
-                    </Link>
-                </Grid>
-                <Grid item>
-                    <Link href={'/register'} variant={'body2'}>
-                        {"Don't have an account? Sign Up"}
-                    </Link>
-                </Grid>
-            </Grid>
+            <Box display={'flex'} justifyContent={'center'}>
+                <Link className={link} to={'/register'}>
+                    Don't have an account? Sign Up
+                </Link>
+            </Box>
         </form>
     );
 };

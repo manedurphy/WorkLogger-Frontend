@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import DrawerList from './DrawerList';
+import Drawer from '@material-ui/core/Drawer';
+import Divider from '@material-ui/core/Divider';
 import DrawerHeader from './DrawerHeader';
-import { Divider, Drawer } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDrawerState, setDrawer } from '../../redux/slices/drawer/drawerSlice';
 

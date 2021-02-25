@@ -1,9 +1,12 @@
 import React, { useState, Fragment } from 'react';
 import useTasksTableStyles from '../styles';
-import { IconButton, TableCell, TableRow } from '@material-ui/core';
-import { KeyboardArrowUp as KeyboardArrowUpIcon, KeyboardArrowDown as KeyboardArrowDownIcon } from '@material-ui/icons';
-import { RowProps } from '../../types';
 import Dropdown from './Dropdown';
+import TableRow from '@material-ui/core/TableRow';
+import TableCell from '@material-ui/core/TableCell';
+import IconButton from '@material-ui/core/IconButton';
+import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
+import { RowProps } from '../../types';
 
 const Row: React.FC<RowProps> = ({ task, Actions }) => {
     const [open, setOpen] = useState(false);

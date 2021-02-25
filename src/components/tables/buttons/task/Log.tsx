@@ -1,7 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import useButtonStyles from '../buttonStyles';
-import { LibraryBooks } from '@material-ui/icons';
+import LibraryBooks from '@material-ui/icons/LibraryBooks';
 import { LogButtonProps } from '../types';
 import { useDispatch } from 'react-redux';
 import { setLog } from '../../../../redux/slices/log/logSlice';
