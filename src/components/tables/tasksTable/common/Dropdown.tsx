@@ -15,7 +15,7 @@ const Dropdown: React.FC<DropdownProps> = ({ task, open, Actions }): JSX.Element
             <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={12}>
                 <Collapse in={open} timeout={'auto'} unmountOnExit>
                     <Box margin={1}>
-                        <Table size={'small'} aria-label={'more-information'}>
+                        <Table size={'medium'} aria-label={'more-information'}>
                             <TableHead>
                                 <TableRow>
                                     <TableCell>Hours for BIM</TableCell>
