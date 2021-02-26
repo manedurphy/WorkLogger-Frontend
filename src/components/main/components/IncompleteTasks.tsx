@@ -9,12 +9,13 @@ import IconButton from '@material-ui/core/IconButton';
 import Fade from '@material-ui/core/Fade';
 import { handleGetIncompleteTasks } from '../../../redux/slices/tasks/tasksSlice';
 import { useDispatch } from 'react-redux';
+import { DisplayTasksProps } from '../types';
 
-const IncompleteTasks = (): JSX.Element => {
+const IncompleteTasks: React.FC<DisplayTasksProps> = ({ showLog }): JSX.Element => {
     const dispatch = useDispatch();
     const { paper, header } = useMainStyles();
     return (
-        <Fade in={true} timeout={500} unmountOnExit>
+        <Fade in={!showLog} timeout={500} unmountOnExit exit={false}>
             <Paper className={paper}>
                 <Box className={header}>
                     <Title>Incomplete Tasks</Title>
