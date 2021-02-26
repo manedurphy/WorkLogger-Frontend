@@ -12,12 +12,10 @@ import { clearTokens } from '../../../redux/slices/auth/helpers';
 import { setRegister } from '../../../redux/slices/auth/authSlice';
 
 const Login = (): JSX.Element => {
-    const { paper } = useAuthStyles();
     const dispatch = useDispatch();
-    const [formData, setFormData] = useState({
-        email: '',
-        password: '',
-    });
+
+    const { paper } = useAuthStyles();
+    const [formData, setFormData] = useState({ email: '', password: '' });
 
     useEffect(() => {
         dispatch(setRegister(false));

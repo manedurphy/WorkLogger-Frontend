@@ -1,4 +1,13 @@
 import { ITask } from '../redux/slices/tasks/types';
+import { IUserState } from '../redux/slices/users/types';
+
+export const mockUserState: IUserState = {
+    id: 1,
+    firstName: 'Test',
+    lastName: 'User',
+    email: 'testuser@mail.com',
+    loading: false,
+};
 
 export const mockData: ITask[] = [
     {

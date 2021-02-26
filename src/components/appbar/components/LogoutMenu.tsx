@@ -8,19 +8,17 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { useDispatch } from 'react-redux';
 import { clearUser } from '../../../redux/slices/users/usersSlice';
 
-const NotificationsMenu = (): JSX.Element => {
+const LogoutMenu = (): JSX.Element => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-    const open = Boolean(anchorEl);
+
     const dispatch = useDispatch();
+    const open = Boolean(anchorEl);
 
     const handleClick = (e: React.MouseEvent<HTMLElement>): void => {
         setAnchorEl(e.currentTarget);
     };
 
-    const handleClose = (): void => {
-        setAnchorEl(null);
-    };
-
+    const handleClose = (): void => setAnchorEl(null);
     const handleLogOut = () => dispatch(clearUser());
 
     return (
@@ -47,4 +45,4 @@ const NotificationsMenu = (): JSX.Element => {
     );
 };
 
-export default NotificationsMenu;
+export default LogoutMenu;

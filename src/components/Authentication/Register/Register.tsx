@@ -12,9 +12,11 @@ import { getAuthState } from '../../../redux/slices/auth/authSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
 const Register = (): JSX.Element => {
-    const { paper } = useAuthStyles();
     const dispatch = useDispatch();
+
+    const { paper } = useAuthStyles();
     const { registerSuccess } = useSelector(getAuthState);
+
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
