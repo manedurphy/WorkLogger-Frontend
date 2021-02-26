@@ -22,12 +22,12 @@ const DashboardMainContent = (): JSX.Element => {
         <Container maxWidth={'lg'} className={container}>
             {loading ? (
                 <LoadingTasks />
+            ) : !showCreateTaskForm && incompletedTasks.length === 0 ? (
+                <NoTasks />
             ) : incompletedTasks.length > 0 ? (
                 <Fragment>
                     <IncompleteTasks showLog={showLog} /> <Log showLog={showLog} />
                 </Fragment>
-            ) : !showCreateTaskForm ? (
-                <NoTasks />
             ) : null}
             {!edit && !showLogForm && <NewTaskForm />}
             {!showCreateTaskForm && !showLogForm && <EditTaskForm />}

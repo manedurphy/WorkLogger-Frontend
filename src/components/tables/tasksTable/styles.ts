@@ -1,11 +1,6 @@
 import makeStyles from '@material-ui/core/styles/makeStyles';
 
 export default makeStyles({
-    root: {
-        '& > *': {
-            borderBottom: 'unset',
-        },
-    },
     add: {
         marginTop: '15px',
         color: '#3f51b5',

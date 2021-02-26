@@ -1,5 +1,5 @@
 import React, { useState, Fragment } from 'react';
-import useTasksTableStyles from '../styles';
+import useTasksTableStyles from '../../log/styles';
 import Dropdown from './Dropdown';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';

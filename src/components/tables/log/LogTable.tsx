@@ -13,7 +13,7 @@ const LogTable = (): JSX.Element => {
 
     return (
         <Fragment>
-            <Table size={'small'}>
+            <Table size={'medium'}>
                 <Head />
                 <Body />
             </Table>
