@@ -1,24 +1,22 @@
 import React from 'react';
 import Authenticated from '../Authenticated';
-import { fireEvent, render, RenderResult, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from '../../redux/store';
 import { setUser } from '../../redux/slices/users/usersSlice';
 import { mockUserState } from '../../mocks/mockData';
-
-let renderResult: RenderResult;
+import { handleClickAdd } from '../../redux/slices/tasks/tasksSlice';
 
 beforeAll(() => {
     store.dispatch(setUser(mockUserState));
-    const result = render(
+    render(
         <Router>
             <Provider store={store}>
                 <Authenticated />
             </Provider>
         </Router>,
     );
-    renderResult = result;
 });
 
 describe('End to end app flow', () => {
@@ -32,14 +30,8 @@ describe('End to end app flow', () => {
         expect(screen.getByText('No. Reviews')).toBeInTheDocument();
     });
 
-    test('add button should bring the "create new task form on screen"', async () => {
-        const addBtn = renderResult.container.querySelector('#add-btn');
-
-        expect(screen.queryByText('Create New Task')).not.toBeInTheDocument();
-        if (addBtn) fireEvent.click(addBtn);
-
-        console.log('ADD BTN', addBtn);
-
+    test('clicking add icon should bring the "create new task form on screen" by dispatch actions to store', async () => {
+        store.dispatch(handleClickAdd());
         expect(await screen.findByText('Create')).toBeInTheDocument();
     });
 });
