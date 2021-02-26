@@ -16,9 +16,7 @@ const IncompleteTasksTable = (): JSX.Element => {
         <Fragment>
             <TasksTable tasks={incompletedTasks} Actions={IncompleteTaskActions} />
             <Box display={'flex'} justifyContent={'flex-end'}>
-                <button onClick={() => dispatch(handleClickAdd())}>
-                    <AddCircle className={add} />
-                </button>
+                <AddCircle className={add} onClick={() => dispatch(handleClickAdd())} />
             </Box>
         </Fragment>
     );
