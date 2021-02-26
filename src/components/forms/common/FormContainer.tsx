@@ -7,7 +7,7 @@ import { FormContainerProps } from '../types';
 const FormContainer: React.FC<FormContainerProps> = ({ handleSubmit, show, children }): JSX.Element => {
     const { paper, form } = useFormStyles();
     return (
-        <Fade in={show} timeout={500} unmountOnExit>
+        <Fade in={show} timeout={500} unmountOnExit exit={false}>
             <Paper className={paper}>
                 <form className={form} onSubmit={handleSubmit}>
                     {children}
