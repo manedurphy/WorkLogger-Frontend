@@ -5,10 +5,13 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import Menu from '@material-ui/core/Menu';
 import Fade from '@material-ui/core/Fade';
 import MenuItem from '@material-ui/core/MenuItem';
+import { useDispatch } from 'react-redux';
+import { clearUser } from '../../../redux/slices/users/usersSlice';
 
 const NotificationsMenu = (): JSX.Element => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
+    const dispatch = useDispatch();
 
     const handleClick = (e: React.MouseEvent<HTMLElement>): void => {
         setAnchorEl(e.currentTarget);
@@ -18,11 +21,7 @@ const NotificationsMenu = (): JSX.Element => {
         setAnchorEl(null);
     };
 
-    const handleLogOut = () => {
-        localStorage.removeItem('token');
-        localStorage.removeItem('refreshToken');
-        window.location.pathname = '/login';
-    };
+    const handleLogOut = () => dispatch(clearUser());
 
     return (
         <div>

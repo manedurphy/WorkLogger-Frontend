@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FormEvent, useState } from 'react';
+import React, { ChangeEvent, FormEvent, useState, useEffect } from 'react';
 import LoginForm from './LoginForm';
 import Copyright from '../Copyright';
 import useAuthStyles from '../styles';
@@ -7,18 +7,23 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import { handleLogin } from '../../../redux/slices/users/usersSlice';
-import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
-import { getAuthState } from '../../../redux/slices/auth/authSlice';
+import { useDispatch } from 'react-redux';
+import { clearTokens } from '../../../redux/slices/auth/helpers';
+import { setRegister } from '../../../redux/slices/auth/authSlice';
 
 const Login = (): JSX.Element => {
     const { paper } = useAuthStyles();
     const dispatch = useDispatch();
-    const { loginSuccess } = useSelector(getAuthState);
     const [formData, setFormData] = useState({
         email: '',
         password: '',
     });
+
+    useEffect(() => {
+        dispatch(setRegister(false));
+        clearTokens();
+    }, []);
+
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
@@ -46,7 +51,6 @@ const Login = (): JSX.Element => {
             <Box mt={8}>
                 <Copyright />
             </Box>
-            {loginSuccess && <Redirect to="/" />}
         </Container>
     );
 };

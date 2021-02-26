@@ -4,6 +4,7 @@ import { AlertConstants } from '../alerts/AlertConstants';
 import { addAlert } from '../alerts/alertsSlice';
 import { IAlert } from '../alerts/types';
 import { setRegister, setLogin } from '../auth/authSlice';
+import { clearTokens } from '../auth/helpers';
 import { getRefreshTokens, getUserInfo, postLoginForm, postRegisterForm } from './helpers';
 import { initialUserState } from './initialState';
 import {
@@ -34,10 +35,17 @@ const usersSlice = createSlice({
                 loading: action.payload,
             };
         },
+        clearUser: (_state: IUserState) => {
+            clearTokens();
+            return {
+                ...initialUserState,
+                loading: false,
+            };
+        },
     },
 });
 
-export const { setUser, setLoadingUser } = usersSlice.actions;
+export const { setUser, setLoadingUser, clearUser } = usersSlice.actions;
 
 export const getUserState = (state: IGlobalState): IUserState => state.user;
 
