@@ -24,5 +24,6 @@ export default makeStyles((theme: Theme) => ({
     header: {
         display: 'flex',
         justifyContent: 'space-between',
+        alignItems: 'center',
     },
 }));
