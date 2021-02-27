@@ -1,4 +1,2 @@
-import React from 'react';
-import { LayoutProps } from '../types';
-declare const Layout: React.FC<LayoutProps>;
+declare const Layout: () => JSX.Element;
 export default Layout;

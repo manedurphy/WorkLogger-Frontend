@@ -12,9 +12,11 @@ import { getAuthState } from '../../../redux/slices/auth/authSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
 const Register = (): JSX.Element => {
-    const { paper } = useAuthStyles();
     const dispatch = useDispatch();
+
+    const { paper } = useAuthStyles();
     const { registerSuccess } = useSelector(getAuthState);
+
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
@@ -33,7 +35,7 @@ const Register = (): JSX.Element => {
     };
 
     return (
-        <Container component="main" maxWidth="xs">
+        <Container component={'main'} maxWidth={'xs'}>
             <CssBaseline />
             <div className={paper}>
                 <img
@@ -50,7 +52,7 @@ const Register = (): JSX.Element => {
             <Box mt={5}>
                 <Copyright />
             </Box>
-            {registerSuccess && <Redirect to="/login" />}
+            {registerSuccess && <Redirect to={'/login'} />}
         </Container>
     );
 };

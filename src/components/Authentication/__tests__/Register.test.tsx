@@ -15,7 +15,7 @@ it('should respond with a success alert for successful registration', async () =
         password2: 'password',
     });
 
-    expect(res.message).toEqual('User created!');
+    expect(res.message).toEqual('User created! Please check your email to verify your account.');
     expect(res.type).toEqual('success');
 });
 
