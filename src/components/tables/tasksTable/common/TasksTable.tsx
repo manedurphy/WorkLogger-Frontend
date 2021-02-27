@@ -5,7 +5,7 @@ import Table from '@material-ui/core/Table';
 import { TasksTableProps } from '../../types';
 
 const TasksTable: React.FC<TasksTableProps> = ({ tasks, Actions }): JSX.Element => (
-    <Table size={'small'}>
+    <Table size={'medium'}>
         <Head />
         <Body tasks={tasks} Actions={Actions} />
     </Table>

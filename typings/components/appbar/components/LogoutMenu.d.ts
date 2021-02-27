@@ -1,2 +1,2 @@
-declare const NotificationsMenu: () => JSX.Element;
-export default NotificationsMenu;
+declare const LogoutMenu: () => JSX.Element;
+export default LogoutMenu;
