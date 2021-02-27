@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import useUIStyles from './styles';
-import thinking from '../../../assets/thinking-art-min.png';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 import { Redirect } from 'react-router';
@@ -11,7 +10,7 @@ const NoCompleteTasks = (): JSX.Element => {
     return (
         <div className={noTaskContainer}>
             <Box className={child}>
-                <img src={thinking} className={img} />
+                <img src={'/thinking.png'} className={img} />
             </Box>
             <Box className={child}>You have not completed any tasks</Box>
             <Box className={child}>

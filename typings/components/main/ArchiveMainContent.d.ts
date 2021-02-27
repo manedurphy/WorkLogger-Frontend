@@ -1,2 +1,2 @@
-declare const MainComplete: () => JSX.Element;
-export default MainComplete;
+declare const ArchiveMainContent: () => JSX.Element;
+export default ArchiveMainContent;
