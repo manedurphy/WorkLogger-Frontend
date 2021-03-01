@@ -4,7 +4,7 @@ import { LogFormData } from '../../../components/forms/types';
 import { IAlert } from '../alerts/types';
 import { getTokens } from '../auth/helpers';
 
-export async function updateLog(id: number, formData: LogFormData) {
+export async function updateLog(id: number, formData: LogFormData): Promise<IAlert> {
     const { token } = getTokens();
     const res: AxiosResponse<IAlert> = await axios.put(`/api/logs/log-item/${id}`, formData, {
         headers: {
@@ -15,7 +15,7 @@ export async function updateLog(id: number, formData: LogFormData) {
     return { ...res.data, type: AlertConstants.Success };
 }
 
-export async function deleteLogItem(id: number) {
+export async function deleteLogItem(id: number): Promise<IAlert> {
     const { token } = getTokens();
     const res: AxiosResponse<IAlert> = await axios.delete(`/api/logs/log-item/${id}`, {
         headers: {

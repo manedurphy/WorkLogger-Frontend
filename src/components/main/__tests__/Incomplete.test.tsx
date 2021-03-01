@@ -10,7 +10,7 @@ describe('Incomplete table behavior', () => {
     test('should render', () => {
         const { getByText } = render(
             <Provider store={store}>
-                <IncompleteTasks />
+                <IncompleteTasks showLog={false} />
             </Provider>,
         );
         expect(getByText('Incomplete Tasks')).toBeInTheDocument();
@@ -20,7 +20,7 @@ describe('Incomplete table behavior', () => {
         store.dispatch(setIncompleteTasks(mockData));
         const { getByText } = render(
             <Provider store={store}>
-                <IncompleteTasks />
+                <IncompleteTasks showLog={false} />
             </Provider>,
         );
 
@@ -32,7 +32,7 @@ describe('Incomplete table behavior', () => {
     test('dropdown button should be present on task listing that exposes more information', async () => {
         const { getAllByLabelText, queryByText, findByText, getByText } = render(
             <Provider store={store}>
-                <IncompleteTasks />
+                <IncompleteTasks showLog={false} />
             </Provider>,
         );
 
