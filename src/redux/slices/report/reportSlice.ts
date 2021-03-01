@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { IGlobalState } from '../../types';
 import { AlertConstants } from '../alerts/AlertConstants';
 import { addAlert } from '../alerts/alertsSlice';
 import { ThunkActionType, ThunkDispatchType } from '../users/types';
@@ -21,13 +22,19 @@ const reportSlice = createSlice({
 });
 
 export const { setReport } = reportSlice.actions;
+export const getReportState = (state: IGlobalState): IReportState =>
+    state.report;
 
-export const handleGetReport = (): ThunkActionType => async (dispatch: ThunkDispatchType) => {
+export const handleGetReport = (): ThunkActionType => async (
+    dispatch: ThunkDispatchType,
+) => {
     try {
         const report = await getWeeklyReport();
         dispatch(setReport(report));
     } catch (error) {
-        dispatch(addAlert({ ...error.response.data, type: AlertConstants.Error }));
+        dispatch(
+            addAlert({ ...error.response.data, type: AlertConstants.Error }),
+        );
     }
 };
 
