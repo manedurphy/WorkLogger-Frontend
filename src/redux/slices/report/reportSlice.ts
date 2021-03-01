@@ -25,7 +25,7 @@ export const { setReport } = reportSlice.actions;
 export const handleGetReport = (): ThunkActionType => async (dispatch: ThunkDispatchType) => {
     try {
         const report = await getWeeklyReport();
-        setReport(report);
+        dispatch(setReport(report));
     } catch (error) {
         dispatch(addAlert({ ...error.response.data, type: AlertConstants.Error }));
     }

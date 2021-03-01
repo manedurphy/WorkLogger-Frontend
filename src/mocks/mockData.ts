@@ -1,3 +1,4 @@
+import { DailyReport } from '../redux/slices/report/types';
 import { ITask } from '../redux/slices/tasks/types';
 import { IUserState } from '../redux/slices/users/types';
 
@@ -209,5 +210,33 @@ export const mockData: ITask[] = [
                 createdAt: '2021-02-21T00:38:45.000Z',
             },
         ],
+    },
+];
+
+export const mockReportData: DailyReport[] = [
+    {
+        projectNumber: 1,
+        day: 1,
+        hours: 4.2,
+    },
+    {
+        projectNumber: 2,
+        day: 1,
+        hours: 9.2,
+    },
+    {
+        projectNumber: 2,
+        day: 2,
+        hours: 7.8,
+    },
+    {
+        projectNumber: 3,
+        day: 2,
+        hours: 1.8,
+    },
+    {
+        projectNumber: 3,
+        day: 6,
+        hours: 5.3,
     },
 ];

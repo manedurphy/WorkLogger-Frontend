@@ -5,7 +5,7 @@ import { DailyReport } from './types';
 export async function getWeeklyReport(): Promise<DailyReport[]> {
     const { token } = getTokens();
 
-    const res: AxiosResponse<DailyReport[]> = await axios.get('/api/tasks/dates', {
+    const res: AxiosResponse<DailyReport[]> = await axios.get('/api/logs/dates', {
         headers: {
             Authorization: `Bearer ${token}`,
         },
