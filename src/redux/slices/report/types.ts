@@ -1,7 +1,13 @@
+type day = 2 | 3 | 4 | 5 | 6;
+
 interface DailyReport {
     hours: string;
-    day: number;
+    day: day;
 }
+
+export type Total = {
+    [key in day]: number;
+};
 
 export interface WeeklyReport {
     [key: string]: DailyReport[];
@@ -10,7 +16,8 @@ export interface WeeklyReport {
 export interface IReportState {
     report: WeeklyReport;
     showReport: boolean;
+    total: Total;
 }
 
-export type SetReportAction = { payload: WeeklyReport };
+export type SetReportAction = { payload: { report: WeeklyReport; total: Total } };
 export type SetShowReportAction = { payload: boolean };

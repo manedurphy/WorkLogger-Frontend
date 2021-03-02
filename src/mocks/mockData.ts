@@ -216,16 +216,12 @@ export const mockData: ITask[] = [
 export const mockReportData: WeeklyReport = {
     '1': [
         {
-            hours: '0.00',
-            day: 1,
-        },
-        {
             hours: '17.20',
             day: 2,
         },
         {
             hours: '0.00',
-            day: 2,
+            day: 3,
         },
         {
             hours: '0.00',
@@ -235,27 +231,20 @@ export const mockReportData: WeeklyReport = {
             hours: '0.00',
             day: 5,
         },
+
         {
             hours: '0.00',
             day: 6,
-        },
-        {
-            hours: '0.00',
-            day: 7,
         },
     ],
     '2': [
         {
             hours: '0.00',
-            day: 1,
-        },
-        {
-            hours: '0.00',
             day: 2,
         },
         {
             hours: '0.00',
-            day: 2,
+            day: 3,
         },
         {
             hours: '8.00',
@@ -263,15 +252,12 @@ export const mockReportData: WeeklyReport = {
         },
         {
             hours: '0.00',
-            day: 4,
+            day: 5,
         },
+
         {
             hours: '0.00',
             day: 6,
-        },
-        {
-            hours: '0.00',
-            day: 7,
         },
     ],
 };

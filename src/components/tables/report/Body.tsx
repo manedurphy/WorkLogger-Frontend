@@ -2,11 +2,13 @@ import React from 'react';
 import TableBody from '@material-ui/core/TableBody';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
+import Total from './Total';
 import { useSelector } from 'react-redux';
 import { getReportState } from '../../../redux/slices/report/reportSlice';
 
 const Body = (): JSX.Element => {
-    const { report } = useSelector(getReportState);
+    const { report, total } = useSelector(getReportState);
+
     return (
         <TableBody>
             {Object.keys(report).map((col) => (
@@ -18,6 +20,7 @@ const Body = (): JSX.Element => {
                     )}
                 </TableRow>
             ))}
+            <Total total={total} />
         </TableBody>
     );
 };

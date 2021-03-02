@@ -5,7 +5,7 @@ import { addAlert } from '../alerts/alertsSlice';
 import { ThunkActionType, ThunkDispatchType } from '../users/types';
 import { getWeeklyReport } from './helpers';
 import { initialReportState } from './initialState';
-import { IReportState, SetReportAction, SetShowReportAction } from './types';
+import { IReportState, SetReportAction, SetShowReportAction, Total } from './types';
 
 const reportSlice = createSlice({
     name: 'report',
@@ -14,7 +14,8 @@ const reportSlice = createSlice({
         setReport: (state: IReportState, action: SetReportAction) => {
             return {
                 ...state,
-                report: { ...action.payload },
+                report: { ...action.payload.report },
+                total: { ...action.payload.total },
                 showReport: true,
             };
         },
@@ -33,7 +34,17 @@ export const getReportState = (state: IGlobalState): IReportState => state.repor
 export const handleGetReport = (): ThunkActionType => async (dispatch: ThunkDispatchType) => {
     try {
         const report = await getWeeklyReport();
-        dispatch(setReport(report));
+        const total: Total = { 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 };
+
+        for (const key in report) {
+            for (let i = 0; i < report[key].length; i++) {
+                if (report[key][i].day in total) {
+                    total[report[key][i].day] = total[report[key][i].day] + +report[key][i].hours;
+                }
+            }
+        }
+
+        dispatch(setReport({ report, total }));
     } catch (error) {
         dispatch(addAlert({ ...error.response.data, type: AlertConstants.Error }));
     }
