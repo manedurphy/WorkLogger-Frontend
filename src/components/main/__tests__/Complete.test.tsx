@@ -10,7 +10,7 @@ describe('Complete table behavior', () => {
     test('should render', () => {
         const { getByText } = render(
             <Provider store={store}>
-                <CompleteTasks />
+                <CompleteTasks showLog={false} />
             </Provider>,
         );
         expect(getByText('Complete Tasks')).toBeInTheDocument();
@@ -20,7 +20,7 @@ describe('Complete table behavior', () => {
         store.dispatch(setCompleteTasks(mockData));
         const { getByText } = render(
             <Provider store={store}>
-                <CompleteTasks />
+                <CompleteTasks showLog={false} />
             </Provider>,
         );
 
@@ -32,7 +32,7 @@ describe('Complete table behavior', () => {
     test('dropdown button should be present on task listing that exposes more information', async () => {
         const { getAllByLabelText, queryByText, findByText, getByText } = render(
             <Provider store={store}>
-                <CompleteTasks />
+                <CompleteTasks showLog={false} />
             </Provider>,
         );
 

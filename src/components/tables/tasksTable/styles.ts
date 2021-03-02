@@ -15,4 +15,8 @@ export default makeStyles({
         display: 'flex',
         justifyContent: 'space-evenly',
     },
+    link: {
+        marginTop: '15px',
+        cursor: 'pointer',
+    },
 });

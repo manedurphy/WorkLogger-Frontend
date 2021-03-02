@@ -1,3 +1,4 @@
+import { WeeklyReport } from '../redux/slices/report/types';
 import { ITask } from '../redux/slices/tasks/types';
 import { IUserState } from '../redux/slices/users/types';
 
@@ -211,3 +212,66 @@ export const mockData: ITask[] = [
         ],
     },
 ];
+
+export const mockReportData: WeeklyReport = {
+    '1': [
+        {
+            hours: '0.00',
+            day: 1,
+        },
+        {
+            hours: '17.20',
+            day: 2,
+        },
+        {
+            hours: '0.00',
+            day: 2,
+        },
+        {
+            hours: '0.00',
+            day: 4,
+        },
+        {
+            hours: '0.00',
+            day: 5,
+        },
+        {
+            hours: '0.00',
+            day: 6,
+        },
+        {
+            hours: '0.00',
+            day: 7,
+        },
+    ],
+    '2': [
+        {
+            hours: '0.00',
+            day: 1,
+        },
+        {
+            hours: '0.00',
+            day: 2,
+        },
+        {
+            hours: '0.00',
+            day: 2,
+        },
+        {
+            hours: '8.00',
+            day: 4,
+        },
+        {
+            hours: '0.00',
+            day: 4,
+        },
+        {
+            hours: '0.00',
+            day: 6,
+        },
+        {
+            hours: '0.00',
+            day: 7,
+        },
+    ],
+};

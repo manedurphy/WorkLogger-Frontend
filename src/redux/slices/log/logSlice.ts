@@ -48,7 +48,7 @@ const logSlice = createSlice({
 });
 
 export const { setLog, setLogItem, setShowLog, setShowLogForm } = logSlice.actions;
-export const getLogState = (state: IGlobalState) => state.log;
+export const getLogState = (state: IGlobalState): ILogState => state.log;
 
 export const handleUpdateLogItem = (id: number, taskId: number, formData: LogFormData): ThunkActionType => async (
     dispatch: ThunkDispatchType,

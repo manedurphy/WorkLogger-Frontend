@@ -6,6 +6,7 @@ import alertsReducer from './alerts/alertsSlice';
 import authReducer from './auth/authSlice';
 import modalReducer from './modals/modalsSlice';
 import drawerReducer from './drawer/drawerSlice';
+import reportReducer from './report/reportSlice';
 
 export default combineReducers({
     auth: authReducer,
@@ -15,4 +16,5 @@ export default combineReducers({
     user: userReducer,
     modal: modalReducer,
     drawer: drawerReducer,
+    report: reportReducer,
 });

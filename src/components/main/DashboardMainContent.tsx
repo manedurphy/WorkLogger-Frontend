@@ -9,6 +9,7 @@ import AddHoursModal from '../modal/AddHoursModal';
 import Container from '@material-ui/core/Container';
 import LoadingTasks from '../ui/LoadingTasks';
 import NoTasks from '../ui/NoTasks';
+import ReportTable from '../tables/report/ReportTable';
 import { useSelector } from 'react-redux';
 import { getLogState } from '../../redux/slices/log/logSlice';
 import { getTasksState } from '../../redux/slices/tasks/tasksSlice';
@@ -26,12 +27,14 @@ const DashboardMainContent = (): JSX.Element => {
                 <NoTasks />
             ) : incompletedTasks.length > 0 ? (
                 <Fragment>
-                    <IncompleteTasks showLog={showLog} /> <Log showLog={showLog} />
+                    <IncompleteTasks showLog={showLog} />
+                    <Log showLog={showLog} />
                 </Fragment>
             ) : null}
             {!edit && !showLogForm && <NewTaskForm />}
             {!showCreateTaskForm && !showLogForm && <EditTaskForm />}
             {!edit && !showCreateTaskForm && <EditLogForm />}
+            <ReportTable />
             <AddHoursModal />
         </Container>
     );

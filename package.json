@@ -14,6 +14,7 @@
     "devDependencies": {
         "@testing-library/jest-dom": "^5.11.8",
         "@testing-library/react": "^11.2.3",
+        "@types/axios": "^0.14.0",
         "@types/compression-webpack-plugin": "^6.0.4",
         "@types/css-minimizer-webpack-plugin": "^1.1.1",
         "@types/jest": "^26.0.20",

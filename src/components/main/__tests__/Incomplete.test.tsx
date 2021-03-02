@@ -4,13 +4,13 @@ import { fireEvent, render } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { store } from '../../../redux/store';
 import { setIncompleteTasks } from '../../../redux/slices/tasks/tasksSlice';
-import { mockData } from '../../../mocks/mockData';
+import { mockData, mockReportData } from '../../../mocks/mockData';
 
 describe('Incomplete table behavior', () => {
     test('should render', () => {
         const { getByText } = render(
             <Provider store={store}>
-                <IncompleteTasks />
+                <IncompleteTasks showLog={false} />
             </Provider>,
         );
         expect(getByText('Incomplete Tasks')).toBeInTheDocument();
@@ -20,7 +20,7 @@ describe('Incomplete table behavior', () => {
         store.dispatch(setIncompleteTasks(mockData));
         const { getByText } = render(
             <Provider store={store}>
-                <IncompleteTasks />
+                <IncompleteTasks showLog={false} />
             </Provider>,
         );
 
@@ -32,7 +32,7 @@ describe('Incomplete table behavior', () => {
     test('dropdown button should be present on task listing that exposes more information', async () => {
         const { getAllByLabelText, queryByText, findByText, getByText } = render(
             <Provider store={store}>
-                <IncompleteTasks />
+                <IncompleteTasks showLog={false} />
             </Provider>,
         );
 
@@ -71,5 +71,24 @@ describe('Incomplete table behavior', () => {
         expect(await findByText('Complete')).toBeInTheDocument();
         expect(await findByText('See Log')).toBeInTheDocument();
         expect(await findByText('Add Hours')).toBeInTheDocument();
+    });
+
+    test('clicking weekly report buttons should set weekly report in the store', (done) => {
+        const { getByText } = render(
+            <Provider store={store}>
+                <IncompleteTasks showLog={false} />
+            </Provider>,
+        );
+
+        const reportBtn = getByText('See Weekly Report');
+        expect(reportBtn).toBeInTheDocument();
+
+        fireEvent.click(reportBtn);
+
+        setTimeout(() => {
+            expect(store.getState().report.report).toEqual(mockReportData);
+            expect(store.getState().report.showReport).toBe(true);
+            done();
+        }, 1000);
     });
 });
