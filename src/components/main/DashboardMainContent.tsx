@@ -17,9 +17,7 @@ import { getTasksState } from '../../redux/slices/tasks/tasksSlice';
 const DashboardMainContent = (): JSX.Element => {
     const { container } = useMainStyles();
     const { showLog, showLogForm } = useSelector(getLogState);
-    const { edit, showCreateTaskForm, loading, incompletedTasks } = useSelector(
-        getTasksState,
-    );
+    const { edit, showCreateTaskForm, loading, incompletedTasks } = useSelector(getTasksState);
 
     return (
         <Container maxWidth={'lg'} className={container}>
@@ -29,7 +27,7 @@ const DashboardMainContent = (): JSX.Element => {
                 <NoTasks />
             ) : incompletedTasks.length > 0 ? (
                 <Fragment>
-                    <IncompleteTasks showLog={showLog} />{' '}
+                    <IncompleteTasks showLog={showLog} />
                     <Log showLog={showLog} />
                 </Fragment>
             ) : null}

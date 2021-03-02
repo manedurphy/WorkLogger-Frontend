@@ -1,5 +1,5 @@
 import { rest } from 'msw';
-import { mockData } from './mockData';
+import { mockData, mockReportData } from './mockData';
 
 const handlers = [
     rest.post('/api/users/login', (_req, res, ctx) => {
@@ -19,8 +19,7 @@ const handlers = [
         return res(
             ctx.status(200),
             ctx.json({
-                message:
-                    'User created! Please check your email to verify your account.',
+                message: 'User created! Please check your email to verify your account.',
             }),
         );
     }),
@@ -35,9 +34,9 @@ const handlers = [
     rest.get('/api/tasks/incomplete', (_req, res, ctx) => {
         return res(ctx.status(200), ctx.json(mockData));
     }),
-    // rest.get('/api/logs/dates', (_req, res, ctx) => {
-    //     return res(ctx.status(200), ctx.json(mockReportData));
-    // }),
+    rest.get('/api/logs/dates', (_req, res, ctx) => {
+        return res(ctx.status(200), ctx.json(mockReportData));
+    }),
 ];
 
 export { handlers, rest };

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import Fade from '@material-ui/core/Fade';
 import Paper from '@material-ui/core/Paper';
 import React from 'react';

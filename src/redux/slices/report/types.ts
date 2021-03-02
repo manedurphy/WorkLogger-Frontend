@@ -1,5 +1,5 @@
 interface DailyReport {
-    hours: number;
+    hours: string;
     day: number;
 }
 
@@ -13,3 +13,4 @@ export interface IReportState {
 }
 
 export type SetReportAction = { payload: WeeklyReport };
+export type SetShowReportAction = { payload: boolean };
