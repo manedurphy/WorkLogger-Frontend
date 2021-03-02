@@ -1,6 +1,6 @@
 import { IReportState } from './types';
 
 export const initialReportState: IReportState = {
-    report: [],
+    report: {},
     showReport: false,
 };

@@ -14,7 +14,7 @@ const reportSlice = createSlice({
         setReport: (state: IReportState, action: SetReportAction) => {
             return {
                 ...state,
-                report: action.payload,
+                report: { ...action.payload },
                 showReport: true,
             };
         },

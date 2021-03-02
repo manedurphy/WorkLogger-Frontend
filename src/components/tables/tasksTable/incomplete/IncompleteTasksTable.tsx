@@ -6,8 +6,8 @@ import Link from '@material-ui/core/Link';
 import Box from '@material-ui/core/Box';
 import AddCircle from '@material-ui/icons/AddCircle';
 import { useDispatch, useSelector } from 'react-redux';
-import { getTasksState, handleClickAdd } from '../../../../redux/slices/tasks/tasksSlice';
 import { handleGetReport } from '../../../../redux/slices/report/reportSlice';
+import { getTasksState, handleClickAdd } from '../../../../redux/slices/tasks/tasksSlice';
 
 const IncompleteTasksTable = (): JSX.Element => {
     const dispatch = useDispatch();

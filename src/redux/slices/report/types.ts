@@ -1,12 +1,15 @@
-export interface DailyReport {
-    projectNumber: number;
+interface DailyReport {
     hours: number;
     day: number;
 }
 
+export interface WeeklyReport {
+    [key: string]: DailyReport[];
+}
+
 export interface IReportState {
-    report: DailyReport[];
+    report: WeeklyReport;
     showReport: boolean;
 }
 
-export type SetReportAction = { payload: DailyReport[] };
+export type SetReportAction = { payload: WeeklyReport };
