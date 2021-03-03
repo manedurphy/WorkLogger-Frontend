@@ -36,7 +36,7 @@ const Login = (): JSX.Element => {
             <CssBaseline />
             <div className={paper}>
                 <img
-                    src={'https://work-logger-connor.s3.amazonaws.com/work-logger-logo-min.png'}
+                    src={'/work-logger-logo-min.png'}
                     alt={'logo'}
                     width={75}
                     height={50}
